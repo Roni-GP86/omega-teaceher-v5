@@ -5,8 +5,6 @@
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
-  # Perpanjang timeout hingga 26 detik agar AI generation selesai
-  timeout = 26
 
 # Redirect semua permintaan API ke Netlify serverless function
 [[redirects]]
