@@ -1919,8 +1919,15 @@ Ketentuan Khusus:
         const response = await ai.models.generateContent({
           model: "gemini-2.5-flash",
           contents: [
-            file,
-            prompt
+            {
+              fileData: {
+                fileUri: file.uri,
+                mimeType: file.mimeType
+              }
+            },
+            {
+              text: prompt
+            }
           ],
           config: {
             responseMimeType: "application/json"
@@ -1939,15 +1946,82 @@ Ketentuan Khusus:
       }
     }
 
+    async function mergeReligionCP() {
+      try {
+        const jsonOutputPath = path.resolve(process.cwd(), "extracted_religion_cp.json");
+        if (!fs.existsSync(jsonOutputPath)) {
+          console.log("[Auto-Merge] JSON output file not found. Skipping merge.");
+          return;
+        }
+
+        console.log("[Auto-Merge] Found extracted_religion_cp.json. Starting integration into curriculumDatabase.ts...");
+        const rawJson = fs.readFileSync(jsonOutputPath, "utf-8");
+
+        let jsonText = rawJson.trim();
+        if (jsonText.startsWith("```")) {
+          jsonText = jsonText.replace(/^```(json)?/i, "").replace(/```$/, "").trim();
+        }
+
+        const extractedData = JSON.parse(jsonText);
+        const dbPath = path.resolve(process.cwd(), "src/utils/curriculumDatabase.ts");
+
+        if (!fs.existsSync(dbPath)) {
+          console.error(`[Auto-Merge] Error: curriculumDatabase.ts not found at ${dbPath}`);
+          return;
+        }
+
+        // Dynamically import current curriculum database
+        const dbModule = await import("./src/utils/curriculumDatabase.ts");
+        const currentDb = { ...dbModule.CURRICULUM_DATABASE };
+
+        // Merge the extracted religion data
+        for (const fase of Object.keys(extractedData)) {
+          if (!currentDb[fase]) {
+            currentDb[fase] = {};
+          }
+          for (const mapel of Object.keys(extractedData[fase])) {
+            currentDb[fase][mapel] = extractedData[fase][mapel];
+          }
+        }
+
+        // Write it back to src/utils/curriculumDatabase.ts
+        const newDbContent = `export interface Topic {
+  judul: string;
+  materi: string[];
+}
+
+export interface ElemenData {
+  cp: string;
+  topik: Topic[];
+}
+
+export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, ElemenData>>> = ${JSON.stringify(currentDb, null, 2)};
+`;
+
+        fs.writeFileSync(dbPath, newDbContent, "utf-8");
+        console.log("[Auto-Merge] Successfully integrated religion CP into curriculumDatabase.ts!");
+
+        // Rename the JSON file so we don't merge it again
+        const backupPath = path.resolve(process.cwd(), "extracted_religion_cp.json.bak");
+        fs.renameSync(jsonOutputPath, backupPath);
+        console.log("[Auto-Merge] Renamed extracted_religion_cp.json to backup.");
+      } catch (err) {
+        console.error("[Auto-Merge] Error during merge:", err);
+      }
+    }
+
     app.listen(PORT, "0.0.0.0", () => {
       console.log(`Server running on http://localhost:${PORT}`);
       
       const jsonOutputPath = path.resolve(process.cwd(), "extracted_religion_cp.json");
       if (!fs.existsSync(jsonOutputPath)) {
-        console.log("[Auto-Extract] JSON output file not found. Starting automatic extraction of CP Religion from PDF...");
-        extractReligionCP().catch(err => console.error("[Auto-Extract] Failed:", err));
+        console.log("[Auto-Extract] JSON output file not found. Starting automatic extraction of CP Religion from PDF... ");
+        extractReligionCP().then(() => {
+          mergeReligionCP();
+        }).catch(err => console.error("[Auto-Extract] Failed:", err));
       } else {
-        console.log("[Auto-Extract] extracted_religion_cp.json already exists. Skipping extraction.");
+        console.log("[Auto-Extract] extracted_religion_cp.json already exists. Starting merge...");
+        mergeReligionCP();
       }
     });
   }

@@ -8,6 +8,7 @@ import { jsPDF } from "jspdf";
 import JSZip from "jszip";
 import { CinematicLoading } from "./CinematicLoading";
 import { SmartTooltip } from "./SmartTooltip";
+import { CURRICULUM_DATABASE } from "../utils/curriculumDatabase";
 
 const CP_PRESETS = [
   {
@@ -41,6 +42,22 @@ const CP_PRESETS = [
     alokasiJp: "3",
     title: "Pendidikan Pancasila - Fase D (UUD 1945)",
     cpText: "Elemen Undang-Undang Dasar Negara Republik Indonesia Tahun 1945: Peserta didik mampu menganalisis kronologi perumusan dan pengesahan UUD NRI Tahun 1945. Peserta didik juga memahami fungsi penting kesepakatan bersama, tata tertib norma di sekolah dan masyarakat luas, serta berpartisipasi aktif merancang solusi atas dinamika pelanggaran aturan kelas."
+  },
+  {
+    id: "agama-islam-b",
+    mapel: "Pendidikan Agama Islam dan Budi Pekerti",
+    faseKelas: "Fase B (Kelas 4)",
+    alokasiJp: "4",
+    title: "Agama Islam - Fase B (Al-Qur'an & Akidah)",
+    cpText: "Elemen Al-Qur'an Hadis: Membaca, menulis, dan membedakan huruf hijaiah bersambung; menghafal dan menjelaskan beberapa surah pendek, hadis tentang kewajiban salat dan menjaga hubungan baik dengan sesama. Elemen Akidah: Menjelaskan dan meyakini sifat-sifat Allah Swt., iman kepada kitab-kitab Allah Swt., beberapa asmaulhusna, dan iman kepada rasul-rasul Allah Swt."
+  },
+  {
+    id: "agama-kristen-b",
+    mapel: "Pendidikan Agama Kristen dan Budi Pekerti",
+    faseKelas: "Fase B (Kelas 4)",
+    alokasiJp: "4",
+    title: "Agama Kristen - Fase B (Allah Berkarya & Nilai)",
+    cpText: "Elemen Allah Berkarya: Murid memahami Allah menciptakan flora dan fauna, serta manusia (perempuan dan laki-laki). Murid memahami pemeliharaan Allah pada dirinya dan melalui kehadiran orang-orang di sekitarnya. Murid memahami Allah sebagai penyelamat. Murid mengenal Allah pembaru. Elemen Manusia dan Nilai-nilai Kristiani: Murid memahami diri sebagai makhluk individu dan sosial yang dapat bergaul dan bekerja sama dengan teman, saudara, dan orang tua."
   }
 ];
 
@@ -184,6 +201,20 @@ const getPresetStyler = (id: string) => {
         accentLine: "bg-cyan-500/80",
         label: "Sains & Alam",
       };
+    case "agama-islam-b":
+      return {
+        borderColor: "hover:border-teal-500/60 hover:shadow-teal-500/10",
+        badgeBg: "bg-teal-500/10 text-teal-400 border border-teal-500/20",
+        accentLine: "bg-teal-500/85",
+        label: "Pendidikan Agama Islam",
+      };
+    case "agama-kristen-b":
+      return {
+        borderColor: "hover:border-rose-500/60 hover:shadow-rose-500/10",
+        badgeBg: "bg-rose-500/10 text-rose-400 border border-rose-500/20",
+        accentLine: "bg-rose-500/85",
+        label: "Pendidikan Agama Kristen",
+      };
     default:
       return {
         borderColor: "hover:border-purple-500/60 hover:shadow-purple-500/10",
@@ -282,9 +313,37 @@ export const LessonPlanner: React.FC = () => {
 
     return list;
   }, []);
+
   const [cpText, setCpText] = useState<string>(() => {
     return localStorage.getItem("omega_lp_cp_text") || CP_PRESETS[0].cpText;
   });
+
+  // Dynamically retrieve CP text from database if matches selected mapel & faseKelas
+  const dbCpText = useMemo(() => {
+    if (!faseKelas || !mapel) return "";
+    const normFase = faseKelas.split(" (")[0];
+    const faseData = CURRICULUM_DATABASE[normFase];
+    if (!faseData) return "";
+
+    let subjectData = faseData[mapel];
+    if (!subjectData) {
+      const matchKey = Object.keys(faseData).find(
+        key => key.toLowerCase() === mapel.toLowerCase() || 
+               key.toLowerCase().includes(mapel.toLowerCase()) || 
+               mapel.toLowerCase().includes(key.toLowerCase())
+      );
+      if (matchKey) {
+        subjectData = faseData[matchKey];
+      }
+    }
+
+    if (!subjectData) return "";
+
+    return Object.entries(subjectData)
+      .map(([elementName, elemData]) => `Elemen ${elementName}: ${elemData.cp}`)
+      .join("\n\n");
+  }, [faseKelas, mapel]);
+
   const [tahunAjaran, setTahunAjaran] = useState<string>(() => {
     return localStorage.getItem("omega_lp_tahun_ajaran") || "2026/2027";
   });
@@ -2347,7 +2406,7 @@ export const LessonPlanner: React.FC = () => {
                     </h4>
                   </SmartTooltip>
                   <p className="text-xs text-zinc-400 mt-1 font-sans">
-                    Rujukan Standar: <strong>BSKAP No. 046 Tahun 2025</strong> (Kurikulum Merdeka Terbaru)
+                    Rujukan Standar: <strong>{mapel.toLowerCase().includes("agama") ? "CP. 020/2026" : "CP. 046/2025"}</strong> (Kurikulum Merdeka Terbaru)
                   </p>
                 </div>
                 
@@ -2397,10 +2456,35 @@ export const LessonPlanner: React.FC = () => {
                     </div>
                   </div>
 
+                  {dbCpText && (
+                    <div className="p-4 bg-gradient-to-r from-emerald-950/40 to-teal-950/40 border border-emerald-500/25 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-3 text-left animate-fade-in shadow-[0_4px_20px_rgba(16,185,129,0.05)]">
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2 text-emerald-400">
+                          <Database className="w-4 h-4 text-emerald-400 animate-pulse" />
+                          <span className="text-xs font-bold font-sans uppercase tracking-wider">Database Kurikulum {mapel.toLowerCase().includes("agama") ? "CP. 020/2026" : "CP. 046/2025"} Tersedia</span>
+                        </div>
+                        <p className="text-[11px] text-zinc-400 font-sans leading-relaxed">
+                          Kami mendeteksi capaian pembelajaran resmi untuk <strong>{mapel}</strong> ({faseKelas.split(" (")[0]}) di database lokal hasil ekstraksi Anda.
+                        </p>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setCpText(dbCpText);
+                          setCpInputMode("text");
+                          setErrorMsg(null);
+                        }}
+                        className="py-2.5 px-5 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white rounded-xl text-xs font-bold transition-all duration-300 uppercase cursor-pointer shadow-[0_0_15px_rgba(16,185,129,0.3)] hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] tracking-wider shrink-0"
+                      >
+                        Gunakan CP Resmi 📑
+                      </button>
+                    </div>
+                  )}
+
                   {cpInputMode === "file" ? (
                     <div className="space-y-3">
                       <p className="text-[11px] text-zinc-300 leading-relaxed font-sans">
-                        💡 <strong>Sistem Otomatis BSKAP 046/2025:</strong> Unggah naskah dokumen PDF, Word (.docx), atau Teks (.txt) CP resmi. Sistem kami akan secara otomatis mengekstrak dan menganalisis materi kurikulum secara dinamis berlandaskan pilihan <strong>Fase/Kelas</strong> dan <strong>Mata Pelajaran</strong> Anda.
+                        💡 <strong>Sistem Otomatis {mapel.toLowerCase().includes("agama") ? "CP. 020/2026" : "CP. 046/2025"}:</strong> Unggah naskah dokumen PDF, Word (.docx), atau Teks (.txt) CP resmi. Sistem kami akan secara otomatis mengekstrak dan menganalisis materi kurikulum secara dinamis berlandaskan pilihan <strong>Fase/Kelas</strong> dan <strong>Mata Pelajaran</strong> Anda.
                       </p>
 
                       {!cpFile ? (
