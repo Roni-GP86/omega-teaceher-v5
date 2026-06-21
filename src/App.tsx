@@ -1123,6 +1123,69 @@ export default function App() {
   }, []);
 
   React.useEffect(() => {
+    if (!showIntro) {
+      const playWelcomeSpeech = () => {
+        if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+          if (sessionStorage.getItem('omega_welcome_spoken') === 'true') {
+            return;
+          }
+          
+          window.speechSynthesis.cancel();
+          const greetingText = "Selamat datang bapak dan ibu guru hebat di Omega Teacher Engine.";
+          const utterance = new SpeechSynthesisUtterance(greetingText);
+          utterance.lang = "id-ID";
+          utterance.rate = 0.82; // Slower pace for a deeper voice
+          
+          const voices = window.speechSynthesis.getVoices();
+          const idVoices = voices.filter(v => v.lang.includes("id-ID"));
+          
+          // Filter for local voices to guarantee pitch shifting support
+          const localIdVoices = idVoices.filter(v => v.localService);
+          
+          const maleVoice = idVoices.find(v => 
+            v.name.toLowerCase().includes("male") || 
+            v.name.toLowerCase().includes("david") || 
+            v.name.toLowerCase().includes("wira") ||
+            v.name.toLowerCase().includes("ardi") ||
+            v.name.toLowerCase().includes("laki") ||
+            v.name.toLowerCase().includes("pria")
+          );
+          
+          if (maleVoice) {
+            utterance.voice = maleVoice;
+            utterance.pitch = 0.95;
+          } else if (localIdVoices.length > 0) {
+            utterance.voice = localIdVoices[0];
+            utterance.pitch = 0.55; // Lower pitch aggressively on local voice to sound male
+          } else if (idVoices.length > 0) {
+            utterance.voice = idVoices[0];
+            utterance.pitch = 0.55; // Lower pitch of general voice
+          } else {
+            utterance.pitch = 0.55;
+          }
+          
+          window.speechSynthesis.speak(utterance);
+          sessionStorage.setItem('omega_welcome_spoken', 'true');
+        }
+      };
+
+      const handleAppFirstClick = () => {
+        playWelcomeSpeech();
+        window.removeEventListener('click', handleAppFirstClick);
+        window.removeEventListener('keydown', handleAppFirstClick);
+      };
+
+      window.addEventListener('click', handleAppFirstClick);
+      window.addEventListener('keydown', handleAppFirstClick);
+
+      return () => {
+        window.removeEventListener('click', handleAppFirstClick);
+        window.removeEventListener('keydown', handleAppFirstClick);
+      };
+    }
+  }, [showIntro]);
+
+  React.useEffect(() => {
     const handleBeforeInstall = (e: any) => {
       e.preventDefault();
       setDeferredPrompt(e);

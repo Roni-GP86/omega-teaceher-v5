@@ -26,77 +26,7 @@ export function CyberIntro({ onComplete }: CyberIntroProps) {
     { time: TOTAL_DURATION_SECONDS * 0.07, msg: "🚀 PREPARING FINAL INTERFACE DISPATCH..." }
   ];
 
-  useEffect(() => {
-    let spoken = false;
-    let cancelSpeech = () => {};
 
-    if ('speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-      const greetingText = "Selamat datang bapak dan ibu guru hebat di Omega Teacher Engine.";
-      const utterance = new SpeechSynthesisUtterance(greetingText);
-      utterance.lang = "id-ID";
-      utterance.rate = 0.9;
-
-      const speakWithVoice = (force = false) => {
-        if (spoken && !force) return;
-        
-        // Cancel any queued/blocked speech before playing
-        window.speechSynthesis.cancel();
-        
-        const voices = window.speechSynthesis.getVoices();
-        const idVoices = voices.filter(v => v.lang.includes("id-ID"));
-        const maleVoice = idVoices.find(v => 
-          v.name.toLowerCase().includes("male") || 
-          v.name.toLowerCase().includes("david") || 
-          v.name.toLowerCase().includes("wira") ||
-          v.name.toLowerCase().includes("ardi") ||
-          v.name.toLowerCase().includes("laki") ||
-          v.name.toLowerCase().includes("pria") ||
-          v.name.toLowerCase().includes("natural")
-        );
-        
-        if (maleVoice) {
-          utterance.voice = maleVoice;
-          utterance.pitch = 0.95; // Male voice is already low
-          utterance.rate = 0.9;
-        } else if (idVoices.length > 0) {
-          utterance.voice = idVoices[0];
-          utterance.pitch = 0.55; // Deepen the tone aggressively to make a female voice sound male
-          utterance.rate = 0.82; // Slower rate works better for deep pitches
-        } else {
-          utterance.pitch = 0.55; // Deep voice fallback
-          utterance.rate = 0.82;
-        }
-        
-        window.speechSynthesis.speak(utterance);
-        spoken = true;
-      };
-
-      if (window.speechSynthesis.getVoices().length > 0) {
-        speakWithVoice();
-      } else {
-        window.speechSynthesis.onvoiceschanged = () => speakWithVoice();
-      }
-
-      const handleUserInteraction = () => {
-        speakWithVoice(true); // Force speaking on user interaction
-        document.removeEventListener('click', handleUserInteraction);
-        document.removeEventListener('keydown', handleUserInteraction);
-      };
-      document.addEventListener('click', handleUserInteraction);
-      document.addEventListener('keydown', handleUserInteraction);
-
-      cancelSpeech = () => {
-        window.speechSynthesis.cancel();
-        document.removeEventListener('click', handleUserInteraction);
-        document.removeEventListener('keydown', handleUserInteraction);
-      };
-    }
-
-    return () => {
-      cancelSpeech();
-    };
-  }, []);
 
   useEffect(() => {
     // Timer interval
