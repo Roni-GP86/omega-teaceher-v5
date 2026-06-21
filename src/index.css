@@ -1,0 +1,397 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;750;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@450;500;600;750&display=swap');
+@import "tailwindcss";
+
+/* Hide Chrome/Safari/Brave/Edge number input spinners */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Hide Firefox number input spinners */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --animate-fade-in-slide-up: fade-in-slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes fade-in-slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-slide-up {
+    animation: fade-in-slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 50%, #B45309 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .gold-border {
+    border-image: linear-gradient(to right, #F59E0B, #B45309) 1;
+  }
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+  }
+
+  /* PREMIUM SUPER DESIGN UTILITIES - CALMER, EYE-SAFE PALETTE */
+  .premium-card {
+    background: #0d1026;
+    border: 1px solid rgba(129, 140, 248, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.65);
+  }
+
+  /* Unified professional dark slate style with high-end copper/amber hover accent */
+  .premium-border-emerald,
+  .premium-border-cyan,
+  .premium-border-orange,
+  .premium-border-rose,
+  .premium-border-indigo,
+  .premium-border-amber,
+  .premium-border-purple,
+  .premium-border-zinc,
+  .premium-border-gold {
+    border: 1px solid rgba(129, 140, 248, 0.12);
+    background: linear-gradient(180deg, #0d1129 0%, #07091c 100%);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.65), inset 0 1px 0px rgba(255, 255, 255, 0.03);
+  }
+
+  /* Crisp, thin borders and gradient color palettes for each card category to create an incredibly beautiful, living combination */
+  .premium-thick-gold-card {
+    border: 1px solid rgba(245, 158, 11, 0.25);
+    background: linear-gradient(180deg, #160f04 0%, #060401 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(245, 158, 11, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-gold-card:hover {
+    border-color: rgba(245, 158, 11, 0.9);
+    background: linear-gradient(180deg, #2a1b08 0%, #0d0903 100%);
+    box-shadow: 0 12px 30px rgba(245, 158, 11, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-excel-card {
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    background: linear-gradient(180deg, #031c13 0%, #010806 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(16, 185, 129, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-excel-card:hover {
+    border-color: rgba(16, 185, 129, 0.9);
+    background: linear-gradient(180deg, #073523 0%, #02120c 100%);
+    box-shadow: 0 12px 30px rgba(16, 185, 129, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-word-card {
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    background: linear-gradient(180deg, #05142f 0%, #020713 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(59, 130, 246, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-word-card:hover {
+    border-color: rgba(59, 130, 246, 0.9);
+    background: linear-gradient(180deg, #0a2656 0%, #03112a 100%);
+    box-shadow: 0 12px 30px rgba(59, 130, 246, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-ppt-card {
+    border: 1px solid rgba(234, 88, 12, 0.25);
+    background: linear-gradient(180deg, #1c0b03 0%, #090300 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(234, 88, 12, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-ppt-card:hover {
+    border-color: rgba(234, 88, 12, 0.9);
+    background: linear-gradient(180deg, #351405 0%, #170902 100%);
+    box-shadow: 0 12px 30px rgba(234, 88, 12, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-pdfdecrypt-card {
+    border: 1px solid rgba(225, 29, 72, 0.25);
+    background: linear-gradient(180deg, #1c0409 0%, #090103 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(225, 29, 72, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-pdfdecrypt-card:hover {
+    border-color: rgba(225, 29, 72, 0.9);
+    background: linear-gradient(180deg, #370a13 0%, #190308 100%);
+    box-shadow: 0 12px 30px rgba(225, 29, 72, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-pdfcompress-card {
+    border: 1px solid rgba(79, 70, 229, 0.25);
+    background: linear-gradient(180deg, #090724 0%, #030211 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(79, 70, 229, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-pdfcompress-card:hover {
+    border-color: rgba(79, 70, 229, 0.9);
+    background: linear-gradient(180deg, #16124f 0%, #090729 100%);
+    box-shadow: 0 12px 30px rgba(79, 70, 229, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-aiextract-card {
+    border: 1px solid rgba(219, 39, 119, 0.25);
+    background: linear-gradient(180deg, #1a030f 0%, #0a0106 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(219, 39, 119, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-aiextract-card:hover {
+    border-color: rgba(219, 39, 119, 0.9);
+    background: linear-gradient(180deg, #33071f 0%, #19030e 100%);
+    box-shadow: 0 12px 30px rgba(219, 39, 119, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-kosp-card {
+    border: 1px solid rgba(124, 58, 237, 0.25);
+    background: linear-gradient(180deg, #0f0422 0%, #060210 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(124, 58, 237, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-kosp-card:hover {
+    border-color: rgba(124, 58, 237, 0.9);
+    background: linear-gradient(180deg, #220a46 0%, #0e0322 100%);
+    box-shadow: 0 12px 30px rgba(124, 58, 237, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-lessonplan-card {
+    border: 1px solid rgba(8, 145, 178, 0.25);
+    background: linear-gradient(180deg, #01141c 0%, #00080c 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(8, 145, 178, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-lessonplan-card:hover {
+    border-color: rgba(8, 145, 178, 0.9);
+    background: linear-gradient(180deg, #032b3c 0%, #01141c 100%);
+    box-shadow: 0 12px 30px rgba(8, 145, 178, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-litnum-card {
+    border: 1px solid rgba(132, 204, 22, 0.25);
+    background: linear-gradient(180deg, #0e1601 0%, #050800 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(132, 204, 22, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-litnum-card:hover {
+    border-color: rgba(132, 204, 22, 0.9);
+    background: linear-gradient(180deg, #1d2e03 0%, #0d1501 100%);
+    box-shadow: 0 12px 30px rgba(132, 204, 22, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-absensi-card {
+    border: 1px solid rgba(234, 88, 12, 0.25);
+    background: linear-gradient(180deg, #1c0a01 0%, #090300 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(234, 88, 12, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-absensi-card:hover {
+    border-color: rgba(234, 88, 12, 0.9);
+    background: linear-gradient(180deg, #351302 0%, #190901 100%);
+    box-shadow: 0 12px 30px rgba(234, 88, 12, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-karakterp5-card {
+    border: 1px solid rgba(79, 70, 229, 0.25);
+    background: linear-gradient(180deg, #07061f 0%, #02020e 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(79, 70, 229, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-karakterp5-card:hover {
+    border-color: rgba(79, 70, 229, 0.9);
+    background: linear-gradient(180deg, #141249 0%, #090824 100%);
+    box-shadow: 0 12px 30px rgba(79, 70, 229, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-daftarnilai-card {
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    background: linear-gradient(180deg, #021a11 0%, #010a06 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(16, 185, 129, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-daftarnilai-card:hover {
+    border-color: rgba(16, 185, 129, 0.9);
+    background: linear-gradient(180deg, #053322 0%, #021a11 100%);
+    box-shadow: 0 12px 30px rgba(16, 185, 129, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-docbank-card {
+    border: 1px solid rgba(156, 163, 175, 0.25);
+    background: linear-gradient(180deg, #111317 0%, #08090b 100%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(156, 163, 175, 0.05);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-docbank-card:hover {
+    border-color: rgba(156, 163, 175, 0.9);
+    background: linear-gradient(180deg, #23272e 0%, #111317 100%);
+    box-shadow: 0 12px 30px rgba(156, 163, 175, 0.18);
+    transform: translateY(-3px);
+  }
+
+  .premium-thick-rapor-card {
+    border: 1px solid rgba(239, 68, 68, 0.45);
+    background: linear-gradient(180deg, #be123c 0%, #4c0519 100%) !important;
+    box-shadow: 0 6px 20px rgba(190, 18, 60, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .premium-thick-rapor-card:hover {
+    border-color: rgba(239, 68, 68, 0.95);
+    background: linear-gradient(180deg, #e11d48 0%, #881337 100%) !important;
+    box-shadow: 0 12px 30px rgba(239, 68, 68, 0.65);
+    transform: translateY(-3px);
+  }
+
+  /* SPECTRUM BREATHING GLOW ANIMATIONS FOR ACADEMIC CARDS */
+  @keyframes glow-pink {
+    0% { border-color: #db2777; box-shadow: 0 6px 18px rgba(219, 39, 119, 0.18), inset 0 1px 3px rgba(236, 72, 153, 0.15); }
+    100% { border-color: #ec4899; box-shadow: 0 14px 35px rgba(219, 39, 119, 0.35), inset 0 1px 4px rgba(236, 72, 153, 0.25); }
+  }
+  @keyframes glow-purple {
+    0% { border-color: #7c3aed; box-shadow: 0 6px 18px rgba(124, 58, 237, 0.18), inset 0 1px 3px rgba(168, 85, 247, 0.15); }
+    100% { border-color: #a855f7; box-shadow: 0 14px 35px rgba(124, 58, 237, 0.35), inset 0 1px 4px rgba(168, 85, 247, 0.25); }
+  }
+  @keyframes glow-cyan {
+    0% { border-color: #0891b2; box-shadow: 0 6px 18px rgba(8, 145, 178, 0.18), inset 0 1px 3px rgba(6, 182, 212, 0.15); }
+    100% { border-color: #06b6d4; box-shadow: 0 14px 35px rgba(8, 145, 178, 0.35), inset 0 1px 4px rgba(6, 182, 212, 0.25); }
+  }
+  @keyframes glow-gold {
+    0% { border-color: #d97706; box-shadow: 0 6px 18px rgba(217, 119, 6, 0.18), inset 0 1px 3px rgba(251, 191, 36, 0.15); }
+    100% { border-color: #fbbf24; box-shadow: 0 14px 35px rgba(217, 119, 6, 0.35), inset 0 1px 4px rgba(251, 191, 36, 0.25); }
+  }
+  @keyframes glow-green {
+    0% { border-color: #16a34a; box-shadow: 0 6px 18px rgba(22, 163, 74, 0.18), inset 0 1px 3px rgba(34, 197, 94, 0.15); }
+    100% { border-color: #22c55e; box-shadow: 0 14px 35px rgba(22, 163, 74, 0.35), inset 0 1px 4px rgba(34, 197, 94, 0.25); }
+  }
+  @keyframes glow-violet {
+    0% { border-color: #5b21b6; box-shadow: 0 6px 18px rgba(91, 33, 182, 0.18), inset 0 1px 3px rgba(139, 92, 246, 0.15); }
+    100% { border-color: #8b5cf6; box-shadow: 0 14px 35px rgba(91, 33, 182, 0.35), inset 0 1px 4px rgba(139, 92, 246, 0.25); }
+  }
+  @keyframes glow-amber {
+    0% { border-color: #b45309; box-shadow: 0 6px 18px rgba(180, 83, 9, 0.18), inset 0 1px 3px rgba(245, 158, 11, 0.15); }
+    100% { border-color: #f59e0b; box-shadow: 0 14px 35px rgba(180, 83, 9, 0.35), inset 0 1px 4px rgba(245, 158, 11, 0.25); }
+  }
+  @keyframes glow-emerald {
+    0% { border-color: #059669; box-shadow: 0 6px 18px rgba(16, 185, 129, 0.18), inset 0 1px 3px rgba(52, 211, 153, 0.15); }
+    100% { border-color: #10b981; box-shadow: 0 14px 35px rgba(16, 185, 129, 0.35), inset 0 1px 4px rgba(52, 211, 153, 0.25); }
+  }
+  @keyframes glow-slate {
+    0% { border-color: #4b5563; box-shadow: 0 6px 18px rgba(156, 163, 175, 0.18), inset 0 1px 3px rgba(156, 163, 175, 0.15); }
+    100% { border-color: #9ca3af; box-shadow: 0 14px 35px rgba(156, 163, 175, 0.35), inset 0 1px 4px rgba(156, 163, 175, 0.25); }
+  }
+  @keyframes glow-lime {
+    0% { border-color: #65a30d; box-shadow: 0 6px 18px rgba(132, 204, 22, 0.18), inset 0 1px 3px rgba(163, 230, 53, 0.15); }
+    100% { border-color: #a3e635; box-shadow: 0 14px 35px rgba(132, 204, 22, 0.35), inset 0 1px 4px rgba(163, 230, 53, 0.25); }
+  }
+  @keyframes glow-orange {
+    0% { border-color: #c2410c; box-shadow: 0 6px 18px rgba(234, 88, 12, 0.18), inset 0 1px 3px rgba(249, 115, 22, 0.15); }
+    100% { border-color: #f97316; box-shadow: 0 14px 35px rgba(234, 88, 12, 0.35), inset 0 1px 4px rgba(249, 115, 22, 0.25); }
+  }
+  @keyframes glow-indigo {
+    0% { border-color: #4338ca; box-shadow: 0 6px 18px rgba(79, 70, 229, 0.18), inset 0 1px 3px rgba(99, 102, 241, 0.15); }
+    100% { border-color: #6366f1; box-shadow: 0 14px 35px rgba(79, 70, 229, 0.35), inset 0 1px 4px rgba(129, 140, 248, 0.25); }
+  }
+
+  /* ==========================================================================
+     GLOBAL REFINED OUTLINE TREATMENT (USER REQUESTED ELEGANT & PROFESSIONAL)
+     ========================================================================== */
+
+  /* High contrast, eye-safe input elements, letting cards breathe beautifully */
+  main input[type="text"]:not(.rapor-page-paper *):not(.rapor-page-cover *),
+  main input[type="number"]:not(.rapor-page-paper *):not(.rapor-page-cover *),
+  main input[type="search"]:not(.rapor-page-paper *):not(.rapor-page-cover *),
+  main select:not(.rapor-page-paper *):not(.rapor-page-cover *),
+  main textarea:not(.rapor-page-paper *):not(.rapor-page-cover *),
+  .premium-gold-input {
+    border: 1px solid rgba(129, 140, 248, 0.22) !important; 
+    background: #06091f !important;
+    border-radius: 1rem !important; /* rounded-2xl */
+    color: #f4f4f5 !important;
+    font-size: 0.875rem !important; /* text-sm, highly readable */
+    padding-top: 0.8125rem !important; /* spacious comfort */
+    padding-bottom: 0.8125rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+  }
+
+  main input[type="text"]:not(.rapor-page-paper *):not(.rapor-page-cover *):focus,
+  main input[type="number"]:not(.rapor-page-paper *):not(.rapor-page-cover *):focus,
+  main input[type="search"]:not(.rapor-page-paper *):not(.rapor-page-cover *):focus,
+  main select:not(.rapor-page-paper *):not(.rapor-page-cover *):focus,
+  main textarea:not(.rapor-page-paper *):not(.rapor-page-cover *):focus,
+  .premium-gold-input:focus {
+    border-color: rgba(245, 158, 11, 0.6) !important; /* Subtle Amber/Gold glow on focus */
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.15), inset 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+    outline: none !important;
+  }
+
+  /* Refined container cards, panels, and sub-boxes inside main workspace */
+  main .border-zinc-800:not(.rapor-page-paper *):not(.rapor-page-paper),
+  main .border-zinc-850:not(.rapor-page-paper *):not(.rapor-page-paper),
+  main .border-zinc-855:not(.rapor-page-paper *):not(.rapor-page-paper),
+  main .border-zinc-900:not(.rapor-page-paper *):not(.rapor-page-paper),
+  main .border-zinc-905:not(.rapor-page-paper *):not(.rapor-page-paper) {
+    border: 1.5px solid rgba(129, 140, 248, 0.15) !important; /* Beautiful thin premium border */
+    background: linear-gradient(180deg, #0e122d 0%, #07091c 100%) !important;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7) !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  /* Hover effect for interactive premium cards in main area */
+  main .border-zinc-800:not(.rapor-page-paper *):not(.rapor-page-paper):hover,
+  main .border-zinc-850:not(.rapor-page-paper *):not(.rapor-page-paper):hover,
+  main .border-zinc-855:not(.rapor-page-paper *):not(.rapor-page-paper):hover,
+  main .border-zinc-900:not(.rapor-page-paper *):not(.rapor-page-paper):hover,
+  main .border-zinc-905:not(.rapor-page-paper *):not(.rapor-page-paper):hover {
+    border-color: rgba(245, 158, 11, 0.3) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85), 0 0 24px rgba(245, 158, 11, 0.03) !important;
+  }
+
+  .premium-border-emerald:hover,
+  .premium-border-cyan:hover,
+  .premium-border-orange:hover,
+  .premium-border-rose:hover,
+  .premium-border-indigo:hover,
+  .premium-border-amber:hover,
+  .premium-border-purple:hover,
+  .premium-border-zinc:hover,
+  .premium-border-gold:hover {
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 12px 35px rgba(245, 158, 11, 0.04), inset 0 1px 0px rgba(255, 255, 255, 0.06);
+  }
+
+  /* Elegant glowing lines to insert inside premium layouts */
+  .premium-gradient-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.04) 15%, rgba(255, 255, 255, 0.04) 85%, transparent);
+  }
+  .premium-gold-divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(245, 158, 11, 0.1) 20%, rgba(245, 158, 11, 0.25) 50%, rgba(245, 158, 11, 0.1) 80%, transparent);
+  }
+}
+

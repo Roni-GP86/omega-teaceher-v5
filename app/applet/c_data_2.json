@@ -1,0 +1,161 @@
+{
+    "Ilmu Pengetahuan Alam & Sosial": {
+        "elemen": {
+            "Pemahaman IPAS": {
+                "cp": "Merefleksikan sistem organ tubuh manusia yang dikaitkan dengan cara menjaga kesehatan tubuhnya; menganalisis hubungan antar komponen biotik dan abiotik, serta pengaruhnya terhadap ekosistem; menjelaskan fenomena gelombang bunyi dan cahaya dalam kehidupan sehari-hari; menghasilkan upaya penghematan energi, serta pemanfaatan sumber energi alternatif dari sumber daya yang ada di sekitarnya sebagai upaya mitigasi perubahan iklim; menjelaskan sistem tata surya, serta kaitannya dengan rotasi dan revolusi bumi; menjelaskan letak dan kondisi geografis negara Indonesia dengan menggunakan peta konvensional/digital; meninjau sejarah perjuangan para pahlawan di lingkungan sekitar tempat tinggalnya; menemukan keragaman budaya nasional dalam konteks kebhinekaan berdasarkan pemahaman terhadap nilai-nilai kearifan lokal yang berlaku di wilayah tempat tinggal; serta menerapkan kegiatan ekonomi masyarakat di lingkungan sekitar.",
+                "topik": [
+                    { "judul": "Sistem Organ Tubuh Manusia", "materi": [{"label": "Anatomi Organ Tubuh Manusia Lengkap", "desc": ""}, {"label": "Fungsi Sistem Organ Tubuh Manusia", "desc": ""}, {"label": "Cara Menjaga Kesehatan Organ Tubuh", "desc": ""}, {"label": "Refleksi Hubungan Organ dan Kesehatan", "desc": ""}] },
+                    { "judul": "Hubungan Antar Komponen Ekosistem", "materi": [{"label": "Interaksi Komponen Biotik dan Abiotik Ekosistem", "desc": ""}, {"label": "Pengaruh Hubungan Komponen Terhadap Ekosistem", "desc": ""}, {"label": "Analisis Keseimbangan Alam Ekosistem", "desc": ""}, {"label": "Dampak Perubahan Komponen Ekosistem", "desc": ""}] },
+                    { "judul": "Fenomena Bunyi dan Cahaya", "materi": [{"label": "Sifat dan Gejala Gelombang Bunyi", "desc": ""}, {"label": "Sifat dan Gejala Gelombang Cahaya", "desc": ""}, {"label": "Penerapan Bunyi dalam Kehidupan Sehari-Hari", "desc": ""}, {"label": "Penerapan Cahaya dalam Kehidupan Sehari-Hari", "desc": ""}] },
+                    { "judul": "Energi dan Mitigasi Iklim", "materi": [{"label": "Upaya Penghematan Energi Listrik dan Bahan Bakar", "desc": ""}, {"label": "Pemanfaatan Sumber Energi Alternatif Sekitar", "desc": ""}, {"label": "Mitigasi Perubahan Iklim Melalui Energi", "desc": ""}, {"label": "Inovasi Sumber Daya Energi Terbarukan", "desc": ""}] },
+                    { "judul": "Sistem Tata Surya dan Bumi", "materi": [{"label": "Struktur dan Anggota Sistem Tata Surya", "desc": ""}, {"label": "Dampak Rotasi Bumi Terhadap Kehidupan", "desc": ""}, {"label": "Dampak Revolusi Bumi Terhadap Musim", "desc": ""}, {"label": "Kaitan Posisi Bumi dengan Sistem Tata Surya", "desc": ""}] },
+                    { "judul": "Geografis Indonesia dan Pemetaan", "materi": [{"label": "Interpretasi Peta Konvensional dan Digital Indonesia", "desc": ""}, {"label": "Letak Astronomis dan Geografis Indonesia", "desc": ""}, {"label": "Kondisi Alam Pembelajaran Wilayah Kepulauan", "desc": ""}, {"label": "Analisis Potensi Geografis Negara Kesatuan", "desc": ""}] },
+                    { "judul": "Sejarah Perjuangan Pahlawan", "materi": [{"label": "Profil Pahlawan di Lingkungan Sekitar", "desc": ""}, {"label": "Analisis Perjuangan Tokoh Pahlawan Lokal", "desc": ""}, {"label": "Nilai-Nilai Keteladanan Pahlawan Bangsa", "desc": ""}, {"label": "Dampak Perjuangan Bagi Masa Kini", "desc": ""}] },
+                    { "judul": "Keragaman Budaya dan Kebhinekaan", "materi": [{"label": "Nilai-Nilai Kearifan Lokal Wilayah tempat Tinggal", "desc": ""}, {"label": "Unsur Keragaman Budaya Nasional Indonesia", "desc": ""}, {"label": "Pemahaman Nilai-Nilai Kebhinekaan Global", "desc": ""}, {"label": "Praktik Melestarikan Budaya Lokal Masyarakat", "desc": ""}] },
+                    { "judul": "Kegiatan Ekonomi Masyarakat", "materi": [{"label": "Jenis Kegiatan Ekonomi di Lingkungan Sekitar", "desc": ""}, {"label": "Peran Pelaku Ekonomi dalam Masyarakat", "desc": ""}, {"label": "Penerapan Kegiatan Ekonomi Lokal", "desc": ""}, {"label": "Pengaruh Ekonomi Terhadap Kesejahteraan", "desc": ""}] }
+                ]
+            },
+            "Keterampilan Proses": {
+                "cp": "Mampu menerapkan keterampilan proses yang meliputi: Mengamati, Mempertanyakan dan Memprediksi, Merencanakan dan Melakukan Penyelidikan, Memproses serta Menganalisis Data dan Informasi, Mengevaluasi dan Refleksi, serta Mengomunikasikan Hasil.",
+                "topik": [
+                    { "judul": "Penyelidikan Ilmiah", "materi": [{"label": "Teknik Mengamati Fenomena Alam Sederhana", "desc": ""}, {"label": "Perumusan Pertanyaan dan Prediksi Ilmiah", "desc": ""}, {"label": "Perencanaan Langkah Operasional Penyelidikan", "desc": ""}, {"label": "Observasi Menggunakan Alat Bantu Ukur", "desc": ""}] },
+                    { "judul": "Analisis dan Komunikasi Data", "materi": [{"label": "Pengolahan Data dalam Tabel dan Grafik", "desc": ""}, {"label": "Analisis Hubungan dan Pola Data", "desc": ""}, {"label": "Evaluasi dan Refleksi Hasil Penyelidikan", "desc": ""}, {"label": "Komunikasikan Hasil Penyelidikan Secara Utuh", "desc": ""}] }
+                ]
+            }
+        }
+    },
+    "Seni Rupa": {
+        "elemen": {
+            "Mengalami (Experiencing)": {
+                "cp": "Menjelaskan unsur rupa dan prinsip desain dalam benda-benda di sekitar/karya seni rupa.",
+                "topik": [
+                    { "judul": "Unsur Rupa dan Prinsip Desain", "materi": [{"label": "Identifikasi Unsur Rupa pada Benda Sekitar", "desc": ""}, {"label": "Analisis Prinsip Desain dalam Karya Seni rupa", "desc": ""}, {"label": "Eksplorasi Warna, Garis, dan Bidang Seni", "desc": ""}, {"label": "Memahami Tekstur dan Bentuk Objek Seni", "desc": ""}] }
+                ]
+            },
+            "Merefleksikan (Reflecting)": {
+                "cp": "Merefleksikan dan mengapresiasi karya diri sendiri dan teman sekelas menggunakan kosa kata seni rupa yang sesuai.",
+                "topik": [
+                    { "judul": "Apresiasi dan Refleksi Karya", "materi": [{"label": "Teknik Refleksi Hasil Karya Mandiri Siswa", "desc": ""}, {"label": "Metode Apresiasi Karya Seni Teman Sekelas", "desc": ""}, {"label": "Penggunaan Kosakata Seni rupa yang Tepat", "desc": ""}, {"label": "Evaluasi Nilas Estetis dalam Karya Seni", "desc": ""}] }
+                ]
+            },
+            "Berpikir dan Bekerja Artistik": {
+                "cp": "Mengenali dan menguji coba variasi teknik penggunaan alat dan/atau bahan.",
+                "topik": [
+                    { "judul": "Eksplorasi Alat dan Bahan Seni", "materi": [{"label": "Mengenali Karakter Alat Gambar dan Lukis", "desc": ""}, {"label": "Uji Coba Teknik Pewarnaan Campuran Seni", "desc": ""}, {"label": "Eksplorasi Variasi Bahan Alam dan Buatan", "desc": ""}, {"label": "Teknik Penggunaan Media Seni Grafis Dasar", "desc": ""}] }
+                ]
+            },
+            "Menciptakan (Making/Creating)": {
+                "cp": "Membuat karya seni rupa berdasarkan pengalaman dan/atau hasil pengamatan terhadap lingkungan sekitar melalui pengembangan imajinasi.",
+                "topik": [
+                    { "judul": "Kreasi Seni Berbasis Pengamatan", "materi": [{"label": "Observasi Lingkungan sebagai Sumber Id Seni", "desc": ""}, {"label": "Teknik Menggambar Perspektif Sederhana", "desc": ""}, {"label": "Pengembangan Imajinasi dalam Seni Lukis", "desc": ""}, {"label": "Penciptaan Karya Seni rupa Berbasis Pengalaman", "desc": ""}] }
+                ]
+            },
+            "Berdampak (Impacting)": {
+                "cp": "Menghasilkan karya seni rupa yang mewakili minatnya.",
+                "topik": [
+                    { "judul": "Karya Seni Representatif Minat", "materi": [{"label": "Ekspresi Minat pribadi Melalui Seni Rupa", "desc": ""}, {"label": "Pembuatan Karya Seni yang Mewakili Karakter", "desc": ""}, {"label": "Penonjolan Gaya Khas dalam Berkarya Seni", "desc": ""}, {"label": "Dampak Visual Karya Terhadap Pemirsa", "desc": ""}] }
+                ]
+            }
+        }
+    },
+    "Seni Tari": {
+        "elemen": {
+            "Mengalami (Experiencing)": {
+                "cp": "Mengamati berbagai bentuk tari tradisi yang dapat digunakan untuk mengekspresikan diri melalui unsur pendukung tari.",
+                "topik": [
+                    { "judul": "Observasi Bentuk Tari Tradisi", "materi": [{"label": "Identifikasi Berbagai Bentuk Tari Tradisi", "desc": ""}, {"label": "Analisis Ekspresi Diri dalam Seni Tari", "desc": ""}, {"label": "Unsur-Unsur Pendukung Tari Tradisional", "desc": ""}, {"label": "Eksplorasi Keunikan Gerak Tari Daerah", "desc": ""}] }
+                ]
+            },
+            "Merefleksikan (Reflecting)": {
+                "cp": "Mengidentifikasi unsur pendukung tari dalam tari tradisi serta menghargai hasil pencapaian diri dengan mempertimbangkan pendapat orang lain.",
+                "topik": [
+                    { "judul": "Apresiasi dan Refleksi Hasil Karya", "materi": [{"label": "Analisis Unsur Pendukung Tari Tradisi", "desc": ""}, {"label": "Teknik Refleksi Pencapaian Karya Mandiri", "desc": ""}, {"label": "Apresiasi Pencapaian Karya Kelompok", "desc": ""}, {"label": "Pertimbangan Pendapat Orang Lain dalam Evaluasi", "desc": ""}] }
+                ]
+            },
+            "Berpikir dan Bekerja Artistik": {
+                "cp": "Meragakan hasil rangkaian gerak tari menggunakan unsur pendukung tari dengan menunjukkan kerja sama dan berperan aktif dalam kelompok.",
+                "topik": [
+                    { "judul": "Peragaan Gerak dan Kerja Sama", "materi": [{"label": "Praktik Peragaan Rangkaian Gerak Tari", "desc": ""}, {"label": "Pemanfaatan Unsur Pendukung dalam Peragaan", "desc": ""}, {"label": "Teknik Kerja Sama Efektif dalam Kelompok", "desc": ""}, {"label": "Peran Aktif Peserta Didik dalam Olah Tari", "desc": ""}] }
+                ]
+            },
+            "Menciptakan (Creating)": {
+                "cp": "Merangkai gerak tari yang berpijak pada tradisi/ kreasi dengan menerapkan desain kelompok.",
+                "topik": [
+                    { "judul": "Penciptaan Gerak dan Desain Kelompok", "materi": [{"label": "Teknik Merangkai Gerak Tari Tradisi", "desc": ""}, {"label": "Pengembangan Gerak Tari Kreasi Baru", "desc": ""}, {"label": "Penyusunan Desain Kelompok dalam Tari", "desc": ""}, {"label": "Eksplorasi Ide Berpijak pada Tradisi Lokal", "desc": ""}] }
+                ]
+            },
+            "Berdampak (Impacting)": {
+                "cp": "Menanggapi kejadian-kejadian di lingkungan sekitar melalui tari yang disajikan kepada penonton atau masyarakat sekitar.",
+                "topik": [
+                    { "judul": "Penyajian Tari dan Dampak Sosial", "materi": [{"label": "Analisis Kejadian Lingkungan sebagai Sumber Ide", "desc": ""}, {"label": "Teknik Penyajian Tari bagi penonton", "desc": ""}, {"label": "Komunikasi Peserta Didik Melalui Seni Tari", "desc": ""}, {"label": "Pengaruh Karya Tari Terhadap Masyarakat Sekitar", "desc": ""}] }
+                ]
+            }
+        }
+    },
+    "Seni Musik": {
+        "elemen": {
+            "Mengalami (Experiencing)": {
+                "cp": "Mengenali dan menerapkan unsur-unsur musik (nada, irama dan melodi) menggunakan alat musik ritmis dan melodis serta menunjukkan tingkat kepekaan akan unsur-unsur musik dengan menggunakan alat musik ritmis dan melodis.",
+                "topik": [
+                    { "judul": "Unsur Musik dan Kepekaan Bunyi", "materi": [{"label": "Pengenalan Nada Irama dan Melodi Musik", "desc": ""}, {"label": "Teknik Penggunaan Alat Musik Ritmis", "desc": ""}, {"label": "Teknik Penggunaan Alat Musik Melodis", "desc": ""}, {"label": "Pengembangan Kepekaan Unsur Musik", "desc": ""}] }
+                ]
+            },
+            "Merefleksikan (Reflecting)": {
+                "cp": "Melakukan umpan balik mengenai karya dan kemampuan bermusik diri sendiri atau orang lain menggunakan istilah musik yang tepat.",
+                "topik": [
+                    { "judul": "Apresiasi dan Umpan Balik Musik", "materi": [{"label": "Teknik Umpan Balik Karya Musik", "desc": ""}, {"label": "Analisis Kemampuan Bermusik Mandiri", "desc": ""}, {"label": "Penggunaan Istilah Musik yang Tepat", "desc": ""}, {"label": "Apresiasi Karya Musik Orang Lain", "desc": ""}] }
+                ]
+            },
+            "Berpikir dan Bekerja Artistik": {
+                "cp": "Mengeksplorasi variasi pola irama, tempo dan melodi dengan alat musik ritmis dan melodis menggunakan notasi musik dan teknik dasar yang telah dipelajari; menemukan alternatif untuk menghasilkan bunyi musik sederhana melalui eksplorasi material yang tersedia di lingkungan sekitar dan menerapkan cara memainkan dan merawat alat musik dengan teknik yang tepat sesuai dengan spesifikasi bahan alat musik.",
+                "topik": [
+                    { "judul": "Eksplorasi Bunyi dan Notasi Musik", "materi": [{"label": "Eksplorasi Variasi Pola Irama dan Tempo", "desc": ""}, {"label": "Praktik Membaca Notasi Musik Dasar", "desc": ""}, {"label": "Eksplorasi Bunyi dari Material Lingkungan", "desc": ""}, {"label": "Cara Merawat Alat Musik dengan Benar", "desc": ""}] }
+                ]
+            },
+            "Menciptakan (Creating)": {
+                "cp": "Membuat dan mengembangkan pola irama menggunakan anggota tubuh atau alat musik ritmis yang tersedia berdasarkan nilai kearifan lokal daerahnya.",
+                "topik": [
+                    { "judul": "Kreasi pola Irama Berbasis Lokal", "materi": [{"label": "Pembuatan Pola Irama Menggunakan Tubuh", "desc": ""}, {"label": "Pengembangan Pola Irama Alat Musik Ritmis", "desc": ""}, {"label": "Kreasi Musik Berbasis Budaya Lokal", "desc": ""}, {"label": "Penerapan Nilai Kearifan Lokal dalam Musik", "desc": ""}] }
+                ]
+            },
+            "Berdampak (Impacting)": {
+                "cp": "Menunjukkan minat dan rasa ingin tahu dalam kegiatan bermusik.",
+                "topik": [
+                    { "judul": "Minat dan Rasa Ingin Tahu Bermusik", "materi": [{"label": "Pengembangan Minat dalam Kegiatan Musik", "desc": ""}, {"label": "Eksplorasi Rasa Ingin Tahu Terhadap Bunyi", "desc": ""}, {"label": "Dampak Positif Bermusik Bagi Diri Sendiri", "desc": ""}, {"label": "Partisipasi Aktif dalam Pergelaran Musik", "desc": ""}] }
+                ]
+            }
+        }
+    },
+    "Koding & Kecerdasan Artificial (KKA)": {
+        "elemen": {
+            "Berpikir Komputasional": {
+                "cp": "Memahami permasalahan sederhana dalam kehidupan sehari-hari, menerapkan pemecahan masalah secara sistematis, serta menuliskan instruksi logis dan terstruktur menggunakan sekumpulan kosakata atau simbol.",
+                "topik": [
+                    { "judul": "Pemecahan Masalah sistematis", "materi": [{"label": "Identifikasi Masalah Sehari-Hari", "desc": ""}, {"label": "Dekomposisi Masalah Sederhana", "desc": ""}, {"label": "Pengenalan Pola dalam Masalah Komputasi", "desc": ""}, {"label": "Abstraksi dan Algoritma Sederhana", "desc": ""}] },
+                    { "judul": "Instruksi Logis dan Terstruktur", "materi": [{"label": "Menulis Instruksi Logis Pemrograman", "desc": ""}, {"label": "Penggunaan Simbol dalam Instruksi", "desc": ""}, {"label": "Struktur Urutan Instruksi Terstruktur", "desc": ""}, {"label": "Evaluasi Instruksi Logis yang Dibuat", "desc": ""}] }
+                ]
+            },
+            "Literasi Digital": {
+                "cp": "Memahami konsep dasar, manfaat, dan dampak teknologi digital, memahami sistem komputer tingkat pradasar, menerapkan pengamanan informasi pribadi dalam komunikasi daring, memanfaatkan internet, dan memproduksi serta mendiseminasi konten digital dalam bentuk teks dan gambar.",
+                "topik": [
+                    { "judul": "Teknologi Digital dan Sistem Komputer", "materi": [{"label": "Konsep Dasar Teknologi Digital Modern", "desc": ""}, {"label": "Manfaat dan Dampak Teknologi Bagi Murid", "desc": ""}, {"label": "Pengenalan Sistem Komputer Pradasar", "desc": ""}, {"label": "Fungsi Perangkat Keras dan Lunak", "desc": ""}] },
+                    { "judul": "Komunikasi dan Produksi Konten", "materi": [{"label": "Pengamanan Informasi pribadi Daring", "desc": ""}, {"label": "Pemanfaatan Internet Secara Sehat", "desc": ""}, {"label": "Produksi Konten Teks dan Gambar Digital", "desc": ""}, {"label": "Diseminasi Konten Digital Aman", "desc": ""}] }
+                ]
+            },
+            "Literasi dan Etika Kecerdasan Artifisial": {
+                "cp": "Memahami konsep KA sederhana, manfaat dan dampak KA pada kehidupan sehari-hari, prinsip bahwa KA dikembangkan untuk meningkatkan kesejahteraan manusia dan tidak boleh merugikan manusia, mengetahui perbedaan manusia dan komputer dalam melakukan penginderaan, dan mengetahui perbedaan antara mesin cerdas dan mesin non-cerdas. Memahami etika dasar penggunaan KA seperti empati dan tidak menyakiti orang lain.",
+                "topik": [
+                    { "judul": "Konsep dan Prinsip Dasar KA", "materi": [{"label": "Konsep Sederhana Kecerdasan Artifisial (KA)", "desc": ""}, {"label": "Manfaat KA bagi Kesejahteraan Manusia", "desc": ""}, {"label": "Dampak KA dalam Kehidupan Sehari-Hari", "desc": ""}, {"label": "Prinsip KA yang Tidak Merugikan Manusia", "desc": ""}] },
+                    { "judul": "Etika dan Karakteristik KA", "materi": [{"label": "Perbedaan Penginderaan Manusia dan Komputer", "desc": ""}, {"label": "Ciri mesin Cerdas dan Non-Cerdas", "desc": ""}, {"label": "Etika Dasar Penggunaan KA Secara Bijak", "desc": ""}, {"label": "Penerapan Empati dalam Teknologi KA", "desc": ""}] }
+                ]
+            },
+            "Pemanfaatan dan Pengembangan Kecerdasan Artifisial": {
+                "cp": "Menyimulasikan secara sederhana kerja KA saat mengenali pola, mengklasifikasi benda konkret berdasarkan sifatnya, dan mengetahui bagaimana prediksi sistem KA dipengaruhi input benda konkret.",
+                "topik": [
+                    { "judul": "Simulasi Kerja Kecerdasan Artifisial", "materi": [{"label": "Mekanisme Pengenalan Pola oleh KA", "desc": ""}, {"label": "Klasifikasi Benda Berdasarkan Sifat Fisik", "desc": ""}, {"label": "Proses Input Data Benda Konkret", "desc": ""}, {"label": "Analisis Hasil Klasifikasi Sistem KA", "desc": ""}] },
+                    { "judul": "Prediksi Sistem Kecerdasan Artifisial", "materi": [{"label": "Pengaruh Input Terhadap Prediksi KA", "desc": ""}, {"label": "Akurasi Prediksi Sistem Cerdas KA", "desc": ""}, {"label": "Eksperimen Prediksi KA Sederhana", "desc": ""}, {"label": "Simulasi Keputusan Berbasis Data KA", "desc": ""}] }
+                ]
+            }
+        }
+    }
+}

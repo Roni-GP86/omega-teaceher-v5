@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Omega Guru: Atasi Beban Administrasi Guru</title>
+    <!-- PWA Meta and Links -->
+    <meta name="theme-color" content="#d97706" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.jpg" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- Register Service Worker for PWA Installation -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((reg) => {
+              console.log('PWA Service Worker registered successfully:', reg.scope);
+            })
+            .catch((err) => {
+              console.warn('PWA Service Worker registration failed:', err);
+            });
+        });
+      }
+
+      // Deterrent to prevent Right Click and inspect shortcut keys (Ctrl+U, F12, Ctrl+Shift+I)
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'F12') {
+          e.preventDefault();
+        }
+        if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C' || e.key === 'i' || e.key === 'j' || e.key === 'c')) {
+          e.preventDefault();
+        }
+        if (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.key === 'S' || e.key === 's')) {
+          e.preventDefault();
+        }
+      });
+    </script>
+  </body>
+</html>
+

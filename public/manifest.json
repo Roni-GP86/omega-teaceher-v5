@@ -1,0 +1,39 @@
+{
+  "id": "/?utm_source=pwa",
+  "name": "Omega Guru: Atasi Beban Administrasi Guru",
+  "short_name": "Omega Guru",
+  "description": "Omega Guru: Mengatasi beban administrasi guru. Alat otomatis penyusun KOSP Merdeka, perumus perencanaan pembelajaran (TP, ATP, KKTP, Prota, Promes) berbasis AI, dan pelepas kata sandi Excel.",
+  "start_url": "/?utm_source=pwa",
+  "display": "standalone",
+  "background_color": "#030305",
+  "theme_color": "#d97706",
+  "orientation": "any",
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
+  "categories": ["education", "productivity"],
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

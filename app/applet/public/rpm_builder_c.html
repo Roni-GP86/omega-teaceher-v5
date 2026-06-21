@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="id" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RonAI ASISTEN AI CERDAS UNTUK MODUL AJAR - Modul Ajar Builder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    body { font-family: sans-serif; height: 100%; margin: 0; overflow: hidden; }
+    #app { height: 100%; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; scroll-behavior: auto; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #e0f2fe; }
+    ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+    .gradient-bg-primary { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+    .input-modern, .select-modern, textarea { border: 2px solid #bfdbfe; transition: all 0.2s; outline: none; width: 100%; line-height: 1.5; }
+    .input-modern:focus, .select-modern:focus, textarea:focus { border-color: #2563eb; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); }
+    .btn-primary { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); transition: all 0.2s; cursor: pointer; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3); }
+    .progress-bar { height: 8px; background: #bfdbfe; border-radius: 99px; overflow: hidden; }
+    .progress-fill { height: 100%; background: #2563eb; transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .toast { position: fixed; bottom: 24px; right: 24px; background: white; padding: 16px 24px; border-radius: 8px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); border-left: 6px solid #ef4444; animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 5000; font-weight: 600; color: #1e3a8a; }
+    @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    .animate-fade-in { animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 4000; }
+    .modal-content { background: white; padding: 1.5rem; border-radius: 1.25rem; width: 280px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 2px solid #3b82f6; animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .tp-modal-content { background: white; padding: 2rem; border-radius: 2rem; width: 90%; max-width: 800px; max-height: 85vh; overflow-y: auto; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); border: 4px solid #4f46e5; animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+    @keyframes modalIn { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+    .menu-card { position: relative; overflow: hidden; border-radius: 1.5rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); border: 4px solid transparent; }
+    .menu-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2); }
+    .menu-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent); transform: skewX(-25deg); transition: 0.5s; }
+    .menu-card:hover::before { left: 150%; }
+
+    .a4-paper { width: 210mm; min-height: 297mm; margin: 0 auto; background: white; padding: 2.54cm; box-shadow: 0 0 15px rgba(0,0,0,0.1); font-family: 'Times New Roman', Times, serif; font-size: 12pt; line-height: 1.5; color: #000; text-align: justify; outline: none; }
+    .doc-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; border: none; }
+    .doc-table td { vertical-align: top; padding: 4px 0; border: none; line-height: 1.5; font-family: 'Times New Roman', serif; }
+    .doc-table td.label { width: 30%; font-weight: normal; }
+    .doc-table td.colon { width: 15px; text-align: center; }
+    .doc-table td.value { width: auto; font-weight: normal; }
+    
+    .kegiatan-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 12pt; font-family: 'Times New Roman', Times, serif; border: 1px solid #000; table-layout: fixed; }
+    .kegiatan-table th, .kegiatan-table td { border: 1px solid #000; padding: 10px; text-align: justify; vertical-align: top; line-height: 1.5; word-wrap: break-word; overflow-wrap: break-word; }
+    .kegiatan-table th { background: #f2f2f2; text-align: center; font-weight: bold; text-transform: uppercase; }
+
+    .doc-section-title { font-weight: bold; text-transform: uppercase; margin-top: 24pt; margin-bottom: 12pt; font-size: 14pt; display: block; line-height: 1.5; clear: both; }
+    .doc-sub-section { font-weight: bold; margin-top: 12pt; margin-bottom: 6pt; line-height: 1.5; display: block; }
+    .doc-main-title { text-align: center; font-weight: bold; font-size: 16pt; margin-bottom: 30pt; text-transform: uppercase; line-height: 1.5; }
+
+    .rubrik-table { width: 100% !important; border-collapse: collapse !important; margin-top: 10px; font-family: 'Times New Roman', serif; font-size: 11pt; color: black; line-height: 1.5; table-layout: fixed; border: 1px solid black; max-width: 100%; box-sizing: border-box; overflow: visible; }
+    .rubrik-table th, .rubrik-table td { border: 1px solid black; padding: 8px; text-align: center; vertical-align: middle; line-height: 1.5; word-wrap: break-word; word-break: normal; overflow: visible; }
+    .rubrik-table th { background-color: #f2f2f2; font-weight: bold; text-transform: uppercase; }
+
+    .shadow-inner .rubrik-table { font-family: inherit !important; font-size: inherit !important; }
+
+    .loader { border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; width: 18px; height: 18px; animation: spin 1s linear infinite; display: inline-block; vertical-align: middle; margin-right: 8px; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    .progress-table { width: 100%; border-collapse: collapse; font-family: sans-serif; font-size: 9px; }
+    .progress-table th, .progress-table td { border: 1px solid #cbd5e1; padding: 8px; text-align: left; }
+    .progress-table th { background-color: #1e3a8a; color: white; text-transform: uppercase; }
+    .row-completed { background-color: #dcfce7 !important; }
+    .text-completed { color: #166534; font-weight: 800; }
+
+    @media print {
+      @page { size: A4 portrait; margin: 1cm; }
+      body { background: white; font-family: 'Times New Roman', Times, serif; }
+      #app { overflow: visible; height: auto; }
+      .no-print, .btn-primary, .progress-bar, .toast, .builder-ui { display: none !important; }
+      .a4-paper { width: 100%; margin: 0; padding: 0; box-shadow: none; border: none; }
+      .rubrik-table { width: 100% !important; table-layout: fixed !important; overflow: visible !important; }
+      .rubrik-table td, .rubrik-table th { word-break: normal !important; word-wrap: break-word !important; }
+      .lkpd-container table { width: 100% !important; table-layout: fixed !important; }
+      .lkpd-container td { word-wrap: break-word !important; word-break: break-all !important; overflow-wrap: anywhere !important; }
+    }
+  </style>
+</head>
+<body class="h-full bg-blue-50 text-slate-800">
+  <div id="app" class="w-full h-full"></div>
+  <div id="modal-container"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, collection, query, onSnapshot, deleteDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    const firebaseConfig = JSON.parse(__firebase_config);
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+    let allModulesSynced = [];
+
+    const dataSdk = {
+      init: async (handler) => {
+        const initAuth = async () => {
+          if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+            await signInWithCustomToken(auth, __initial_auth_token);
+          } else {
+            await signInAnonymously(auth);
+          }
+        };
+
+        await initAuth();
+        
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            const q = query(collection(db, 'artifacts', appId, 'public', 'data', 'modules'));
+            onSnapshot(q, (snapshot) => {
+              allModulesSynced = snapshot.docs.map(doc => ({ ...doc.data() }));
+              handler.onDataChanged(allModulesSynced);
+              if (typeof window.render === 'function') window.render();
+            });
+          }
+        });
+        return { isOk: true };
+      },
+      create: async (data) => {
+        if (!auth.currentUser) return { isOk: false };
+        try {
+          const docId = data.__backendId || 'modul_' + Date.now();
+          data.__backendId = docId;
+          await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'modules', docId), data);
+          return { isOk: true };
+        } catch (e) { return { isOk: false }; }
+      },
+      delete: async (docId) => {
+        if (!auth.currentUser) return { isOk: false };
+        try {
+          await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'modules', docId));
+          return { isOk: true };
+        } catch (e) { return { isOk: false }; }
+      }
+    };
+    window.dataSdk = dataSdk;
+    window.getAllModules = () => allModulesSynced;
+    window.dataSdk.init({ onDataChanged: (data) => { allModulesSynced = data; } });
+  </script>
+
+  <script>
+    const apiKey = "";
+    async function callGemini(prompt) {
+      const url = \`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=\${apiKey}\`;
+      const payload = {
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: { responseMimeType: "application/json" }
+      };
+
+      for (let i = 0; i < 5; i++) {
+        try {
+          const res = await fetch(url, { method: "POST", body: JSON.stringify(payload) });
+          if (!res.ok) throw new Error("Retry");
+          const json = await res.json();
+          const rawText = json.candidates[0].content.parts[0].text;
+          
+          const firstBrace = rawText.indexOf('{');
+          const firstBracket = rawText.indexOf('[');
+          
+          let startIdx = -1; let endChar = '';
+          if (firstBrace !== -1 && (firstBracket === -1 || (firstBrace < firstBracket))) {
+              startIdx = firstBrace; endChar = '}';
+          } else if (firstBracket !== -1) {
+              startIdx = firstBracket; endChar = ']';
+          }
+          if (startIdx === -1) throw new Error("Format Salah");
+          const endIdx = rawText.lastIndexOf(endChar);
+          if (endIdx === -1) throw new Error("Format Salah");
+          return JSON.parse(rawText.substring(startIdx, endIdx + 1));
+        } catch (e) {
+          await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
+        }
+      }
+      throw new Error("Gagal menghubungi AI.");
+    }
+    const CP_DATABASE_FASE_C = {
+        "Pendidikan Pancasila": { elemen: { 
+            "Pancasila": { cp: "Memahami...", topik: [] },
+            "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945": { cp: "Mengimplementasikan...", topik: [] },
+            "Bhinneka Tunggal Ika": { cp: "Menyajikan...", topik: [] },
+            "Negara Kesatuan Republik Indonesia": { cp: "Mengenal...", topik: [] }
+        } }
+    };

@@ -1,0 +1,176 @@
+{
+  "entities": {
+    "ActivationRequest": {
+      "title": "ActivationRequest",
+      "description": "Premium access code requests from teachers, including transfer receipt images",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the request record"
+        },
+        "schoolName": {
+          "type": "string",
+          "description": "Name of the school"
+        },
+        "principalName": {
+          "type": "string",
+          "description": "Name of the school principal"
+        },
+        "principalNip": {
+          "type": "string",
+          "description": "NIP identification code of the principal"
+        },
+        "teacherName": {
+          "type": "string",
+          "description": "Name of the teacher requesting code"
+        },
+        "teacherNip": {
+          "type": "string",
+          "description": "NIP identifier code of the teacher"
+        },
+        "jabatan": {
+          "type": "string",
+          "description": "Job title or position of the teacher"
+        },
+        "faseKelas": {
+          "type": "string",
+          "description": "Assigned learning phase and school grade level"
+        },
+        "waNumber": {
+          "type": "string",
+          "description": "WhatsApp contact number"
+        },
+        "receiptBase64": {
+          "type": "string",
+          "description": "Base64 encoded string of receipt or proof of payment transfer image"
+        },
+        "requestCode": {
+          "type": "string",
+          "description": "Randomly generated code unique to this user requesting"
+        },
+        "status": {
+          "type": "string",
+          "description": "Request state: PENDING, ACTIVE, DISABLED"
+        },
+        "activationCode": {
+          "type": "string",
+          "description": "The active premium license code issued to user"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp of request submittal"
+        },
+        "totalAmount": {
+          "type": "integer",
+          "description": "Calculated grand total price in Indonesian Rupiah"
+        }
+      },
+      "required": [
+        "id",
+        "schoolName",
+        "teacherName",
+        "requestCode",
+        "status",
+        "receiptBase64"
+      ]
+    },
+    "SupportMessage": {
+      "title": "SupportMessage",
+      "description": "Real-time communication chat messages between clients and administrators",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for chat message"
+        },
+        "requestId": {
+          "type": "string",
+          "description": "Associated request code or license session token"
+        },
+        "sender": {
+          "type": "string",
+          "description": "Type of sender: user, admin, system"
+        },
+        "text": {
+          "type": "string",
+          "description": "Message content"
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "UTC timestamp of post time"
+        },
+        "readByAdmin": {
+          "type": "boolean",
+          "description": "Flag showing admin visibility"
+        },
+        "readByUser": {
+          "type": "boolean",
+          "description": "Flag showing user visibility"
+        }
+      },
+      "required": [
+        "id",
+        "requestId",
+        "sender",
+        "text",
+        "timestamp"
+      ]
+    },
+    "LicensedUser": {
+      "title": "LicensedUser",
+      "description": "Premium school user profile data and generated files synced from cloud",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "Active license verification code of school admin"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Last synchronisation point in UTC"
+        },
+        "schoolName": {
+          "type": "string"
+        },
+        "principalName": {
+          "type": "string"
+        },
+        "principalNip": {
+          "type": "string"
+        },
+        "teacherName": {
+          "type": "string"
+        },
+        "teacherNip": {
+          "type": "string"
+        },
+        "documents": {
+          "type": "string",
+          "description": "Serialized JSON string of omega_db_documents array"
+        },
+        "studentsList": {
+          "type": "string",
+          "description": "Serialized JSON string of student profiles/registries"
+        }
+      },
+      "required": [
+        "code"
+      ]
+    }
+  },
+  "firestore": {
+    "/activation_requests/{requestId}": {
+      "schema": "ActivationRequest",
+      "description": "Central collection for managing activation code access requests and payments"
+    },
+    "/support_messages/{messageId}": {
+      "schema": "SupportMessage",
+      "description": "Direct communication logs linked to request IDs and code flows"
+    },
+    "/licensed_users/{licenseCode}": {
+      "schema": "LicensedUser",
+      "description": "Cloud backup of premium license holders' school profile, students, and documents"
+    }
+  }
+}

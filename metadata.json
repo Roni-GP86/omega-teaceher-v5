@@ -1,0 +1,8 @@
+{
+  "name": "ASISTEN OMEGA GURU",
+  "description": "Premium multi-utilitas guru: Pelepas sandi proteksi Excel, asisten otomatis penyusun KOSP, dan instrumen perencanaan pembelajaran Merdeka (TP, ATP, KKTP, Prota, Promes) instan berbasis AI.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

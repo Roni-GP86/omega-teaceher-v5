@@ -1,0 +1,247 @@
+    // --- DATABASE BSKAP 046 FASE B (IPAS, Arts, Math, Indonesian, Pancasila Updated) ---
+    const CP_DATABASE_FASE_C = {
+        "Pendidikan Pancasila": { elemen: { 
+            "Pancasila": { 
+                cp: "Mengenal bendera negara, lagu kebangsaan, simbol dan sila-sila Pancasila dalam lambang negara Garuda Pancasila dan simbol Pancasila beserta sila-sila Pancasila; menerapkan nilai-nilai Pancasila di lingkungan keluarga.", 
+                topik: [
+                    { judul: "Identitas dan Simbol Negara", materi: [{label: "Mengenal Bendera Merah Putih", desc: ""}, {label: "Lagu Kebangsaan Indonesia Raya", desc: ""}, {label: "Lambang Negara Garuda Pancasila", desc: ""}, {label: "Sila-Sila dalam Pancasila", desc: ""}] },
+                    { judul: "Penerapan Pancasila di Rumah", materi: [{label: "Nilai Ketuhanan dalam Keluarga", desc: ""}, {label: "Nilai Kemanusiaan dan Kasih Sayang", desc: ""}, {label: "Gotong Royong di Lingkungan Rumah", desc: ""}, {label: "Keadilan dan Aturan Keluarga", desc: ""}] }
+                ] 
+            },
+            "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945": { 
+                cp: "Mengenal aturan di lingkungan keluarga; menunjukkan dan menceritakan sikap mematuhi aturan di lingkungan keluarga.", 
+                topik: [
+                    { judul: "Aturan di Lingkungan Keluarga", materi: [{label: "Jenis Aturan di Rumah", desc: ""}, {label: "Pentingnya Mematuhi Aturan Keluarga", desc: ""}, {label: "Manfaat Disiplin di Rumah", desc: ""}] },
+                    { judul: "Sikap Mematuhi Aturan", materi: [{label: "Praktik Kepatuhan terhadap Aturan", desc: ""}, {label: "Menceritakan Pengalaman Mematuhi Aturan", desc: ""}, {label: "Refleksi Sikap terhadap Aturan Rumah", desc: ""}] }
+                ] 
+            },
+            "Bhinneka Tunggal Ika": { 
+                cp: "Mengenal semboyan Bhinneka Tunggal Ika; mengidentifikasi dan menghargai identitas dirinya sesuai dengan jenis kelamin, hobi, bahasa, serta agama dan kepercayaan di lingkungan sekitar.", 
+                topik: [
+                    { judul: "Semboyan Bhinneka Tunggal Ika", materi: [{label: "Makna Semboyan Berbeda-beda tetapi Satu", desc: ""}, {label: "Sejarah Singkat Semboyan Negara", desc: ""}, {label: "Penerapan Semboyan dalam Kehidupan", desc: ""}] },
+                    { judul: "Identitas Diri dan Lingkungan", materi: [{label: "Mengenal Identitas Diri (Hobi dan Bahasa)", desc: ""}, {label: "Keragaman Jenis Kelamin dan Keunikan Diri", desc: ""}, {label: "Menghargai Agama dan Kepercayaan Teman", desc: ""}, {label: "Sikap Toleransi di Lingkungan Sekitar", desc: ""}] }
+                ] 
+            },
+            "Negara Kesatuan Republik Indonesia": { 
+                cp: "Mengenal karakteristik lingkungan tempat tinggal dan sekolah, sebagai bagian dari wilayah Negara Kesatuan Republik Indonesia; menceritakan dan mempraktikkan bekerja sama menjaga lingkungan sekitar dalam keberagaman.", 
+                topik: [
+                    { judul: "Lingkungan Rumah dan Sekolah", materi: [{label: "Karakteristik Lingkungan tempat Tinggal", desc: ""}, {label: "Lingkungan Sekolah sebagai Bagian NKRI", desc: ""}, {label: "Mengenali Wilayah Sekitar Kita", desc: ""}] },
+                    { judul: "Kerja Sama Menjaga Lingkungan", materi: [{label: "Mempraktikkan Kerja Sama di Sekolah", desc: ""}, {label: "Bakti Sosial di Lingkungan Rumah", desc: ""}, {label: "Menjaga Kebersihan dalam Keberagaman", desc: ""}, {label: "Gotong Royong sebagai Identitas NKRI", desc: ""}] }
+                ] 
+            }
+        } },
+        "Bahasa Indonesia": { elemen: { 
+            "Menyimak": { 
+                cp: "Memahami ide pokok suatu informasi dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan); dan memahami isi teks sastra berbentuk teks aural.", 
+                topik: [
+                    { judul: "Ide Pokok Teks Nonsastra Aural", materi: [{label: "Menemukan Ide Pokok dari Teks yang Didengar", desc: ""}, {label: "Mencatat Informasi Penting dari Berita Lisan", desc: ""}, {label: "Memahami Instruksi dari Teks Prosedur Aural", desc: ""}, {label: "Simpulan Informasi dari Penjelasan Guru", desc: ""}] },
+                    { judul: "Isi Teks Sastra Aural", materi: [{label: "Memahami Tokoh dalam Cerita yang Dibacakan", desc: ""}, {label: "Menemukan Pesan dalam Dongeng Lisan", desc: ""}, {label: "Menceritakan Kembali Alur Cerita Aural", desc: ""}, {label: "Analisis Latar dalam Teks Sastra Lisan", desc: ""}] }
+                ] 
+            },
+            "Membaca dan Memirsa": { 
+                cp: "Membaca kata-kata baru dengan fasih dari bacaan dan/atau tayangan yang dipirsa; dan memahami ide pokok, ide pendukung, pesan, dan informasi dalam teks sastra dan nonsastra berbentuk cetak dan/atau elektronik.", 
+                topik: [
+                    { judul: "Kefasihan Membaca Kata Baru", materi: [{label: "Membaca Kata dengan Pola Suku Kata Kompleks", desc: ""}, {label: "Pelafalan Kosakata Baru dalam Bacaan", desc: ""}, {label: "Mengenali Istilah Baru dari Tayangan Edukasi", desc: ""}] },
+                    { judul: "Pemahaman Teks Sastra dan Nonsastra", materi: [{label: "Menentukan Ide Pokok dan Ide Pendukung", desc: ""}, {label: "Menemukan Pesan Moral dalam Cerita Rakyat", desc: ""}, {label: "Menggali Informasi dari Artikel Elektronik", desc: ""}, {label: "Interpretasi Gambar pada Teks Deskripsi", desc: ""}] }
+                ] 
+            },
+            "Berbicara dan Mempresentasikan": { 
+                cp: "Menyajikan pendapat dengan pilihan kata dan sikap tubuh/gestur yang sesuai, menggunakan volume dan intonasi yang tepat sesuai konteks; menanggapi diskusi sesuai tata cara; dan menceritakan kembali isi dan/atau informasi dari berbagai tipe teks yang dibaca, dipirsa, atau didengar.", 
+                topik: [
+                    { judul: "Presentasi Pendapat dan Gestur", materi: [{label: "Teknik Berbicara dengan Pilihan Kata Tepat", desc: ""}, {label: "Penggunaan Intonasi dan Volume Suara", desc: ""}, {label: "Sikap Tubuh yang Sopan saat Presentasi", desc: ""}] },
+                    { judul: "Diskusi dan Cerita Kembali", materi: [{label: "Etika Menanggapi Pendapat Teman", desc: ""}, {label: "Menceritakan Kembali Isi Bacaan secara Runtut", desc: ""}, {label: "Penyampaian Informasi dari Tayangan Video", desc: ""}, {label: "Praktik Tanya Jawab dalam Diskusi Kelas", desc: ""}] }
+                ] 
+            },
+            "Menulis": { 
+                cp: "Menulis berbagai tipe teks sederhana dengan rangkaian kalimat yang beragam; dan menggunakan kaidah kebahasaan dan kosakata baru yang memiliki makna denotatif untuk menulis teks sesuai dengan konteks.", 
+                topik: [
+                    { judul: "Penulisan Teks Sederhana", materi: [{label: "Menulis Narasi Berdasarkan Pengalaman", desc: ""}, {label: "Menyusun Deskripsi Benda dengan Kalimat Efektif", desc: ""}, {label: "Membuat Teks Prosedur dengan Urutan Tepat", desc: ""}] },
+                    { judul: "Kaidah Kebahasaan dan Denotatif", materi: [{label: "Penggunaan Kosakata Bermakna Denotatif", desc: ""}, {label: "Penerapan Huruf Kapital dan Tanda Baca", desc: ""}, {label: "Menyusun Rangkaian Kalimat yang Beragam", desc: ""}, {label: "Menulis Paragraf sesuai Konteks Materi", desc: ""}] }
+                ] 
+            }
+        } },
+        "Matematika": { elemen: { 
+            "Bilangan": { 
+                cp: "Memiliki pemahaman dan intuisi bilangan (number sense) pada bilangan cacah sampai 10.000; membaca, menulis, membandingkan, dan mengurutkan bilangan; menentukan dan menggunakan nilai tempat; melakukan komposisi dan dekomposisi bilangan cacah sampai 10.000. Murid dapat melakukan dan menyelesaikan masalah operasi bilangan penjumlahan dan pengurangan bilangan cacah sampai 1.000; melakukan dan menyelesaikan masalah operasi perkalian dan pembagian bilangan cacah sampai 100 dengan bantuan benda konkret, gambar dan simbol; mengenal kelipatan dan faktor. Murid dapat melakukan perbandingan dan pengurutan pecahan dengan pembilang satu dan antar pecahan dengan penyebut yang sama; mengenal dan dapat menerapkan pecahan senilai, memiliki intuisi pecahan dan desimal, serta dapat menentukan pecahan sebagai desimal dan persen.", 
+                topik: [
+                    { judul: "Bilangan Cacah sampai 10.000", materi: [{label: "Membaca dan Menulis Bilangan Cacah", desc: ""}, {label: "Membandingkan dan Mengurutkan Bilangan", desc: ""}, {label: "Nilai tempat Bilangan sampai 10.000", desc: ""}, {label: "Komposisi dan Dekomposisi Bilangan", desc: ""}] },
+                    { judul: "Operasi Hitung Cacah", materi: [{label: "Penjumlahan dan Pengurangan sampai 1.000", desc: ""}, {label: "Perkalian Bilangan dengan Benda Konkret", desc: ""}, {label: "Pembagian Bilangan dengan Gambar/Simbol", desc: ""}, {label: "Masalah Operasi Hitung Sehari-hari", desc: ""}] },
+                    { judul: "Kelipatan dan Faktor", materi: [{label: "Mengenal Kelipatan Bilangan", desc: ""}, {label: "Mengenal Faktor Bilangan", desc: ""}] },
+                    { judul: "Pecahan dan Desimal", materi: [{label: "Perbandingan Pecahan Pembilang Satu", desc: ""}, {label: "Mengurutkan Pecahan Penyebut Sama", desc: ""}, {label: "Penerapan Pecahan Senilai", desc: ""}, {label: "Desimal dan Persen Sederhana", desc: ""}] }
+                ] 
+            },
+            "Aljabar": { 
+                cp: "Menemukan nilai yang tidak diketahui dalam kalimat matematika yang melibatkan penjumlahan dan pengurangan pada bilangan cacah sampai 100, dengan menggunakan sifat-sifat bilangan dan operasinya. Murid dapat mengidentifikasi, meniru, dan mengembangkan pola gambar atau objek sederhana dan pola bilangan membesar dan mengecil yang dapat melibatkan penjumlahan dan pengurangan pada bilangan cacah sampai 100.", 
+                topik: [
+                    { judul: "Kalimat Matematika", materi: [{label: "Variabel Penjumlahan sampai 100", desc: ""}, {label: "Variabel Pengurangan sampai 100", desc: ""}, {label: "Sifat Operasi Hitung Aljabar Dasar", desc: ""}] },
+                    { judul: "Pola Gambar dan Bilangan", materi: [{label: "Mengidentifikasi Pola Objek Sederhana", desc: ""}, {label: "Pola Bilangan Membesar (+/-)", desc: ""}, {label: "Pola Bilangan Mengecil (+/-)", desc: ""}] }
+                ] 
+            },
+            "Pengukuran": { 
+                cp: "Mengukur panjang dan berat benda menggunakan satuan baku; menentukan hubungan antar-satuan baku panjang (cm, m) dan antar-satuan berat (g, kg); serta mengukur dan mengestimasi luas dan volume menggunakan satuan tidak baku dan satuan baku berupa bilangan cacah.", 
+                topik: [
+                    { judul: "Satuan Baku Panjang dan Berat", materi: [{label: "Pengukuran Panjang (cm, m)", desc: ""}, {label: "Pengukuran Berat (g, kg)", desc: ""}, {label: "Hubungan Antar-Satuan Baku", desc: ""}] },
+                    { judul: "Luas dan Volume", materi: [{label: "Estimasi Luas Satuan Tidak Baku", desc: ""}, {label: "Pengukuran Luas Satuan Baku", desc: ""}, {label: "Estimasi Volume Satuan Tidak Baku", desc: ""}, {label: "Volume menggunakan Bilangan Cacah", desc: ""}] }
+                ] 
+            },
+            "Geometri": { 
+                cp: "Mendeskripsikan ciri berbagai bentuk bangun datar (segiempat, segitiga, segi banyak); menyusun (komposisi) dan mengurai (dekomposisi) berbagai bangun datar dengan lebih dari satu cara jika memungkinkan.", 
+                topik: [
+                    { judul: "Ciri Bangun Datar", materi: [{label: "Karakteristik Bangun Segiempat", desc: ""}, {label: "Karakteristik Bangun Segitiga", desc: ""}, {label: "Karakteristik Bangun Segi Banyak", desc: ""}] },
+                    { judul: "Komposisi dan Dekomposisi", materi: [{label: "Menyusun Bangun Datar (Komposisi)", desc: ""}, {label: "Mengurai Bangun Datar (Dekomposisi)", desc: ""}, {label: "Eksplorasi Bentuk Bangun Datar", desc: ""}] }
+                ] 
+            },
+            "Analisis Data dan Peluang": { 
+                cp: "Mengurutkan, membandingkan, menyajikan, menganalisis dan menginterpretasi data dalam bentuk tabel, diagram gambar, piktogram, dan diagram batang (skala satu satuan).", 
+                topik: [
+                    { judul: "Penyajian dan Interpretasi Data", materi: [{label: "Penyajian Data dalam Tabel", desc: ""}, {label: "Membaca Diagram Gambar/Piktogram", desc: ""}, {label: "Membuat Diagram Batang Skala Satu", desc: ""}, {label: "Analisis dan Simpulan Data", desc: ""}] }
+                ] 
+            }
+        } },
+        "Ilmu Pengetahuan Alam & Sosial": { elemen: { 
+            "Pemahaman IPAS": { 
+                cp: "Menjelaskan bentuk dan fungsi pancaindra; menganalisis siklus hidup makhluk hidup dan upaya pelestariannya; menghasilkan solusi untuk masalah yang berkaitan dengan pelestarian sumber daya alam sebagai upaya mitigasi perubahan iklim; menyimpulkan proses perubahan wujud zat; menjelaskan sumber dan bentuk energi, serta proses perubahan bentuk energi dalam kehidupan sehari-hari; membedakan jenis gaya dan pengaruhnya terhadap arah, gerak, dan bentuk benda; menjelaskan peran, tugas, dan tanggung jawab serta interaksi sosial yang terjadi di sekitar tempat tinggal dan sekolah; mengenali letak kabupaten/kota dan provinsi tempat tinggalnya dengan menggunakan peta konvensional/digital; mengklasifikasikan ragam bentang alam dan keterkaitannya dengan profesi masyarakat, ragam budaya dan upaya melestarikannya; serta menganalisis sejarah masyarakat di lingkungan tempat tinggal; menjelaskan nilai mata uang dan fungsinya, serta cara mengelola keuangan secara bijak.", 
+                topik: [
+                    { judul: "Bentuk dan Fungsi Pancaindra", materi: [{label: "Bagian-Bagian Mata dan Fungsinya", desc: ""}, {label: "Cara Kerja Telinga Manusia", desc: ""}, {label: "Indra Peraba dan Pengecap", desc: ""}, {label: "Menjaga Kesehatan Alat Indra", desc: ""}] },
+                    { judul: "Siklus Hidup dan Pelestarian", materi: [{label: "Metamorfosis Sempurna dan Tidak Sempurna", desc: ""}, {label: "Siklus Hidup Tumbuhan Berbiji", desc: ""}, {label: "Upaya Pelestarian Makhluk Hidup", desc: ""}, {label: "Hubungan Makhluk Hidup dan Lingkungan", desc: ""}] },
+                    { judul: "Pelestarian SDA dan Iklim", materi: [{label: "Solusi Masalah Pelestarian Alam", desc: ""}, {label: "Mitigasi Perubahan Iklim Lokal", desc: ""}, {label: "Pengelolaan Sampah dan Limbah", desc: ""}, {label: "Pemanfaatan SDA Secara Bijak", desc: ""}] },
+                    { judul: "Proses Perubahan Wujud Zat", materi: [{label: "Membeku, Mencair, dan Menguap", desc: ""}, {label: "Mengembun dan Menyublim", desc: ""}, {label: "Penerapan Perubahan Wujud Zat", desc: ""}, {label: "Sifat-Sifat Zat Padat, Cair, dan Gas", desc: ""}] },
+                    { judul: "Sumber dan Perubahan Energi", materi: [{label: "Bentuk-Bentuk Energi di Sekitar", desc: ""}, {label: "Proses Perubahan Bentuk Energi", desc: ""}, {label: "Sumber Energi Terbarukan", desc: ""}, {label: "Energi Listrik dan Kegunaannya", desc: ""}] },
+                    { judul: "Gaya dan Pengaruhnya", materi: [{label: "Jenis-Jenis Gaya (Otot, Magnet, Listrik)", desc: ""}, {label: "Pengaruh Gaya Terhadap Gerak Benda", desc: ""}, {label: "Gaya Gesek dan Gravitasi", desc: ""}, {label: "Perubahan Bentuk Benda Akibat Gaya", desc: ""}] },
+                    { judul: "Peran dan Interaksi Sosial", materi: [{label: "Tugas dan Tanggung Jawab di Rumah", desc: ""}, {label: "Interaksi Sosial di Lingkungan Sekolah", desc: ""}, {label: "Peran Masyarakat Sekitar tempat Tinggal", desc: ""}, {label: "Gotong Royong dalam Kehidupan", desc: ""}] },
+                    { judul: "Peta dan Letak Wilayah", materi: [{label: "Mengenal Peta Kabupaten/Kota", desc: ""}, {label: "Peta Konvensional vs Digital", desc: ""}, {label: "Letak Geografis Provinsi Sendiri", desc: ""}, {label: "Simbol-Simbol dalam Peta", desc: ""}] },
+                    { judul: "Bentang Alam dan Budaya", materi: [{label: "Klasifikasi Ragam Bentang Alam", desc: ""}, {label: "Hubungan Bentang Alam dan Profesi", desc: ""}, {label: "Pelestarian Ragam Budaya Lokal", desc: ""}, {label: "Kearifan Lokal Daerah", desc: ""}] },
+                    { judul: "Sejarah dan Keuangan Bijak", materi: [{label: "Sejarah Masyarakat Lingkungan Tinggal", desc: ""}, {label: "Nilai dan Fungsi Mata Uang", desc: ""}, {label: "Cara Mengelola Keuangan Secara Bijak", desc: ""}, {label: "Perencanaan Tabungan Sederhana", desc: ""}] }
+                ] 
+            },
+            "Keterampilan Proses": { 
+                cp: "Mampu menerapkan keterampilan proses yang meliputi: Mengamati (fenomena sederhana), Mempertanyakan dan Memprediksi (berdasarkan pengetahuan), Merencanakan dan Melakukan Penyelidikan (dengan panduan), Memproses, Menganalisis Data dan Informasi (turus/diagram), Mengevaluasi dan Refleksi (hasil penyelidikan), serta Mengomunikasikan Hasil (lisan/tulis).", 
+                topik: [
+                    { judul: "Penyelidikan Ilmiah Dasar", materi: [{label: "Teknik Mencatat Hasil Pengamatan", desc: ""}, {label: "Cara Membuat Prediksi Sederhana", desc: ""}, {label: "Penggunaan Alat Ukur Sederhana", desc: ""}, {label: "Langkah-Langkah Eksperimen Terpandu", desc: ""}] },
+                    { judul: "Analisis Data Sederhana", materi: [{label: "Penyajian Data dalam Bentuk Turus", desc: ""}, {label: "Membaca Diagram Gambar", desc: ""}, {label: "Identifikasi Pola Hasil Observasi", desc: ""}, {label: "Teknik Presentasi Hasil Penyelidikan", desc: ""}] }
+                ] 
+            }
+        } },
+        "Seni Rupa": { elemen: { 
+            "Mengalami (Experiencing)": { 
+                cp: "Mengenali dan menyebutkan unsur-unsur rupa dalam benda-benda di sekitar/karya seni rupa.", 
+                topik: [
+                    { judul: "Unsur Rupa di Lingkungan Sekitar", materi: [{label: "Garis dan Bidang pada Benda Alam", desc: ""}, {label: "Warna Primer dan Sekunder", desc: ""}, {label: "Tekstur Nyata dan Semu", desc: ""}, {label: "Bentuk Geometris dan Organis", desc: ""}] },
+                    { judul: "Eksplorasi Karya Seni Rupa", materi: [{label: "Mengenali Unsur Rupa pada Lukisan", desc: ""}, {label: "Analisis Warna pada Karya Seni", desc: ""}, {label: "Identifikasi Garis dalam Gambar", desc: ""}] }
+                ] 
+            },
+            "Merefleksikan (Reflecting)": { 
+                cp: "Merefleksikan dan mengapresiasi karya diri sendiri.", 
+                topik: [
+                    { judul: "Apresiasi Karya Mandiri", materi: [{label: "Menceritakan Proses Berkarya", desc: ""}, {label: "Menilai Kelebihan Karya Sendiri", desc: ""}, {label: "Refleksi Hasil Gambar", desc: ""}] },
+                    { judul: "Umpan Balik Positif", materi: [{label: "Menghargai Hasil Karya Teman", desc: ""}, {label: "Memberikan Komentar Santun", desc: ""}] }
+                ] 
+            },
+            "Berpikir dan Bekerja Artistik": { 
+                cp: "Mengenali dan menguji coba alat dan/atau bahan yang dimiliki.", 
+                topik: [
+                    { judul: "Eksplorasi Media dan Alat", materi: [{label: "Uji Coba Media Kering (Pensil Warna/Krayon)", desc: ""}, {label: "Uji Coba Media Basah (Cat Air)", desc: ""}, {label: "Eksplorasi Bahan Alam untuk Berkarya", desc: ""}, {label: "Teknik Menggunakan Gunting dan Lem", desc: ""}] }
+                ] 
+            },
+            "Menciptakan (Making/Creating)": { 
+                cp: "Membuat karya seni rupa berdasarkan pengalaman dan hasil pengamatan terhadap lingkungan sekitar.", 
+                topik: [
+                    { judul: "Gambar Berbasis Pengamatan", materi: [{label: "Menggambar Lingkungan Sekolah", desc: ""}, {label: "Sketsa Benda di dalam Kelas", desc: ""}, {label: "Menggambar Flora dan Fauna Sekitar", desc: ""}] },
+                    { judul: "Kreasi Berbasis Pengalaman", materi: [{label: "Menggambar Kejadian Mengesankan", desc: ""}, {label: "Membuat Kolase dari Bahan Bekas", desc: ""}, {label: "Membentuk dari Tanah Liat/Plastisin", desc: ""}] }
+                ] 
+            },
+            "Berdampak (Impacting)": { 
+                cp: "Menghasilkan karya seni rupa yang berdampak pada perasaan dirinya.", 
+                topik: [
+                    { judul: "Ekspresi Perasaan melalui Seni", materi: [{label: "Karya yang Menggambarkan Kegembiraan", desc: ""}, {label: "Pemanfaatan Warna untuk Suasana Hati", desc: ""}, {label: "Rasa Bangga terhadap Hasil Karya", desc: ""}] }
+                ] 
+            }
+        } },
+        "Seni Tari": { elemen: { 
+            "Mengalami (Experiencing)": { 
+                cp: "Mengamati bentuk penyajian tari berdasarkan latar belakang serta mengeksplorasi unsur utama tari sesuai level gerak, dan perubahan arah hadap.", 
+                topik: [
+                    { judul: "Eksplorasi Unsur Utama Tari", materi: [{label: "Gerak di tempat (Non-lokomotor)", desc: ""}, {label: "Gerak Berpindah (Lokomotor)", desc: ""}, {label: "Unsur Ruang dalam Gerak Tari", desc: ""}, {label: "Unsur Waktu dan Tempo Tari", desc: ""}] },
+                    { judul: "Penyajian dan Latar Belakang", materi: [{label: "Mengamati Tari Tradisional Lokal", desc: ""}, {label: "Mengenal Kostum Tari Daerah", desc: ""}, {label: "Latar Belakang Cerita dalam Tari", desc: ""}] }
+                ] 
+            },
+            "Merefleksikan (Reflecting)": { 
+                cp: "Mengidentifikasi unsur utama tari sesuai level gerak, dan perubahan arah hadap, serta menilai pencapaian diri saat melakukan aktivitas pembelajaran tari.", 
+                topik: [
+                    { judul: "Identifikasi Level dan Arah", materi: [{label: "Mengenali Level Tinggi, Sedang, Rendah", desc: ""}, {label: "Analisis Perubahan Arah Hadap", desc: ""}, {label: "Identifikasi Gerak sesuai Iringan", desc: ""}] },
+                    { judul: "Penilaian Diri (Self-Assessment)", materi: [{label: "Menilai Kemampuan Gerak Sendiri", desc: ""}, {label: "Refleksi Proses Latihan Tari", desc: ""}] }
+                ] 
+            },
+            "Berpikir dan Bekerja Artistik (Thinking and Working Artistically)": { 
+                cp: "Meragakan hasil tari dengan bekerja secara kooperatif untuk mengembangkan kemampuan bekerja sama dan saling menghargai demi tercapainya tujuan bersama.", 
+                topik: [
+                    { judul: "Peragaan Tari Kooperatif", materi: [{label: "Latihan Gerak Berpasangan", desc: ""}, {label: "Koordinasi Gerak dalam Kelompok", desc: ""}, {label: "Saling Menghargai dalam Diskusi Tari", desc: ""}] },
+                    { judul: "Pencapaian Tujuan Bersama", materi: [{label: "Disiplin dalam Latihan Kelompok", desc: ""}, {label: "Tanggung Jawab terhadap Peran Tari", desc: ""}] }
+                ] 
+            },
+            "Menciptakan (Creating)": { 
+                cp: "Mengembangkan gerak dengan unsur utama tari, level, dan perubahan arah hadap.", 
+                topik: [
+                    { judul: "Pengembangan Variasi Gerak", materi: [{label: "Membuat Gerak Baru Sederhana", desc: ""}, {label: "Eksplorasi Level dalam Kreasi", desc: ""}, {label: "Mengatur Formasi dan Arah Hadap", desc: ""}, {label: "Kreasi Gerak Meniru Alam", desc: ""}] }
+                ] 
+            },
+            "Berdampak (Impacting)": { 
+                cp: "Menerima proses pembelajaran sehingga tumbuh rasa ingin tahu dan dapat menunjukkan usaha yang berdampak pada kemampuan diri dalam menyelesaikan aktivitas pembelajaran tari.", 
+                topik: [
+                    { judul: "Pertumbuhan Rasa Ingin Tahu", materi: [{label: "Keinginan Mencoba Gerak Baru", desc: ""}, {label: "Ketertarikan pada Budaya Tari", desc: ""}, {label: "Peningkatan Rasa Percaya Diri", desc: ""}] }
+                ] 
+            }
+        } },
+        "Seni Musik": { elemen: { 
+            "Mengalami (Experiencing)": { 
+                cp: "Mengenali nada dan pola irama menggunakan anggota tubuh maupun alat musik.", 
+                topik: [
+                    { judul: "Pengenalan Nada dan Bunyi", materi: [{label: "Mengenali Bunyi Tinggi dan Rendah", desc: ""}, {label: "Eksplorasi Bunyi Tubuh (Internal Percussion)", desc: ""}, {label: "Pola Irama Sederhana", desc: ""}, {label: "Mendengarkan Melodi Pendek", desc: ""}] }
+                ] 
+            },
+            "Merefleksikan (Reflecting)": { 
+                cp: "Melakukan umpan balik mengenai praktik bermusik diri sendiri atau orang lain menggunakan istilah musik.", 
+                topik: [
+                    { judul: "Umpan Balik Praktik Musik", materi: [{label: "Menceritakan Pengalaman Bermusik", desc: ""}, {label: "Menggunakan Istilah Nada dan Irama", desc: ""}, {label: "Memberikan Saran untuk Teman", desc: ""}] }
+                ] 
+            },
+            "Berpikir dan Bekerja Artistik (Thinking and Working Artistically)": { 
+                cp: "Menirukan pola irama dan melodi menggunakan alat musik ritmis atau melodis; menyebutkan karakteristik ragam alat musik dan bunyi yang dihasilkan; mengetahui cara memainkan dan merawat alat musik.", 
+                topik: [
+                    { judul: "Eksplorasi Alat Musik Ritmis", materi: [{label: "Menirukan Ketukan Irama", desc: ""}, {label: "Bermain Perkusi Sederhana", desc: ""}, {label: "Mengenali Bunyi Alat Ritmis", desc: ""}] },
+                    { judul: "Eksplorasi Alat Musik Melodis", materi: [{label: "Menirukan Melodi Pendek", desc: ""}, {label: "Mengenali Suara Rekorder/Pianika", desc: ""}, {label: "Teknik Memegang Alat Musik", desc: ""}] },
+                    { judul: "Perawatan Alat Musik", materi: [{label: "Cara Membersihkan Alat Musik", desc: ""}, {label: "Menyimpan Alat Musik dengan Benar", desc: ""}] }
+                ] 
+            },
+            "Menciptakan (Creating)": { 
+                cp: "Membuat bunyi menggunakan anggota tubuh atau alat musik ritmis dan melodis yang tersedia di lingkungan sekitar.", 
+                topik: [
+                    { judul: "Kreasi Bunyi Kreatif", materi: [{label: "Eksplorasi Bunyi dari Benda Bekas", desc: ""}, {label: "Membuat Irama dengan Tepukan", desc: ""}, {label: "Menyusun Bunyi Menjadi Lagu Pendek", desc: ""}] }
+                ] 
+            },
+            "Berdampak (Impacting)": { 
+                cp: "Menunjukkan minat dalam kegiatan bermusik.", 
+                topik: [
+                    { judul: "Minat dan Apresiasi Musik", materi: [{label: "Kegembiraan saat Bernyanyi Bersama", desc: ""}, {label: "Antusiasme mencoba Alat Musik Baru", desc: ""}, {label: "Keberanian Tampil Bermusik", desc: ""}] }
+                ] 
+            }
+        } },
+        "Koding & Kecerdasan Artificial (KKA)": { elemen: { 
+            "Berpikir Komputasional": { 
+                cp: "HANYA UNTUK FASE C!", 
+                topik: [] 
+            },
+            "Literasi Digital": { 
+                cp: "HANYA UNTUK FASE C!", 
+                topik: [] 
+            },
+            "Literasi dan Etika Kecerdasan Artifisial": { 
+                cp: "HANYA UNTUK FASE C!", 
+                topik: [] 
+            },
+            "Pemanfaatan dan Pengembangan Kecerdasan Artifisial": { 
+                cp: "HANYA UNTUK FASE C!", 
+                topik: [] 
+            }
+        } }
+    };

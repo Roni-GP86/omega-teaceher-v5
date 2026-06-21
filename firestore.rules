@@ -1,0 +1,76 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Global safety catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Help functions definition
+    function isValidId(id) { 
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); 
+    }
+    
+    function incoming() { 
+      return request.resource.data; 
+    }
+    
+    function existing() { 
+      return resource.data; 
+    }
+
+    // 1. Rules for Activation Requests
+    match /activation_requests/{requestId} {
+      allow read: if true; // Public access for checking activation status
+      allow create: if isValidId(requestId) 
+        && incoming().schoolName is string && incoming().schoolName.size() <= 200
+        && incoming().teacherName is string && incoming().teacherName.size() <= 200
+        && incoming().requestCode is string && incoming().requestCode.size() <= 50
+        && incoming().status == 'PENDING';
+        
+      allow update: if isValidId(requestId) 
+        && (
+          // Admin approving/updating request state
+          incoming().diff(existing()).affectedKeys().hasAny(['status', 'activationCode', 'activatedAt'])
+          // Or user updating their own profile details
+          || incoming().diff(existing()).affectedKeys().hasAny(['schoolName', 'principalName', 'principalNip', 'teacherName', 'teacherNip', 'jabatan', 'faseKelas', 'waNumber', 'receiptBase64'])
+        );
+        
+      allow delete: if true; // Admin deletion
+    }
+
+    // 2. Rules for Support Chat messages
+    match /support_messages/{messageId} {
+      allow read: if true; // Needed for both side monitoring
+      allow create: if isValidId(messageId)
+        && incoming().requestId is string && incoming().requestId.size() <= 100
+        && incoming().sender is string
+        && incoming().text is string && incoming().text.size() <= 5000;
+        
+      allow update: if isValidId(messageId)
+        && incoming().diff(existing()).affectedKeys().hasAny(['readByUser', 'readByAdmin']);
+        
+      allow delete: if true; // Admin / user deletion
+    }
+
+    // 3. Rules for Licensed Users backups
+    match /licensed_users/{licenseCode} {
+      allow read: if true; // Read backed up details
+      allow create, update: if isValidId(licenseCode)
+        && incoming().code == licenseCode;
+      allow delete: if true;
+    }
+
+    // 4. Rules for Permanent Registered Codes (KRITIS - diperlukan untuk verifikasi kode aktivasi)
+    match /registered_codes/{codeId} {
+      allow read: if true; // Dibutuhkan untuk verifikasi kode aktivasi oleh semua user
+      allow create: if isValidId(codeId)
+        && incoming().activationCode is string && incoming().activationCode.size() <= 100
+        && incoming().status == 'ACTIVE';
+      allow update: if isValidId(codeId)
+        && incoming().diff(existing()).affectedKeys().hasAny(['status', 'updatedAt', 'schoolName', 'teacherName']);
+      allow delete: if true; // Admin deletion
+    }
+  }
+}

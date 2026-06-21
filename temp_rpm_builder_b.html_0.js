@@ -1,0 +1,1 @@
+window.onerror = function(msg, url, line, col, error) { const errLog = document.getElementById('error-log'); errLog.style.display = 'block'; errLog.innerHTML += '<br>' + msg + ' (' + line + ':' + col + ')'; };

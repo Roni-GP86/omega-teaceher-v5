@@ -1,0 +1,111 @@
+{
+    "Pendidikan Pancasila": {
+        "elemen": {
+            "Pancasila": {
+                "cp": "Memahami kronologi sejarah kelahiran Pancasila; meneladani sikap para perumus Pancasila dan menerapkan di lingkungan masyarakat; menghubungkan sila-sila dalam Pancasila sebagai suatu kesatuan yang utuh; menguraikan makna nilai-nilai Pancasila sebagai dasar negara, dan pandangan hidup bangsa.",
+                "topik": [
+                    { "judul": "Sejarah Kelahiran Pancasila", "materi": [{"label": "Fakta Sejarah Kelahiran Pancasila", "desc": ""}, {"label": "Sidang Badan Penyelidik Usaha Preparasi Kemerdekaan Pertama", "desc": ""}, {"label": "Pidato Ir. Soekarno pada 1 Juni 1945", "desc": ""}, {"label": "Proses Rumusan Dasar Negara Pancasila", "desc": ""}] },
+                    { "judul": "Keteladanan Perumus Pancasila", "materi": [{"label": "Sikap Juang Tokoh Bangsa", "desc": ""}, {"label": "Komitmen Kebangsaan Perumus Pancasila", "desc": ""}, {"label": "Meneladani Sikap Perumus dalam Masyarakat", "desc": ""}, {"label": "Penerapan Nilai Perumus Pancasila", "desc": ""}] },
+                    { "judul": "Pancasila sebagai Kesatuan Utuh", "materi": [{"label": "Hubungan Antar Sila Pancasila", "desc": ""}, {"label": "Keterikatan Nilai Sila-Sila Pancasila", "desc": ""}, {"label": "Pancasila sebagai Satu Kesatuan yang Utuh", "desc": ""}, {"label": "Makna Keutuhan Sila Pancasila", "desc": ""}] },
+                    { "judul": "Makna Nilai-Nilai Pancasila", "materi": [{"label": "Pancasila sebagai Dasar Negara RI", "desc": ""}, {"label": "Pancasila sebagai Pandangan Hidup bangsa", "desc": ""}, {"label": "Fungsi Pancasila bagi Bangsa Indonesia", "desc": ""}, {"label": "Implementasi Nilai Dasar Negara Pancasila", "desc": ""}] }
+                ]
+            },
+            "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945": {
+                "cp": "Mengimplementasikan bentuk-bentuk norma, hak, dan kewajiban dalam kedudukannya sebagai warga negara; mengenal Pembukaan Undang-Undang Dasar Negara Republik Indonesia tahun 1945; mempraktikkan musyawarah untuk membuat kesepakatan dan aturan bersama, serta menerapkannya dalam lingkungan keluarga dan sekolah.",
+                "topik": [
+                    { "judul": "Norma, Hak, dan Kewajiban", "materi": [{"label": "Bentuk-Bentuk Norma di Masyarakat", "desc": ""}, {"label": "Hak Sebagai Warga Negara Indonesia", "desc": ""}, {"label": "Kewajiban Sebagai Warga Negara Indonesia", "desc": ""}, {"label": "Implementasi Hak dan Kewajiban Warga Negara", "desc": ""}] },
+                    { "judul": "Pembukaan UUD 1945", "materi": [{"label": "Sejarah Perumusan Pembukaan UUD 1945", "desc": ""}, {"label": "Makna Tiap Alinea Pembukaan UUD 1945", "desc": ""}, {"label": "Prinsip dalam Pembukaan UUD", "desc": ""}, {"label": "Kedudukan Pembukaan UUD 1945", "desc": ""}] },
+                    { "judul": "Praktik Musyawarah dan Aturan", "materi": [{"label": "Praktik Musyawarah Mufakat", "desc": ""}, {"label": "Kesepakatan dan Aturan keluarga", "desc": ""}, {"label": "Kesepakatan dan Aturan Sekolah", "desc": ""}, {"label": "Penerapan Aturan Bersama Secara Disiplin", "desc": ""}] }
+                ]
+            },
+            "Bhinneka Tunggal Ika": {
+                "cp": "Menyajikan hasil identifikasi sikap menghormati, menjaga, dan melestarikan keberagaman budaya sesuai semboyan dalam bingkai Bhinneka Tunggal Ika di lingkungan sekitar.",
+                "topik": [
+                    { "judul": "Keberagaman Budaya Indonesia", "materi": [{"label": "Identifikasi Budaya Lingkungan sekitar", "desc": ""}, {"label": "Sikap Menghormati Perbedaan Budaya", "desc": ""}, {"label": "Keberagaman Tradisi Lokal Masyarakat", "desc": ""}, {"label": "Cara Melestarikan Budaya Lokal", "desc": ""}] },
+                    { "judul": "Bingkai Bhinneka Tunggal Ika", "materi": [{"label": "Makna Semboyan Bhinneka Tunggal Ika", "desc": ""}, {"label": "Upaya Melestarikan Budaya Nasional", "desc": ""}, {"label": "Integrasi Budaya dalam Semboyan Negara", "desc": ""}, {"label": "Sikap Menjaga Persatuan Budaya", "desc": ""}] }
+                ]
+            },
+            "Negara Kesatuan Republik Indonesia": {
+                "cp": "Mengenal wilayahnya dalam konteks kabupaten/kota, dan provinsi sebagai bagian dari wilayah Negara Kesatuan Republik Indonesia; menunjukkan perilaku gotong royong untuk menjaga persatuan di lingkungan sekolah dan sekitar sebagai wujud bela negara.",
+                "topik": [
+                    { "judul": "Wilayah Administrasi NKRI", "materi": [{"label": "Kabupaten dan Kota sebagai Bagian NKRI", "desc": ""}, {"label": "Provinsi sebagai Bagian Wilayah NKRI", "desc": ""}, {"label": "Struktur Wilayah Negara Kesatuan", "desc": ""}, {"label": "Batas Wilayah Administrasi Daerah", "desc": ""}] },
+                    { "judul": "Persatuan dan Bela Negara", "materi": [{"label": "Perilaku Gotong Royong Masyarakat", "desc": ""}, {"label": "Menjaga Persatuan di Lingkungan Sekolah", "desc": ""}, {"label": "Wujud Bela Negara di Lingkungan Sekitar", "desc": ""}, {"label": "Penerapan Nilai Persatuan Bangsa", "desc": ""}] }
+                ]
+            }
+        }
+    },
+    "Bahasa Indonesia": {
+        "elemen": {
+            "Menyimak": {
+                "cp": "Menganalisis informasi dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan) serta menganalisis isi teks sastra berbentuk teks aural.",
+                "topik": [
+                    { "judul": "Teks Nonsastra Aural", "materi": [{"label": "Ciri-Ciri Teks Nonsastra Aural", "desc": ""}, {"label": "Analisis Informasi Penting dalam Teks", "desc": ""}, {"label": "Struktur Penyajian Teks Lisan Nonsastra", "desc": ""}, {"label": "Simpulan Isi Teks Nonsastra Aural", "desc": ""}] },
+                    { "judul": "Teks Sastra Aural", "materi": [{"label": "Analisis Isi Cerita Sastra Lisan", "desc": ""}, {"label": "Unsur Pembangun Cerita Sastra Aural", "desc": ""}, {"label": "Pesan dan Amanat Cerita Sastra", "desc": ""}, {"label": "Tanggapan Terhadap Makna Teks Sastra", "desc": ""}] }
+                ]
+            },
+            "Membaca dan Memirsa": {
+                "cp": "Membaca kata-kata dengan berbagai pola kombinasi huruf dengan fasih; menganalisis informasi serta nilai-nilai dalam teks sastra dan nonsastra berwujud teks visual dan/atau audiovisual.",
+                "topik": [
+                    { "judul": "Kefasihan Membaca", "materi": [{"label": "Pola Kombinasi Huruf Kompleks", "desc": ""}, {"label": "Kefasihan Membaca Teks Narasi", "desc": ""}, {"label": "Intonasi Kalimat Tanya dan Perintah", "desc": ""}, {"label": "Kefasihan Membaca Teks Deskripsi", "desc": ""}] },
+                    { "judul": "Analisis Teks Visual dan Audiovisual", "materi": [{"label": "Analisis Informasi Teks Visual", "desc": ""}, {"label": "Nilai Karakter dalam Teks Audiovisual", "desc": ""}, {"label": "Interpretasi Makna Simbol Visual", "desc": ""}, {"label": "Simpulan Pesan Teks Audiovisual", "desc": ""}] }
+                ]
+            },
+            "Berbicara dan Mempresentasikan": {
+                "cp": "Mempresentasikan gagasan dari berbagai tipe teks dengan efektif; menyampaikan perasaan berdasarkan fakta dan imajinasi secara indah dengan kosakata kreatif.",
+                "topik": [
+                    { "judul": "Presentasi Gagasan", "materi": [{"label": "Teknik Presentasi yang Efektif", "desc": ""}, {"label": "Penyampaian Gagasan Berdasar Teks", "desc": ""}, {"label": "Diskusi dan Tanya Jawab Secara Santun", "desc": ""}, {"label": "Penyajian Laporan Secara Lisan", "desc": ""}] },
+                    { "judul": "Komunikasi Imajinatif dan Kreatif", "materi": [{"label": "Penyampaian Perasaan Berdasar Fakta", "desc": ""}, {"label": "Ekspresi Kosakata Secara kreatif", "desc": ""}, {"label": "Bercerita Berdasarkan Imajinasi Siswa", "desc": ""}, {"label": "Komunikasi Indah dalam Karya Sastra", "desc": ""}] }
+                ]
+            },
+            "Menulis": {
+                "cp": "Menulis berbagai tipe teks sederhana berdasarkan gagasan, hasil pengamatan, pengalaman, dan/atau imajinasi dengan rangkaian kalimat kompleks; menggunakan kaidah kebahasaan dan kosakata baru.",
+                "topik": [
+                    { "judul": "Penulisan Teks Kompleks", "materi": [{"label": "Menulis Deskripsi Hasil Pengamatan", "desc": ""}, {"label": "Menulis Narasi Imajinatif Kreatif", "desc": ""}, {"label": "Penyusunan Teks Prosedur Kompleks", "desc": ""}, {"label": "Pengembangan Gagasan Tertulis", "desc": ""}] },
+                    { "judul": "Kaidah dan Kosakata Baru", "materi": [{"label": "Makna Denotatif dan Konnotatif Kata", "desc": ""}, {"label": "Struktur Kalimat Efektif S-P-O-K", "desc": ""}, {"label": "Penggunaan Kosakata Baru Bidiah Ilmiah", "desc": ""}, {"label": "Ejaan Bahasa Indonesia yang Benar (PUEBI)", "desc": ""}] }
+                ]
+            }
+        }
+    },
+    "Matematika": {
+        "elemen": {
+            "Bilangan": {
+                "cp": "Menunjukkan pemahaman dan intuisi bilangan (number sense) pada bilangan cacah sampai 1.000.000; membaca, menulis, menentukan nilai tempat, membandingkan, mengurutkan, melakukan komposisi dan dekomposisi bilangan; menyelesaikan masalah yang berkaitan dengan uang; melakukan operasi penjumlahan, pengurangan, perkalian, dan pembagian bilangan cacah sampai 100.000; serta menyelesaikan masalah yang berkaitan dengan KPK dan FPB. Murid dapat membandingkan dan mengurutkan berbagai pecahan termasuk pecahan campuran, melakukan operasi penjumlahan dan pengurangan pecahan, serta melakukan operasi perkalian dan pembagian pecahan dengan bilangan asli; mengubah pecahan menjadi berbagai bentuk pecahan lain, serta membandingkan dan mengurutkan bilangan desimal (satu angka di belakang koma).",
+                "topik": [
+                    { "judul": "Bilangan Cacah Besar", "materi": [{"label": "Membaca dan Menulis Bilangan Cacah sampai 1.000.000", "desc": ""}, {"label": "Menentukan Nilai tempat Bilangan Cacah", "desc": ""}, {"label": "Membandingkan dan Mengurutkan Bilangan Cacah", "desc": ""}, {"label": "Komposisi dan Dekomposisi Bilangan Cacah", "desc": ""}] },
+                    { "judul": "Bilangan Bulat Negatif", "materi": [{"label": "Konsep Bilangan Bulat Negatif", "desc": ""}, {"label": "Penjumlahan dan Pengurangan Bilangan Bulat", "desc": ""}, {"label": "Perkalian dan Pembagian Bilangan Bulat", "desc": ""}, {"label": "Garis Bilangan Bulat Negatif", "desc": ""}] },
+                    { "judul": "Operasi Hitung Bilangan", "materi": [{"label": "Penjumlahan dan Pengurangan Bilangan Cacah", "desc": ""}, {"label": "Perkalian dan Pembagian Bilangan Cacah", "desc": ""}, {"label": "Masalah Terkait Penggunaan Uang", "desc": ""}, {"label": "Operasi Hitung Campuran Bilangan", "desc": ""}] },
+                    { "judul": "Pecahan dan Desimal", "materi": [{"label": "Penjumlahan dan Pengurangan Pecahan", "desc": ""}, {"label": "Perkalian dan Pembagian Pecahan", "desc": ""}, {"label": "Konversi Berbagai Bentuk Pecahan", "desc": ""}, {"label": "Membandingkan Bilangan Desimal (Satu Angka di Belakang Koma)", "desc": ""}] }
+                ]
+            },
+            "Aljabar": {
+                "cp": "Menemukan nilai yang belum diketahui dalam kalimat matematika yang melibatkan penjumlahan, pengurangan, perkalian, dan pembagian pada bilangan cacah sampai 1000 dengan menggunakan sifat-sifat bilangan dan operasinya. Murid dapat mengidentifikasi, meniru, dan mengembangkan pola bilangan membesar dan mengecil yang melibatkan perkalian dan pembagian; bernalar secara proporsional untuk menyelesaikan masalah sehari-hari dengan rasio satuan; menggunakan operasi perkalian dan pembagian dalam menyelesaikan masalah sehari- hari yang terkait dengan proporsi.",
+                "topik": [
+                    { "judul": "Kalimat Matematika", "materi": [{"label": "Variabel dan Nilai Tak Diketahui dalam Kalimat Matematika", "desc": ""}, {"label": "Sifat-Sifat Operasi Hitung Aljabar", "desc": ""}, {"label": "Penyelesaian Kalimat Matematika Aljabar", "desc": ""}, {"label": "Persamaan Sederhana Bilangan Cacah", "desc": ""}] },
+                    { "judul": "Pola Bilangan", "materi": [{"label": "Pola Bilangan Membesar dan Mengecil", "desc": ""}, {"label": "Eksplorasi Perkalian dalam Pola Bilangan", "desc": ""}, {"label": "Eksplorasi Pembagian dalam Pola Bilangan", "desc": ""}] },
+                    { "judul": "Rasio dan Proporsi", "materi": [{"label": "Bernalar Proporsional dalam Masalah Sehari-Hari", "desc": ""}, {"label": "Penerapan Rasio Satuan dalam Hitungan", "desc": ""}, {"label": "Penyelesaian Masalah Proporsi Matematika", "desc": ""}, {"label": "Perbandingan Senilai dan Berbalik Nilai", "desc": ""}] }
+                ]
+            },
+            "Pengukuran": {
+                "cp": "Menentukan keliling dan luas berbagai bentuk bangun datar (segitiga, segiempat, dan segi banyak) serta gabungannya; menghitung durasi waktu dan mengukur besar sudut pada bangun datar atau yang dibentuk dari dua garis berpotongan.",
+                "topik": [
+                    { "judul": "Luas dan Keliling", "materi": [{"label": "Keliling dan Luas Bangun Datar Segitiga", "desc": ""}, {"label": "Luas dan Keliling Bangun Datar Segiempat", "desc": ""}, {"label": "Keliling dan Luas Bangun Segi Banyak", "desc": ""}, {"label": "Gabungan Keliling dan Luas Bangun Datar", "desc": ""}] },
+                    { "judul": "Waktu dan Sudut", "materi": [{"label": "Penghitungan Durasi Aktivitas", "desc": ""}, {"label": "Pengukuran Sudut pada Bangun Datar", "desc": ""}, {"label": "Alat Ukur Sudut Busur Derajat", "desc": ""}, {"label": "Konversi Satuan Waktu Standar", "desc": ""}] }
+                ]
+            },
+            "Geometri": {
+                "cp": "Mengkonstruksi dan mengurai bangun ruang (kubus, balok, dan gabungannya) dan mengenali visualisasi spasial (bagian depan, atas, dan samping); membandingkan karakteristik antar bangun datar dan antar bangun ruang; serta menentukan lokasi pada peta yang menggunakan sistem berpetak.",
+                "topik": [
+                    { "judul": "Konstruksi Bangun Ruang", "materi": [{"label": "Jaring-Jaring Kubus dan Balok", "desc": ""}, {"label": "Konstruksi Gabungan Bangru Ruang", "desc": ""}, {"label": "Volume Bangun Ruang Sederhana", "desc": ""}] },
+                    { "judul": "Karakteristik Bangun", "materi": [{"label": "Visualisasi spasial Bangun Ruang (Depan Atas Samping)", "desc": ""}, {"label": "Karakteristik Bangun Datar Geometri", "desc": ""}, {"label": "Karakteristik Bangun Ruang Geometri", "desc": ""}, {"label": "Sistem Koordinat Berpetak pada Peta", "desc": ""}] }
+                ]
+            },
+            "Analisis Data dan Peluang": {
+                "cp": "Mengurutkan, membandingkan, menyajikan, dan menganalisis data banyak benda dan data hasil pengukuran dalam bentuk gambar, piktogram, diagram batang, dan tabel frekuensi untuk mendapatkan informasi; menentukan kejadian dengan kemungkinan yang lebih besar atau lebih kecil dalam suatu perhatian acak.",
+                "topik": [
+                    { "judul": "Pengolahan Data", "materi": [{"label": "Piktogram dan Diagram Batang Data", "desc": ""}, {"label": "Tabel Frekuensi Data Statistik", "desc": ""}, {"label": "Interpretasi Informasi dari Data", "desc": ""}, {"label": "Penyajian Peluang Acak Sederhana", "desc": ""}] },
+                    { "judul": "Peluang Acak", "materi": [{"label": "Kejadian dalam Percobaan Acak Sederhana", "desc": ""}, {"label": "Kemungkinan Kejadian Lebih Besar (Peluang)", "desc": ""}, {"label": "Kemungkinan Kejadian Lebih Kecil (Peluang)", "desc": ""}, {"label": "Prediksi Hasil Percobaan Acak", "desc": ""}] }
+                ]
+            }
+        }
+    }
+}
