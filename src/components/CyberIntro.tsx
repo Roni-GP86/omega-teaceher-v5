@@ -49,17 +49,23 @@ export function CyberIntro({ onComplete }: CyberIntroProps) {
           v.name.toLowerCase().includes("male") || 
           v.name.toLowerCase().includes("david") || 
           v.name.toLowerCase().includes("wira") ||
+          v.name.toLowerCase().includes("ardi") ||
+          v.name.toLowerCase().includes("laki") ||
+          v.name.toLowerCase().includes("pria") ||
           v.name.toLowerCase().includes("natural")
         );
         
         if (maleVoice) {
           utterance.voice = maleVoice;
           utterance.pitch = 0.95; // Male voice is already low
+          utterance.rate = 0.9;
         } else if (idVoices.length > 0) {
           utterance.voice = idVoices[0];
-          utterance.pitch = 0.7; // Lower the pitch of the female voice to emulate a male speaker
+          utterance.pitch = 0.55; // Deepen the tone aggressively to make a female voice sound male
+          utterance.rate = 0.82; // Slower rate works better for deep pitches
         } else {
-          utterance.pitch = 0.7; // Deep voice fallback
+          utterance.pitch = 0.55; // Deep voice fallback
+          utterance.rate = 0.82;
         }
         
         window.speechSynthesis.speak(utterance);
