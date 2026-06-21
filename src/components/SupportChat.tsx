@@ -299,7 +299,42 @@ export const SupportChat: React.FC<SupportChatProps> = ({
           readByAdmin: true,
           readByUser: false
         };
-      } 
+      }
+      // Check if user is asking about API Key privacy/safety
+      else if (
+        lcContent.includes("api key") ||
+        lcContent.includes("apikey") ||
+        lcContent.includes("api_key") ||
+        lcContent.includes("simpan api") ||
+        lcContent.includes("menyimpan api") ||
+        lcContent.includes("keamanan api")
+      ) {
+        simulatedReply = {
+          id: "sim-reply-api-privacy-" + (Date.now() + 102),
+          requestId: userCode,
+          sender: "system",
+          text: "Api key anda hanya dapat diakses oleh anda menggunakan kode akses anda. api key anda aman karena omega engine menjamin seluruh data berdasarkan kode akses unik! keamanan seluruh data, dienkripsi dengan kode unik yang diprivasi secara ketat.\n\nOmega Teacher Engine memiliki tingkat keamanan yang sangat tinggi, di mana seluruh data sensitif dienkripsi secara privat pada penyimpanan lokal browser Anda. Pihak administrator maupun pengguna lain tidak dapat melihat atau mengakses kunci pribadi Anda!",
+          timestamp: new Date(Date.now() + 200).toISOString(),
+          readByAdmin: true,
+          readByUser: false
+        };
+      }
+      // Check if user asks if replies are pre-arranged/scripted by admin
+      else if (
+        (lcContent.includes("jawaban") && (lcContent.includes("diatur") || lcContent.includes("disetting") || lcContent.includes("diseting") || lcContent.includes("oleh admin") || lcContent.includes("rekayasa") || lcContent.includes("dibuat-buat"))) ||
+        lcContent.includes("siapa anda") ||
+        lcContent.includes("apakah anda bot")
+      ) {
+        simulatedReply = {
+          id: "sim-reply-ai-integrity-" + (Date.now() + 103),
+          requestId: userCode,
+          sender: "system",
+          text: "Omega AI adalah Asisten Cerdas yang membaca alur aplikasi dan menjawab secara jujur berdasarkan alur kerja aplikasi!\n\nTanggapan asisten dirumuskan secara objektif dan jujur untuk mencerminkan logika alur kerja nyata sistem serta regulasi resmi Kemendikbudristek secara independen, tanpa rekayasa manipulasi.",
+          timestamp: new Date(Date.now() + 200).toISOString(),
+          readByAdmin: true,
+          readByUser: false
+        };
+      }
       // Check if user is asking about the developer / pengembang
       else if (
         lcContent.includes("pengembang") ||
