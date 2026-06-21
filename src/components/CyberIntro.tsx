@@ -27,6 +27,63 @@ export function CyberIntro({ onComplete }: CyberIntroProps) {
   ];
 
   useEffect(() => {
+    let spoken = false;
+    let cancelSpeech = () => {};
+
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const greetingText = "Selamat datang bapak dan ibu guru hebat di Omega Teacher Engine.";
+      const utterance = new SpeechSynthesisUtterance(greetingText);
+      utterance.lang = "id-ID";
+      utterance.rate = 0.9;
+      utterance.pitch = 0.95;
+
+      const speakWithVoice = () => {
+        if (spoken) return;
+        const voices = window.speechSynthesis.getVoices();
+        const idVoices = voices.filter(v => v.lang.includes("id-ID"));
+        const maleVoice = idVoices.find(v => 
+          v.name.toLowerCase().includes("male") || 
+          v.name.toLowerCase().includes("david") || 
+          v.name.toLowerCase().includes("wira") ||
+          v.name.toLowerCase().includes("natural")
+        );
+        if (maleVoice) {
+          utterance.voice = maleVoice;
+        } else if (idVoices.length > 0) {
+          utterance.voice = idVoices[0];
+        }
+        window.speechSynthesis.speak(utterance);
+        spoken = true;
+      };
+
+      if (window.speechSynthesis.getVoices().length > 0) {
+        speakWithVoice();
+      } else {
+        window.speechSynthesis.onvoiceschanged = speakWithVoice;
+      }
+
+      const handleUserInteraction = () => {
+        speakWithVoice();
+        document.removeEventListener('click', handleUserInteraction);
+        document.removeEventListener('keydown', handleUserInteraction);
+      };
+      document.addEventListener('click', handleUserInteraction);
+      document.addEventListener('keydown', handleUserInteraction);
+
+      cancelSpeech = () => {
+        window.speechSynthesis.cancel();
+        document.removeEventListener('click', handleUserInteraction);
+        document.removeEventListener('keydown', handleUserInteraction);
+      };
+    }
+
+    return () => {
+      cancelSpeech();
+    };
+  }, []);
+
+  useEffect(() => {
     // Timer interval
     const interval = setInterval(() => {
       setTimeLeft((prev) => {

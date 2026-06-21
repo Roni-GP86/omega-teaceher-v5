@@ -1,4 +1,4 @@
-const CACHE_NAME = 'omega-guru-v2';
+const CACHE_NAME = 'omega-guru-v3';
 const ASSETS = [
   '/',
   '/index.html',
@@ -64,6 +64,28 @@ self.addEventListener('fetch', (event) => {
     self.location.hostname.includes('192.168.')
   ) {
     return; // Pass through directly from the network, do not touch or cache!
+  }
+
+  // Network-First strategy for index.html / navigation / root requests to prevent white screens on new deploys
+  if (event.request.mode === 'navigate' || url === self.location.origin + '/' || url.endsWith('/index.html')) {
+    event.respondWith(
+      fetch(event.request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const responseToCache = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseToCache);
+            });
+          }
+          return networkResponse;
+        })
+        .catch(() => {
+          return caches.match(event.request).then((cachedResponse) => {
+            return cachedResponse || caches.match('/');
+          });
+        })
+    );
+    return;
   }
 
   event.respondWith(

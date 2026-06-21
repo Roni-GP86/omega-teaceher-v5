@@ -2079,7 +2079,7 @@ export default function App() {
               </button>
 
               <div className="text-left animate-fade-in hidden sm:block">
-                <span className="block text-[8.5px] font-mono text-indigo-400 uppercase tracking-widest leading-none">Rute Aktif</span>
+                <span className="block text-[8.5px] font-mono text-amber-400 uppercase tracking-widest leading-none font-bold">Omega Guru: Atasi Beban Administrasi Guru</span>
                 <span className="text-xs font-bold text-white tracking-wide mt-1 block">
                   {selectedTool === 'home' && activeTab === 'automatic' && 'Beranda'}
                   {selectedTool === 'tutorial' && 'Studio Video Tutorial & Panduan Aplikasi'}
@@ -2104,6 +2104,12 @@ export default function App() {
 
             {/* SECURED CPU ENGINES TELEMETRY */}
             <div className="flex items-center gap-3 md:gap-4">
+              {/* DEVELOPER BADGE */}
+              <div className="hidden xl:flex items-center gap-1.5 text-[10px] font-mono text-zinc-400 bg-zinc-950/80 border border-zinc-900 px-3 py-1.5 rounded-xl font-bold shrink-0">
+                <span>Developer:</span>
+                <span className="text-amber-400 font-extrabold uppercase">Roni Hariyanto Bhidju, S.Pd.,Gr.</span>
+              </div>
+
               <div className="bg-gradient-to-r from-emerald-500/40 via-emerald-400/20 to-teal-500/40 p-[1px] rounded-xl shadow-[0_0_10px_rgba(16,185,129,0.1)] hover:shadow-[0_0_15px_rgba(16,185,129,0.25)] transition-all duration-300">
                 <button
                   onClick={handleInstallClick}
