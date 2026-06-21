@@ -2639,7 +2639,11 @@ export default function App() {
               <div className="flex flex-col sm:flex-row gap-2 shrink-0 md:w-[420px] w-full items-stretch">
                 <div className="flex flex-1 gap-2 relative">
                   <input
-                    type="password"
+                    type="text"
+                    name="gemini_api_key_custom_field"
+                    id="gemini_api_key_custom_field"
+                    autoComplete="new-password"
+                    style={{ WebkitTextSecurity: 'disc' } as React.CSSProperties}
                     placeholder="Tempel GEMINI_API_KEY Anda di sini..."
                     value={tempApiKey}
                     onChange={(e) => setTempApiKey(e.target.value)}
@@ -3192,7 +3196,11 @@ export default function App() {
                     <div className="space-y-1.5">
                       <label className="text-[9.5px] font-mono text-zinc-500 block uppercase tracking-wider font-extrabold select-none">Input/Tempel API Key Gemini:</label>
                       <input
-                        type="password"
+                        type="text"
+                        name="gemini_api_key_custom_field_main"
+                        id="gemini_api_key_custom_field_main"
+                        autoComplete="new-password"
+                        style={{ WebkitTextSecurity: 'disc' } as React.CSSProperties}
                         placeholder="Masukkan kuncian AIzaSy..."
                         value={tempApiKey}
                         onChange={(e) => setTempApiKey(e.target.value)}

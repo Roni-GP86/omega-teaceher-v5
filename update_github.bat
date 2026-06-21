@@ -15,7 +15,7 @@ if %errorlevel% neq 0 (
 
 echo.
 echo 2. Membuat catatan pembaruan (Commit)...
-git commit -m "Update KOSP Generator: Add Rapor Pendidikan Analysis and Enriched Profiles"
+git commit -m "Fix API Key autofill, Netlify route redirects, and add Rapor Pendidikan analysis status notifications"
 if %errorlevel% neq 0 (
     echo [NOTE] Mungkin tidak ada perubahan baru untuk disimpan atau di-commit.
 )

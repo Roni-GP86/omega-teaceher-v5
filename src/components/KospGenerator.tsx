@@ -34,6 +34,7 @@ export const KospGenerator: React.FC = () => {
     return localStorage.getItem("kosp_analisis_rapor_text") || "";
   });
   const [isAnalyzingRapor, setIsAnalyzingRapor] = useState<boolean>(false);
+  const [raporNotif, setRaporNotif] = useState<{ type: "success" | "error" | "info"; message: string } | null>(null);
 
   // Document Bank saving states
   const [isSavedToBank, setIsSavedToBank] = useState<boolean>(false);
@@ -934,6 +935,10 @@ export const KospGenerator: React.FC = () => {
 
     setIsAnalyzingRapor(true);
     setErrorMessage("");
+    setRaporNotif({
+      type: "info",
+      message: `File "${file.name}" berhasil diunggah! Memulai analisis data capaian mutu sekolah oleh AI...`
+    });
 
     try {
       const isExcel = file.name.endsWith(".xlsx") || file.name.endsWith(".xls") || file.name.endsWith(".csv");
@@ -968,6 +973,10 @@ export const KospGenerator: React.FC = () => {
           } catch (err: any) {
             console.error(err);
             setErrorMessage(err.message || "Gagal mengolah file Excel.");
+            setRaporNotif({
+              type: "error",
+              message: `Gagal membaca file Excel: ${err.message || "Pastikan format file Anda valid."}`
+            });
             setIsAnalyzingRapor(false);
           }
         };
@@ -986,6 +995,10 @@ export const KospGenerator: React.FC = () => {
           } catch (err: any) {
             console.error(err);
             setErrorMessage(err.message || "Gagal membaca file.");
+            setRaporNotif({
+              type: "error",
+              message: `Gagal membaca file: ${err.message || "Pastikan format gambar/PDF valid."}`
+            });
             setIsAnalyzingRapor(false);
           }
         };
@@ -994,6 +1007,10 @@ export const KospGenerator: React.FC = () => {
     } catch (error: any) {
       console.error(error);
       setErrorMessage(error.message || "Gagal membaca dokumen.");
+      setRaporNotif({
+        type: "error",
+        message: `Gagal mengunggah dokumen: ${error.message || "Terjadi kesalahan sistem saat membaca file."}`
+      });
       setIsAnalyzingRapor(false);
     } finally {
       e.target.value = "";
@@ -1019,12 +1036,20 @@ export const KospGenerator: React.FC = () => {
       const data = await res.json();
       if (data.success && data.text) {
         setAnalisisRaporText(data.text);
+        setRaporNotif({
+          type: "success",
+          message: "✓ Analisis Rapor Pendidikan berhasil diselesaikan! Hasil analisis telah diintegrasikan di bawah dan siap Anda sesuaikan."
+        });
       } else {
         throw new Error("Respon analisis kosong.");
       }
     } catch (err: any) {
       console.error(err);
       setErrorMessage(`Gagal menganalisis rapor pendidikan: ${err.message}`);
+      setRaporNotif({
+        type: "error",
+        message: `Gagal menganalisis rapor pendidikan: ${err.message || "Pastikan API Key Anda aktif dan jaringan stabil."}`
+      });
     } finally {
       setIsAnalyzingRapor(false);
     }
@@ -3263,7 +3288,10 @@ export const KospGenerator: React.FC = () => {
               {analisisRaporText && (
                 <button
                   type="button"
-                  onClick={() => setAnalisisRaporText("")}
+                  onClick={() => {
+                    setAnalisisRaporText("");
+                    setRaporNotif(null);
+                  }}
                   className="text-[10px] font-mono text-rose-450 hover:text-rose-400 transition flex items-center gap-1 cursor-pointer"
                 >
                   <Trash2 className="w-3.5 h-3.5" /> Hapus Hasil Analisis
@@ -3274,6 +3302,30 @@ export const KospGenerator: React.FC = () => {
             <p className="text-[10.5px] text-zinc-450 font-sans leading-relaxed">
               Unggah dokumen Rapor Pendidikan Anda (format PNG, JPG, PDF, atau Excel/CSV). AI akan secara otomatis mengekstraksi data tersebut untuk merumuskan capaian mutu, hal positif yang dipertahankan, serta rencana tindak lanjut taktis yang akan diintegrasikan secara detail ke dalam dokumen KOSP.
             </p>
+
+            {raporNotif && (
+              <div className={`p-3 rounded-xl border text-[11px] font-mono flex items-start gap-2 ${
+                raporNotif.type === "success" 
+                  ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-450" 
+                  : raporNotif.type === "error" 
+                  ? "bg-rose-500/10 border-rose-500/30 text-rose-450" 
+                  : "bg-amber-500/10 border-amber-500/30 text-amber-450"
+              }`}>
+                {raporNotif.type === "success" && <CheckCircle className="w-4 h-4 shrink-0 text-emerald-450" />}
+                {raporNotif.type === "error" && <AlertTriangle className="w-4 h-4 shrink-0 text-rose-450" />}
+                {raporNotif.type === "info" && <RefreshCw className="w-4 h-4 shrink-0 animate-spin text-amber-455" />}
+                <div className="flex-1 leading-relaxed">
+                  {raporNotif.message}
+                </div>
+                <button 
+                  type="button" 
+                  onClick={() => setRaporNotif(null)} 
+                  className="text-zinc-500 hover:text-zinc-300 font-bold ml-1 cursor-pointer select-none text-[10px]"
+                >
+                  ✕
+                </button>
+              </div>
+            )}
 
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3">
