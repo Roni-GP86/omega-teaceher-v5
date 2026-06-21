@@ -941,6 +941,7 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
           }
         ]
       }
+    }
   },
   "Fase B": {
     "Pendidikan Pancasila": {
