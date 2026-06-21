@@ -15,7 +15,7 @@ if %errorlevel% neq 0 (
 
 echo.
 echo 2. Membuat catatan pembaruan (Commit)...
-git commit -m "Update: Otomatisasi SupportChat lengkap: Penanganan singkatan menu & eliminasi kata Anda"
+git commit -m "Update KOSP Generator: Add Rapor Pendidikan Analysis and Enriched Profiles"
 if %errorlevel% neq 0 (
     echo [NOTE] Mungkin tidak ada perubahan baru untuk disimpan atau di-commit.
 )

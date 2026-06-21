@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { 
-  Sparkles, Download, Copy, Check, Info, FileText, Cpu, Shield, HelpCircle,
+  Sparkles, Download, Copy, Check, Info, FileText, Cpu, Shield, HelpCircle, Lock, ShieldCheck,
   Plus, Trash2, Layers, BookOpen, Clock, CheckCircle, ArrowRight, Save, Database,
   Archive, AlertTriangle, Calendar, Award, UserCheck, RefreshCw, Edit3, Eye
 } from "lucide-react";
@@ -393,6 +393,41 @@ function parseTeamMembers(str: string): string[] {
 }
 
 export default function ProjectModuleGenerator() {
+  const purchasedStr = localStorage.getItem("omega_purchased_packages");
+  const isActivated = localStorage.getItem("omega_is_activated") === "true";
+  const activeCodeCheck = localStorage.getItem("omega_active_activation_code");
+  const isSuperAdmin = activeCodeCheck === "OTE-GP017" || activeCodeCheck === "OTE-GP19S";
+  
+  let hasAccess = false;
+  if (isSuperAdmin) {
+    hasAccess = true;
+  } else if (isActivated) {
+    try {
+      const list = purchasedStr ? JSON.parse(purchasedStr) : [];
+      if (list.includes("premium") || list.includes("kosp") || list.includes("karakter")) {
+        hasAccess = true;
+      }
+    } catch (e) {}
+  }
+
+  if (!hasAccess) {
+    return (
+      <div className="min-h-[500px] flex flex-col justify-center items-center p-6 text-center bg-[#07070a] border border-zinc-900 rounded-3xl space-y-6">
+        <div className="p-4 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 shadow-[0_0_20px_rgba(245,158,11,0.15)] animate-pulse">
+          <Lock className="w-10 h-10" />
+        </div>
+        <div className="max-w-md space-y-2">
+          <h2 className="text-lg font-black text-white font-mono tracking-wider uppercase bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500">
+            Modul Projek Terkunci
+          </h2>
+          <p className="text-xs text-zinc-400 font-sans leading-relaxed">
+            Mohon maaf, Modul Projek belum terpilih dalam paket lisensi Anda. Silakan perbarui paket Anda melalui menu <strong className="text-amber-400">"Premium Aktif"</strong> di bar kiri untuk membuka akses penuh.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   const [activeStep, setActiveStep] = useState<"input" | "generation" | "success">("input");
   
   // Loaded profiles

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UploadCloud, File, AlertTriangle, RefreshCw, Download, Check, Copy, Sparkles, FileText, Brain, ArrowRight, CheckCircle2, Database, ExternalLink } from "lucide-react";
+import { UploadCloud, File, AlertTriangle, RefreshCw, Download, Check, Copy, Sparkles, FileText, Brain, ArrowRight, CheckCircle2, Database, ExternalLink, Lock, ShieldCheck } from "lucide-react";
 import { jsPDF } from "jspdf";
 import { CinematicLoading } from "./CinematicLoading";
 
@@ -11,6 +11,41 @@ interface ExtractionResult {
 }
 
 export const AiPdfExtractor: React.FC = () => {
+  const purchasedStr = localStorage.getItem("omega_purchased_packages");
+  const isActivated = localStorage.getItem("omega_is_activated") === "true";
+  const activeCodeCheck = localStorage.getItem("omega_active_activation_code");
+  const isSuperAdmin = activeCodeCheck === "OTE-GP017" || activeCodeCheck === "OTE-GP19S";
+  
+  let hasAccess = false;
+  if (isSuperAdmin) {
+    hasAccess = true;
+  } else if (isActivated) {
+    try {
+      const list = purchasedStr ? JSON.parse(purchasedStr) : [];
+      if (list.includes("premium") || list.includes("kosp") || list.includes("cp_atp")) {
+        hasAccess = true;
+      }
+    } catch (e) {}
+  }
+
+  if (!hasAccess) {
+    return (
+      <div className="min-h-[500px] flex flex-col justify-center items-center p-6 text-center bg-[#07070a] border border-zinc-900 rounded-3xl space-y-6">
+        <div className="p-4 rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20 shadow-[0_0_20px_rgba(245,158,11,0.15)] animate-pulse">
+          <Lock className="w-10 h-10" />
+        </div>
+        <div className="max-w-md space-y-2">
+          <h2 className="text-lg font-black text-white font-mono tracking-wider uppercase bg-clip-text bg-gradient-to-r from-yellow-400 to-amber-500">
+            Analisis CP Terkunci
+          </h2>
+          <p className="text-xs text-zinc-400 font-sans leading-relaxed">
+            Mohon maaf, menu Analisis CP belum terpilih dalam paket lisensi Anda. Silakan perbarui paket Anda melalui menu <strong className="text-amber-400">"Premium Aktif"</strong> di bar kiri untuk membuka akses penuh.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   const [dragActive, setDragActive] = useState<boolean>(false);
   const [file, setFile] = useState<File | null>(null);
   const [instruction, setInstruction] = useState<string>(
@@ -223,7 +258,11 @@ export const AiPdfExtractor: React.FC = () => {
   };
 
   const processFileWithGemini = async () => {
-    if (!file) return;
+    if (!file) {
+      setErrorMessage("⚠️ Silakan seret atau pilih berkas PDF Capaian Pembelajaran (CP) terlebih dahulu pada area unggah di atas sebelum memulai ekstraksi cerdas.");
+      setStatus("error");
+      return;
+    }
 
     setStatus("reading");
     setErrorMessage("");
@@ -734,11 +773,21 @@ export const AiPdfExtractor: React.FC = () => {
             <span className="text-[10px] text-zinc-500 font-mono">MODULE_DOC_PURIFIER_V3.5</span>
           </div>
         </div>
-        <p className="text-zinc-400 text-xs leading-relaxed font-sans">
+        <p className="text-zinc-400 text-xs leading-relaxed font-sans mb-4">
           Unggah naskah resmi PDF (misalnya, dokumen Kurikulum seluruh jenjang dari SD, SMP, SMA/SMK). 
           Masukkan kriteria instruksi pencarian Anda, lalu saksikan kecerdasan sistem memindai, melacak, 
           dan mengupas bagian spesifik yang Anda butuhkan ke dalam satu dokumen ringkas baru.
         </p>
+
+        <div className="p-3.5 bg-emerald-500/10 border border-emerald-500/20 rounded-xl text-left flex items-start gap-2.5 text-xs text-emerald-400">
+          <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5 text-emerald-400" />
+          <div>
+            <strong className="block text-[11.5px] uppercase tracking-wide">💡 INFORMASI KURIKULUM BAWAAN SISTEM:</strong>
+            <span className="text-[11px] text-zinc-300 leading-relaxed block mt-1">
+              Dokumen kurikulum resmi nasional <strong>CP BSKAP No. 046/2025</strong> (Mata Pelajaran Umum) dan <strong>CP No. 020/2026</strong> (Pendidikan Agama) <strong>telah ditanamkan secara otomatis</strong> di database lokal OMEGA. Anda tidak perlu mengunggah apa pun jika ingin menggunakan kurikulum standar ini dan bisa langsung melanjutkan ke menu <strong>Perencana Ajar / KOSP</strong>. Gunakan alat ini hanya jika Anda ingin mengunggah berkas kurikulum baru atau dokumen kustom dari sekolah Anda sendiri.
+            </span>
+          </div>
+        </div>
       </div>
 
       {status === "reading" || status === "processing" ? (
@@ -1031,7 +1080,7 @@ export const AiPdfExtractor: React.FC = () => {
         <div className="pt-2 text-center">
           <button
             onClick={processFileWithGemini}
-            disabled={!file || status === "reading" || status === "processing"}
+            disabled={status === "reading" || status === "processing"}
             className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-amber-450 via-amber-400 to-orange-400 text-black font-extrabold text-xs hover:opacity-95 disabled:opacity-40 transition flex items-center justify-center gap-2.5 font-mono shadow-lg shadow-amber-500/10"
           >
             {status === "reading" || status === "processing" ? (

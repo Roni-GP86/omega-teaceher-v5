@@ -661,6 +661,7 @@ async function startServer() {
         jumlahS3,
         jumlahSertifikasi,
         hariKerja,
+        analisisRaporText,
       } = req.body;
 
       if (!namaSekolah || !jenjang) {
@@ -735,23 +736,21 @@ RUMUSKAN DOKUMEN DENGAN STRUKTUR BERIKUT SECARA DETAIL (HANYA FORMAT BOLD TANPA 
 <!-- PAGE_BREAK -->
 **BAB I: ANALISIS KARAKTERISTIK SATUAN PENDIDIKAN**
 
-**a. Konteks Geografis, Sosial, dan Kebudayaan Lingkungan Sekolah**
-Tulislah tulisan ilmiah analitis sebanyak 1-2 paragraf utuh yang mendalam tentang implementasi letak geografis "${lokasi}" serta keterikatan tradisi budaya "${nilaiBudayaLokal}" terhadap ekosistem pengajaran. Sambungkan dengan kearifan lokal serta keunikan khas satuan "${khasSatuan}".
+**a. Karakteristik Satuan Pendidikan (Konteks Geografis, Sosial, Kebudayaan, dan Profil Pendidik/Tenaga Kependidikan)**
+Tulislah tulisan ilmiah analitis sebanyak 1-2 paragraf utuh yang mendalam tentang implementasi letak geografis "${lokasi}" serta keterikatan tradisi budaya "${nilaiBudayaLokal}" terhadap ekosistem pengajaran. Sambungkan dengan kearifan lokal serta keunikan khas satuan "${khasSatuan}". Paparkan juga analisis deskriptif berkelanjutan mengenai program peningkatan guru yang dihubungkan dengan data riil kualifikasi akademik pendidik: total ${jumlahGuruTotal || 12} guru, dengan rincian lulusan S1 (${jumlahS1 || 10} orang), S2 (${jumlahS2 || 2} orang), S3 (${jumlahS3 || 0} orang), serta guru tersertifikasi profesi (${jumlahSertifikasi || 6} orang). Anda wajib membuat tabel kualifikasi guru secara formal di awal sub-bab ini menggunakan format tabel markdown standar. Sambungkan analisis deskriptif ini dengan kondisi riil "${kondisiGuruTendik}".
 
-**b. Profil Peserta Didik dan Kondisi Sosial-Ekonomi Orang Tua / Wali**
-Tulislah analisis status demografis siswa, tingkat ekonomi melingkupi wali murid "${kondisiSocioDemografi}", dan distribusi kelompok belajar "${jumlahRombel}" guna menyusun program pembelajaran inklusif dan ramah anak sebanyak 1-2 paragraf utuh.
-
-<!-- PAGE_BREAK -->
-**c. Potensi Sumber Daya Manusia (Pendidik dan Tenaga Kependidikan)**
-Sajikan analisis deskriptif berkelanjutan sebanyak 1-2 paragraf murni mengenai program peningkatan guru yang dihubungkan dengan data riil kualifikasi akademik pendidik: total ${jumlahGuruTotal || 12} guru, dengan rincian lulusan S1 (${jumlahS1 || 10} orang), S2 (${jumlahS2 || 2} orang), S3 (${jumlahS3 || 0} orang), serta guru tersertifikasi profesi (${jumlahSertifikasi || 6} orang). Anda wajib membuat tabel kualifikasi guru secara formal di awal sub-bab ini menggunakan format tabel markdown standar. Sambungkan analisis deskriptif ini dengan kondisi riil "${kondisiGuruTendik}".
-
-**d. Sarana, Prasarana, dan Kemitraan Pendukung Pembelajaran**
-Tuliskan 1-2 paragraf analisis mendalam tentang daya dukung sarpras "${fasilitasSekolah}" dan keterlibatan komunitas melalui kemitraan strategis "${kemitraanSatuan}" untuk melahirkan pembelajaran yang relevan dan futuristik.
+**b. Karakteristik Peserta Didik (Jumlah Murid, Karakteristik Murid, Latar Belakang Orang Tua/Wali, dan Keadaan Masyarakat Setempat)**
+Tulislah analisis status demografis siswa, tingkat ekonomi melingkupi wali murid, pekerjaan orang tua/wali, serta karakteristik sosial masyarakat setempat "${kondisiSocioDemografi}". Sertakan proyeksi jumlah total rombel dan siswa "${jumlahRombel}", serta bentuk kemitraan/pelibatan masyarakat setempat "${kemitraanSatuan}" guna menyusun program pembelajaran inklusif, ramah anak, dan relevan secara sosial-kemasyarakatan sebanyak 1-2 paragraf utuh.
 
 <!-- PAGE_BREAK -->
-**e. Analisis SWOT Komprehensif Satuan Pendidikan**
+**c. Sarana dan Prasarana Pendukung Pembelajaran**
+Tuliskan 1-2 paragraf analisis mendalam tentang daya dukung sarpras "${fasilitasSekolah}" untuk melahirkan pembelajaran yang relevan dan futuristik.
+
+<!-- PAGE_BREAK -->
+**d. Analisis SWOT Komprehensif Satuan Pendidikan**
 Sajikan tabel matriks SWOT lengkap terlebih dahulu yang memetakan Kekuatan (Strengths), Kelemahan (Weaknesses), Peluang (Opportunities), dan Ancaman (Threats) bernilai tinggi yang nyata di ${namaSekolah}.
 Setelah tabel SWOT, tuliskan 1-2 paragraf analisis deskriptif yang sangat mendalam, rasional, ilmiah, dan tebal. Jelaskan strategi nyata menghubungkan kekuatan internal untuk menangkap peluang eksternal, mengatasi kelemahan untuk memitigasi ancaman, serta rencana tindak lanjut operasional penjaminan mutu.
+${analisisRaporText ? `\n<!-- PAGE_BREAK -->\n**e. Analisis Rapor Pendidikan (Capaian Mutu, Hal Positif, dan Tindak Lanjut)**\nBerikut adalah hasil analisis Rapor Pendidikan resmi sekolah:\n${analisisRaporText}\n\nUraikan dan integrasikan analisis tersebut secara naratif-ilmiah sebanyak 1-2 paragraf yang sangat rinci mengenai dampak pencapaian mutu rapor pendidikan ini terhadap penyesuaian kurikulum dan pembelajaran di ${namaSekolah}.` : ""}
 
 ---
 
@@ -925,6 +924,58 @@ DILARANG KERAS merangkum, melompati, menyingkat, mengeliminasi sub-bab, atau men
       console.error("Error generating KOSP:", error);
       let errMsg = error?.message || String(error);
       res.status(500).json({ error: errMsg || "Gagal mengolah dokumen KOSP." });
+    }
+  })
+
+  // API Route for Rapor Pendidikan Analysis
+  app.post("/api/analyze-rapor", async (req, res) => {
+    try {
+      const { fileBase64, mimeType, parsedText } = req.body;
+      const clientKey = req.headers["x-gemini-key"] as string | undefined;
+
+      if (!parsedText && (!fileBase64 || !mimeType)) {
+        res.status(400).json({ error: "Missing required parameters: parsedText or fileBase64 with mimeType." });
+        return;
+      }
+
+      let contentPayload: any[] = [];
+      if (parsedText) {
+        contentPayload.push({
+          text: `Berikut adalah data tekstual / tabel dari Rapor Pendidikan sekolah:\n\n${parsedText}`
+        });
+      } else {
+        contentPayload.push({
+          inlineData: {
+            mimeType: mimeType,
+            data: fileBase64,
+          }
+        });
+      }
+
+      contentPayload.push({
+        text: `TUGAS DAN INSTRUKSI UTAMA:\n` +
+          `Analisis dokumen Rapor Pendidikan di atas secara menyeluruh.\n` +
+          `Hasilkan sebuah analisis deskriptif yang super detail, terstruktur, formal, dan relevan untuk dimasukkan ke dalam dokumen KOSP Kurikulum Merdeka.\n` +
+          `Hasil analisis WAJIB memuat 4 aspek berikut dengan format Markdown yang rapi:\n\n` +
+          `1. **Capaian Mutu Sekolah**: Ringkasan persentase/skor capaian utama (misal: Kemampuan Literasi, Kemampuan Numerasi, Indeks Karakter, Iklim Keamanan Sekolah, Kebinekaan, Kualitas Pembelajaran).\n` +
+          `2. **Hal Positif untuk Dipertahankan**: Uraikan indikator-indikator yang sudah mencapai target baik (hijau/biru) beserta alasannya.\n` +
+          `3. **Hal yang Perlu Ditingkatkan**: Uraikan indikator-indikator yang masih rendah atau di bawah standar (kuning/merah) yang memerlukan intervensi segera.\n` +
+          `4. **Upaya Tindak Lanjut yang Relevan**: Rincikan strategi taktis operasional (misal: penguatan pelatihan guru, optimalisasi kombel, perbaikan metode ajar) untuk meningkatkan capaian tersebut.\n\n` +
+          `Sajikan hasil analisis ini secara profesional, padat, mendalam, dan langsung siap dipakai.`
+      });
+
+      const response = await generateContentWithRetry({
+        model: "gemini-2.5-flash",
+        contents: contentPayload,
+      }, clientKey);
+
+      res.json({
+        success: true,
+        text: response.text || ""
+      });
+    } catch (error: any) {
+      console.error("Error analyzing Rapor Pendidikan:", error);
+      res.status(500).json({ error: error.message || "Gagal menganalisis Rapor Pendidikan." });
     }
   })  // API Route for Lesson Plan (TP, ATP, KKTP, Prota, Promes) generation
   app.post("/api/generate-lesson-plan", async (req, res) => {

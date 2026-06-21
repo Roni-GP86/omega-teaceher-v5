@@ -18,7 +18,8 @@ import {
   Loader2,
   Save,
   Plus,
-  Trash2
+  Trash2,
+  ShieldCheck
 } from "lucide-react";
 import { getTutWuriHandayaniLogo, getKemenagLogo, getDefaultSchoolLogo, compressImage } from "../utils/logoGenerator";
 
@@ -299,9 +300,16 @@ export default function SchoolProfile() {
   };
 
   const [profile, setProfile] = useState<SchoolProfileData>(() => {
-    let savedKepala = localStorage.getItem("kosp_kepala_sekolah");
-    let savedNip = localStorage.getItem("kosp_nip_kepala");
-    let savedSchoolName = localStorage.getItem("kosp_nama_sekolah");
+    const isAuth = localStorage.getItem("omega_is_activated") === "true";
+    let savedKepala = isAuth 
+      ? localStorage.getItem("omega_kepala_sekolah") 
+      : (localStorage.getItem("kosp_kepala_sekolah") || localStorage.getItem("omega_kepala_sekolah"));
+    let savedNip = isAuth 
+      ? localStorage.getItem("omega_nip_kepala") 
+      : (localStorage.getItem("kosp_nip_kepala") || localStorage.getItem("omega_nip_kepala"));
+    let savedSchoolName = isAuth 
+      ? localStorage.getItem("omega_school_name") 
+      : (localStorage.getItem("kosp_nama_sekolah") || localStorage.getItem("omega_school_name"));
     
     if (!savedSchoolName || savedSchoolName === "SDN Fatubai" || savedSchoolName === "SD Negeri Fatubai") {
       savedSchoolName = "SEKOLAH DASAR NEGERI FATUBAI";
@@ -334,17 +342,17 @@ export default function SchoolProfile() {
     }
 
     return {
-      schoolName: savedSchoolName,
-      kepalaSekolah: savedKepala,
-      nipKepala: savedNip,
-      namaGuru: localStorage.getItem("kosp_nama_guru") || "Roni Hariyanto Bhidju, S.Pd., Gr",
-      nipGuru: localStorage.getItem("kosp_nip_guru") || "198603012020121005",
-      jabatan: localStorage.getItem("kosp_jabatan_guru") || "Guru Kelas",
-      faseKelas: localStorage.getItem("kosp_fase_kelas") || "Kelas IV / Fase B",
+      schoolName: savedSchoolName || "",
+      kepalaSekolah: savedKepala || "",
+      nipKepala: savedNip || "",
+      namaGuru: (isAuth ? localStorage.getItem("omega_nama_guru") : localStorage.getItem("kosp_nama_guru")) || "Roni Hariyanto Bhidju, S.Pd., Gr",
+      nipGuru: (isAuth ? localStorage.getItem("omega_nip_guru") : localStorage.getItem("kosp_nip_guru")) || "198603012020121005",
+      jabatan: (isAuth ? localStorage.getItem("omega_jabatan") : localStorage.getItem("kosp_jabatan_guru")) || "Guru Kelas",
+      faseKelas: (isAuth ? localStorage.getItem("omega_fase_kelas") : localStorage.getItem("kosp_fase_kelas")) || "Kelas IV / Fase B",
       semester: localStorage.getItem("kosp_semester") || "Semester 2 (Genap)",
       tahunPelajaran: localStorage.getItem("kosp_tahun_pelajaran") || "2024/2025",
-      ketuaTimKosp: savedKetua,
-      anggotaTimKosp: savedAnggota,
+      ketuaTimKosp: savedKetua || "",
+      anggotaTimKosp: savedAnggota || "",
       logo: localStorage.getItem("kosp_school_logo") || localStorage.getItem("kosp_logo_sekolah") || "",
       tempat: localStorage.getItem("kosp_tempat") || "Fatubai",
       tanggal: localStorage.getItem("kosp_tanggal") || "26 Juni 2025",
@@ -454,6 +462,28 @@ export default function SchoolProfile() {
     }
     window.dispatchEvent(new CustomEvent("omega-school-profile-updated"));
   }, [customMinistryLogo]);
+
+  useEffect(() => {
+    const handleSyncProfile = () => {
+      const isAuth = localStorage.getItem("omega_is_activated") === "true";
+      if (isAuth) {
+        setProfile(prev => ({
+          ...prev,
+          schoolName: localStorage.getItem("omega_school_name") || prev.schoolName,
+          kepalaSekolah: localStorage.getItem("omega_kepala_sekolah") || prev.kepalaSekolah,
+          nipKepala: localStorage.getItem("omega_nip_kepala") || prev.nipKepala,
+          namaGuru: localStorage.getItem("omega_nama_guru") || prev.namaGuru,
+          nipGuru: localStorage.getItem("omega_nip_guru") || prev.nipGuru,
+          jabatan: localStorage.getItem("omega_jabatan") || prev.jabatan,
+          faseKelas: localStorage.getItem("omega_fase_kelas") || prev.faseKelas,
+        }));
+      }
+    };
+    window.addEventListener("omega-state-updated", handleSyncProfile);
+    return () => {
+      window.removeEventListener("omega-state-updated", handleSyncProfile);
+    };
+  }, []);
 
   const handleFieldChange = (key: keyof SchoolProfileData, value: string) => {
     setProfile(prev => {
@@ -989,7 +1019,11 @@ export default function SchoolProfile() {
                   <div>
                     <label className="block text-[9px] font-bold text-zinc-400 mb-1 uppercase font-mono tracking-wider flex justify-between items-center">
                       <span>Baris Ketiga KOP (Nama Sekolah)</span>
-                      {isCoreDataComplete && isLockedMode ? (
+                      {localStorage.getItem("omega_is_activated") === "true" ? (
+                        <span className="text-[8.5px] text-amber-500 font-mono flex items-center gap-1">
+                          <ShieldCheck className="w-2.5 h-2.5 text-amber-500 animate-pulse" /> LISENSI PREMIUM AKTIF (TERKUNCI)
+                        </span>
+                      ) : isCoreDataComplete && isLockedMode ? (
                         <span className="text-[8.5px] text-amber-500 font-mono flex items-center gap-1">
                           <Lock className="w-2.5 h-2.5" /> SECURE ROOT
                         </span>
@@ -999,11 +1033,11 @@ export default function SchoolProfile() {
                     </label>
                     <input
                       type="text"
-                      disabled={isCoreDataComplete && isLockedMode}
+                      disabled={localStorage.getItem("omega_is_activated") === "true" || (isCoreDataComplete && isLockedMode)}
                       value={profile.schoolName}
                       onChange={(e) => handleFieldChange("schoolName", e.target.value)}
                       placeholder="SD NEGERI FATUBAI"
-                      className="w-full px-3 py-1.5 rounded-lg text-[11px] bg-[#030303] text-white border border-zinc-900 outline-none focus:border-amber-500 font-sans font-bold disabled:opacity-50"
+                      className="w-full px-3 py-1.5 rounded-lg text-[11px] bg-[#030303] text-white border border-zinc-900 outline-none focus:border-amber-500 font-sans font-bold disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                   </div>
 
@@ -1186,33 +1220,47 @@ export default function SchoolProfile() {
               <div>
                 <label className="block text-[10px] font-bold text-zinc-400 mb-1.5 uppercase font-mono tracking-wider flex items-center justify-between">
                   <span>Nama Kepala Sekolah</span>
-                  {isCoreDataComplete && isLockedMode && (
+                  {localStorage.getItem("omega_is_activated") === "true" ? (
+                    <span className="text-[9px] text-amber-500 font-mono flex items-center gap-1">
+                      <ShieldCheck className="w-3 h-3 text-amber-500 animate-pulse" /> PREMIUM
+                    </span>
+                  ) : isCoreDataComplete && isLockedMode ? (
                     <span className="text-[9px] text-amber-400 font-mono">
                       <Lock className="w-2.5 h-2.5" /> LOCK
                     </span>
-                  )}
+                  ) : null}
                 </label>
                 <input
                   type="text"
-                  disabled={isCoreDataComplete && isLockedMode}
+                  disabled={localStorage.getItem("omega_is_activated") === "true" || (isCoreDataComplete && isLockedMode)}
                   value={profile.kepalaSekolah}
                   onChange={(e) => handleFieldChange("kepalaSekolah", e.target.value)}
                   placeholder="Nama & Gelar Kepala Sekolah"
-                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500 disabled:opacity-50 disabled:bg-[#07070a] disabled:border-zinc-950"
+                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500 disabled:opacity-50 disabled:bg-[#07070a] disabled:border-zinc-950 disabled:cursor-not-allowed"
                 />
               </div>
 
               {/* NIP Kepala Sekolah */}
               <div>
-                <label className="block text-[10px] font-bold text-zinc-400 mb-1.5 uppercase font-mono tracking-wider">
-                  NIP Kepala Sekolah
+                <label className="block text-[10px] font-bold text-zinc-400 mb-1.5 uppercase font-mono tracking-wider flex items-center justify-between">
+                  <span>NIP Kepala Sekolah</span>
+                  {localStorage.getItem("omega_is_activated") === "true" ? (
+                    <span className="text-[9px] text-amber-500 font-mono flex items-center gap-1">
+                      <ShieldCheck className="w-3 h-3 text-amber-500 animate-pulse" /> PREMIUM
+                    </span>
+                  ) : isCoreDataComplete && isLockedMode ? (
+                    <span className="text-[9px] text-amber-400 font-mono">
+                      <Lock className="w-2.5 h-2.5" /> LOCK
+                    </span>
+                  ) : null}
                 </label>
                 <input
                   type="text"
+                  disabled={localStorage.getItem("omega_is_activated") === "true" || (isCoreDataComplete && isLockedMode)}
                   value={profile.nipKepala}
                   onChange={(e) => handleFieldChange("nipKepala", e.target.value)}
                   placeholder="Format: 19xxxxxxxxxxxx"
-                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500"
+                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500 disabled:opacity-50 disabled:bg-[#07070a] disabled:border-zinc-950 disabled:cursor-not-allowed"
                 />
               </div>
 
@@ -1220,33 +1268,47 @@ export default function SchoolProfile() {
               <div>
                 <label className="block text-[10px] font-bold text-zinc-400 mb-1.5 uppercase font-mono tracking-wider flex items-center justify-between">
                   <span>Nama Guru Kelas / Mapel</span>
-                  {isCoreDataComplete && isLockedMode && (
+                  {localStorage.getItem("omega_is_activated") === "true" ? (
+                    <span className="text-[9px] text-amber-500 font-mono flex items-center gap-1">
+                      <ShieldCheck className="w-3 h-3 text-amber-500 animate-pulse" /> PREMIUM
+                    </span>
+                  ) : isCoreDataComplete && isLockedMode ? (
                     <span className="text-[9px] text-amber-400 font-mono">
                       <Lock className="w-2.5 h-2.5" /> LOCK
                     </span>
-                  )}
+                  ) : null}
                 </label>
                 <input
                   type="text"
-                  disabled={isCoreDataComplete && isLockedMode}
+                  disabled={localStorage.getItem("omega_is_activated") === "true" || (isCoreDataComplete && isLockedMode)}
                   value={profile.namaGuru}
                   onChange={(e) => handleFieldChange("namaGuru", e.target.value)}
                   placeholder="Nama & Gelar Guru"
-                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500 disabled:opacity-50 disabled:bg-[#07070a] disabled:border-zinc-950"
+                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500 disabled:opacity-50 disabled:bg-[#07070a] disabled:border-zinc-950 disabled:cursor-not-allowed"
                 />
               </div>
 
               {/* NIP Guru */}
               <div>
-                <label className="block text-[10px] font-bold text-zinc-400 mb-1.5 uppercase font-mono tracking-wider">
-                  NIP Guru
+                <label className="block text-[10px] font-bold text-zinc-400 mb-1.5 uppercase font-mono tracking-wider flex items-center justify-between">
+                  <span>NIP Guru</span>
+                  {localStorage.getItem("omega_is_activated") === "true" ? (
+                    <span className="text-[9px] text-amber-500 font-mono flex items-center gap-1">
+                      <ShieldCheck className="w-3 h-3 text-amber-500 animate-pulse" /> PREMIUM
+                    </span>
+                  ) : isCoreDataComplete && isLockedMode ? (
+                    <span className="text-[9px] text-amber-400 font-mono">
+                      <Lock className="w-2.5 h-2.5" /> LOCK
+                    </span>
+                  ) : null}
                 </label>
                 <input
                   type="text"
+                  disabled={localStorage.getItem("omega_is_activated") === "true" || (isCoreDataComplete && isLockedMode)}
                   value={profile.nipGuru}
                   onChange={(e) => handleFieldChange("nipGuru", e.target.value)}
                   placeholder="NIP Guru Pembina"
-                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500"
+                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500 disabled:opacity-50 disabled:bg-[#07070a] disabled:border-zinc-950 disabled:cursor-not-allowed"
                 />
               </div>
 
@@ -1254,17 +1316,21 @@ export default function SchoolProfile() {
               <div>
                 <label className="block text-[10px] font-bold text-zinc-400 mb-1.5 uppercase font-mono tracking-wider flex items-center justify-between">
                   <span>Jabatan Guru</span>
-                  {isCoreDataComplete && isLockedMode && (
+                  {localStorage.getItem("omega_is_activated") === "true" ? (
+                    <span className="text-[9px] text-amber-500 font-mono flex items-center gap-1">
+                      <ShieldCheck className="w-3 h-3 text-amber-500 animate-pulse" /> PREMIUM
+                    </span>
+                  ) : isCoreDataComplete && isLockedMode ? (
                     <span className="text-[9px] text-amber-400 font-mono">
                       <Lock className="w-2.5 h-2.5" /> LOCK
                     </span>
-                  )}
+                  ) : null}
                 </label>
                 <select
-                  disabled={isCoreDataComplete && isLockedMode}
+                  disabled={localStorage.getItem("omega_is_activated") === "true" || (isCoreDataComplete && isLockedMode)}
                   value={profile.jabatan}
                   onChange={(e) => handleFieldChange("jabatan", e.target.value)}
-                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500 disabled:opacity-50 disabled:bg-[#07070a] disabled:border-zinc-950"
+                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500 disabled:opacity-50 disabled:bg-[#07070a] disabled:border-zinc-950 disabled:cursor-not-allowed"
                 >
                   <option value="Guru Kelas">Guru Kelas</option>
                   <option value="Guru Mata Pelajaran">Guru Mata Pelajaran</option>
@@ -1275,19 +1341,23 @@ export default function SchoolProfile() {
               <div>
                 <label className="block text-[10px] font-bold text-zinc-400 mb-1.5 uppercase font-mono tracking-wider flex items-center justify-between">
                   <span>Kelas / Fase Pilihan</span>
-                  {isCoreDataComplete && isLockedMode && (
+                  {localStorage.getItem("omega_is_activated") === "true" ? (
+                    <span className="text-[9px] text-amber-500 font-mono flex items-center gap-1">
+                      <ShieldCheck className="w-3 h-3 text-amber-500 animate-pulse" /> PREMIUM
+                    </span>
+                  ) : isCoreDataComplete && isLockedMode ? (
                     <span className="text-[9px] text-amber-400 font-mono">
                       <Lock className="w-2.5 h-2.5" /> LOCK
                     </span>
-                  )}
+                  ) : null}
                 </label>
                 <input
                   type="text"
-                  disabled={isCoreDataComplete && isLockedMode}
+                  disabled={localStorage.getItem("omega_is_activated") === "true" || (isCoreDataComplete && isLockedMode)}
                   value={profile.faseKelas}
                   onChange={(e) => handleFieldChange("faseKelas", e.target.value)}
                   placeholder="Misal: Kelas IV / Fase B"
-                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500 disabled:opacity-50 disabled:bg-[#07070a] disabled:border-zinc-950"
+                  className="w-full px-3.5 py-2 rounded-xl text-xs bg-black text-white border border-zinc-900 outline-none focus:border-amber-500 disabled:opacity-50 disabled:bg-[#07070a] disabled:border-zinc-950 disabled:cursor-not-allowed"
                 />
               </div>
 

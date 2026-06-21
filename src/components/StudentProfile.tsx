@@ -1041,17 +1041,18 @@ export default function StudentProfile() {
 
   // School Profile values from LocalStorage (to mirror on report page)
   const [schoolProfile, setSchoolProfile ] = useState(() => {
+    const isAuth = localStorage.getItem("omega_is_activated") === "true";
     return {
-      namaSekolah: localStorage.getItem("kosp_nama_sekolah") || "SEKOLAH DASAR NEGERI FATUBAI",
+      namaSekolah: (isAuth && localStorage.getItem("omega_school_name")) || localStorage.getItem("kosp_nama_sekolah") || "SEKOLAH DASAR NEGERI FATUBAI",
       npsn: localStorage.getItem("kosp_npsn") || "50300960",
       telp: localStorage.getItem("kosp_telp") || "082236015517",
       email: localStorage.getItem("kosp_email") || "sdnfatubai@gmail.com",
       website: localStorage.getItem("kosp_website") || "https://sdn-fatubai-official.netlify.app/",
-      namaKepala: localStorage.getItem("kosp_kepala_sekolah") || "Darius Kusi, S.Pd., Gr",
-      nipKepala: localStorage.getItem("kosp_nip_kepala") || "196709192008011008",
-      namaGuru: localStorage.getItem("kosp_nama_guru") || "Roni Hariyanto Bhidju, S.Pd., Gr",
-      nipGuru: localStorage.getItem("kosp_nip_guru") || "198603012020121005",
-      faseKelas: localStorage.getItem("kosp_fase_kelas") || "Kelas IV / Fase B",
+      namaKepala: (isAuth && localStorage.getItem("omega_kepala_sekolah")) || localStorage.getItem("kosp_kepala_sekolah") || "Darius Kusi, S.Pd., Gr",
+      nipKepala: (isAuth && localStorage.getItem("omega_nip_kepala")) || localStorage.getItem("kosp_nip_kepala") || "196709192008011008",
+      namaGuru: (isAuth && localStorage.getItem("omega_nama_guru")) || localStorage.getItem("kosp_nama_guru") || "Roni Hariyanto Bhidju, S.Pd., Gr",
+      nipGuru: (isAuth && localStorage.getItem("omega_nip_guru")) || localStorage.getItem("kosp_nip_guru") || "198603012020121005",
+      faseKelas: (isAuth && localStorage.getItem("omega_fase_kelas")) || localStorage.getItem("kosp_fase_kelas") || "Kelas IV / Fase B",
       tahunPelajaran: localStorage.getItem("kosp_tahun_pelajaran") || "2024/2025",
       tempatLaporan: localStorage.getItem("kosp_tempat") || "Fatubai",
       tanggalLaporan: localStorage.getItem("kosp_tanggal") || "26 Juni 2025",
@@ -1076,17 +1077,18 @@ export default function StudentProfile() {
   // Sync school profile dynamically
   useEffect(() => {
     const handleSchoolUpdate = () => {
+      const isAuth = localStorage.getItem("omega_is_activated") === "true";
       setSchoolProfile({
-        namaSekolah: localStorage.getItem("kosp_nama_sekolah") || "SEKOLAH DASAR NEGERI FATUBAI",
+        namaSekolah: (isAuth && localStorage.getItem("omega_school_name")) || localStorage.getItem("kosp_nama_sekolah") || "SEKOLAH DASAR NEGERI FATUBAI",
         npsn: localStorage.getItem("kosp_npsn") || "50300960",
         telp: localStorage.getItem("kosp_telp") || "082236015517",
         email: localStorage.getItem("kosp_email") || "sdnfatubai@gmail.com",
         website: localStorage.getItem("kosp_website") || "https://sdn-fatubai-official.netlify.app/",
-        namaKepala: localStorage.getItem("kosp_kepala_sekolah") || "Darius Kusi, S.Pd., Gr",
-        nipKepala: localStorage.getItem("kosp_nip_kepala") || "196709192008011008",
-        namaGuru: localStorage.getItem("kosp_nama_guru") || "Roni Hariyanto Bhidju, S.Pd., Gr",
-        nipGuru: localStorage.getItem("kosp_nip_guru") || "198603012020121005",
-        faseKelas: localStorage.getItem("kosp_fase_kelas") || "Kelas IV / Fase B",
+        namaKepala: (isAuth && localStorage.getItem("omega_kepala_sekolah")) || localStorage.getItem("kosp_kepala_sekolah") || "Darius Kusi, S.Pd., Gr",
+        nipKepala: (isAuth && localStorage.getItem("omega_nip_kepala")) || localStorage.getItem("kosp_nip_kepala") || "196709192008011008",
+        namaGuru: (isAuth && localStorage.getItem("omega_nama_guru")) || localStorage.getItem("kosp_nama_guru") || "Roni Hariyanto Bhidju, S.Pd., Gr",
+        nipGuru: (isAuth && localStorage.getItem("omega_nip_guru")) || localStorage.getItem("kosp_nip_guru") || "198603012020121005",
+        faseKelas: (isAuth && localStorage.getItem("omega_fase_kelas")) || localStorage.getItem("kosp_fase_kelas") || "Kelas IV / Fase B",
         tahunPelajaran: localStorage.getItem("kosp_tahun_pelajaran") || "2024/2025",
         tempatLaporan: localStorage.getItem("kosp_tempat") || "Fatubai",
         tanggalLaporan: localStorage.getItem("kosp_tanggal") || "26 Juni 2025",
@@ -1095,8 +1097,10 @@ export default function StudentProfile() {
     };
 
     window.addEventListener("omega-school-profile-updated", handleSchoolUpdate);
+    window.addEventListener("omega-state-updated", handleSchoolUpdate);
     return () => {
       window.removeEventListener("omega-school-profile-updated", handleSchoolUpdate);
+      window.removeEventListener("omega-state-updated", handleSchoolUpdate);
     };
   }, []);
 

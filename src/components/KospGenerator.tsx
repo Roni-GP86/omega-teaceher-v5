@@ -7,6 +7,7 @@ import {
   Columns
 } from "lucide-react";
 import { jsPDF } from "jspdf";
+import * as XLSX from "xlsx";
 import { CinematicLoading } from "./CinematicLoading";
 import { getTutWuriHandayaniLogo, getKemenagLogo, getDefaultSchoolLogo, compressImage } from "../utils/logoGenerator";
 
@@ -27,6 +28,12 @@ export const KospGenerator: React.FC = () => {
   const [status, setStatus] = useState<"idle" | "generating" | "success" | "error">("idle");
   const [progressMsg, setProgressMsg] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
+
+  // Analisis Rapor Pendidikan (Opsional) states
+  const [analisisRaporText, setAnalisisRaporText] = useState<string>(() => {
+    return localStorage.getItem("kosp_analisis_rapor_text") || "";
+  });
+  const [isAnalyzingRapor, setIsAnalyzingRapor] = useState<boolean>(false);
 
   // Document Bank saving states
   const [isSavedToBank, setIsSavedToBank] = useState<boolean>(false);
@@ -557,6 +564,7 @@ export const KospGenerator: React.FC = () => {
   const logoInputRef = useRef<HTMLInputElement>(null);
   const ministryLogoInputRef = useRef<HTMLInputElement>(null);
   const supportImagesInputRef = useRef<HTMLInputElement>(null);
+  const raporInputRef = useRef<HTMLInputElement>(null);
 
   // Result output State
   const [kospMarkup, setKospMarkup] = useState<string>(() => {
@@ -720,6 +728,10 @@ export const KospGenerator: React.FC = () => {
   useEffect(() => {
     localStorage.setItem("kosp_markup", kospMarkup);
   }, [kospMarkup]);
+
+  useEffect(() => {
+    localStorage.setItem("kosp_analisis_rapor_text", analisisRaporText);
+  }, [analisisRaporText]);
 
   // Premium Activation state synchronization & data locking
   const [isActivated, setIsActivated] = useState(() => localStorage.getItem("omega_is_activated") === "true");
@@ -916,6 +928,108 @@ export const KospGenerator: React.FC = () => {
     setSupportingImages((prev) => prev.filter((img) => img.id !== id));
   };
 
+  const handleRaporUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsAnalyzingRapor(true);
+    setErrorMessage("");
+
+    try {
+      const isExcel = file.name.endsWith(".xlsx") || file.name.endsWith(".xls") || file.name.endsWith(".csv");
+      const localKey = (localStorage.getItem("custom_gemini_api_key") || "").trim();
+
+      let payload: any = {};
+
+      if (isExcel) {
+        // Parse spreadsheet using xlsx on the client
+        const reader = new FileReader();
+        reader.onload = async (evt) => {
+          try {
+            const bstr = evt.target?.result;
+            const wb = XLSX.read(bstr, { type: "binary" });
+            
+            // Build a text representation of all sheets
+            let textRepresentation = "";
+            wb.SheetNames.forEach((sheetName) => {
+              const ws = wb.Sheets[sheetName];
+              const csv = XLSX.utils.sheet_to_csv(ws);
+              if (csv && csv.trim()) {
+                textRepresentation += `=== SHEET: ${sheetName} ===\n${csv}\n\n`;
+              }
+            });
+
+            if (!textRepresentation.trim()) {
+              throw new Error("Spreadsheet Excel kosong atau tidak terbaca.");
+            }
+
+            payload = { parsedText: textRepresentation };
+            await sendRaporToAPI(payload, localKey);
+          } catch (err: any) {
+            console.error(err);
+            setErrorMessage(err.message || "Gagal mengolah file Excel.");
+            setIsAnalyzingRapor(false);
+          }
+        };
+        reader.readAsBinaryString(file);
+      } else {
+        // Process images or PDF as Base64
+        const reader = new FileReader();
+        reader.onload = async (evt) => {
+          try {
+            const base64Str = (evt.target?.result as string).split(",")[1];
+            payload = {
+              fileBase64: base64Str,
+              mimeType: file.type || "application/pdf"
+            };
+            await sendRaporToAPI(payload, localKey);
+          } catch (err: any) {
+            console.error(err);
+            setErrorMessage(err.message || "Gagal membaca file.");
+            setIsAnalyzingRapor(false);
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    } catch (error: any) {
+      console.error(error);
+      setErrorMessage(error.message || "Gagal membaca dokumen.");
+      setIsAnalyzingRapor(false);
+    } finally {
+      e.target.value = "";
+    }
+  };
+
+  const sendRaporToAPI = async (payload: any, localKey: string) => {
+    try {
+      const res = await fetch("/api/analyze-rapor", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(localKey ? { "x-gemini-key": localKey } : {})
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || `Error status ${res.status}`);
+      }
+
+      const data = await res.json();
+      if (data.success && data.text) {
+        setAnalisisRaporText(data.text);
+      } else {
+        throw new Error("Respon analisis kosong.");
+      }
+    } catch (err: any) {
+      console.error(err);
+      setErrorMessage(`Gagal menganalisis rapor pendidikan: ${err.message}`);
+    } finally {
+      setIsAnalyzingRapor(false);
+    }
+  };
+
   const clearSchoolLogo = () => {
     setSchoolLogo(null);
     if (logoInputRef.current) logoInputRef.current.value = "";
@@ -1083,6 +1197,7 @@ export const KospGenerator: React.FC = () => {
           jumlahS3,
           jumlahSertifikasi,
           hariKerja,
+          analisisRaporText,
         }),
       });
 
@@ -3136,6 +3251,81 @@ export const KospGenerator: React.FC = () => {
               className="w-full bg-[#07070a] border border-zinc-800 focus:border-amber-400 rounded-xl p-3 text-xs font-sans text-zinc-200 outline-none transition leading-relaxed"
               placeholder="Kearifan lokal daerah yang dapat dikolaborasikan dalam intra/ekskul program (Pramuka, tarian sinoman, anyaman bambu, karawitan)..."
             />
+          </div>
+
+          {/* ANALISIS RAPOR PENDIDIKAN (OPSIONAL) */}
+          <div className="bg-[#0b0c10]/40 border border-zinc-900 rounded-2xl p-4 space-y-4">
+            <div className="flex items-center justify-between">
+              <label className="block text-[11.5px] font-mono text-zinc-300 uppercase font-bold tracking-wider flex items-center gap-1.5">
+                <FileText className="w-3.5 h-3.5 text-emerald-400 drop-shadow-[0_0_5px_rgba(52,211,153,0.4)]" />
+                Analisis Rapor Pendidikan Sekolah (Opsional)
+              </label>
+              {analisisRaporText && (
+                <button
+                  type="button"
+                  onClick={() => setAnalisisRaporText("")}
+                  className="text-[10px] font-mono text-rose-450 hover:text-rose-400 transition flex items-center gap-1 cursor-pointer"
+                >
+                  <Trash2 className="w-3.5 h-3.5" /> Hapus Hasil Analisis
+                </button>
+              )}
+            </div>
+
+            <p className="text-[10.5px] text-zinc-450 font-sans leading-relaxed">
+              Unggah dokumen Rapor Pendidikan Anda (format PNG, JPG, PDF, atau Excel/CSV). AI akan secara otomatis mengekstraksi data tersebut untuk merumuskan capaian mutu, hal positif yang dipertahankan, serta rencana tindak lanjut taktis yang akan diintegrasikan secara detail ke dalam dokumen KOSP.
+            </p>
+
+            <div className="flex flex-col gap-3">
+              <div className="flex items-center gap-3">
+                <input
+                  type="file"
+                  ref={raporInputRef}
+                  onChange={handleRaporUpload}
+                  accept=".png,.jpg,.jpeg,.pdf,.xlsx,.xls,.csv"
+                  className="hidden"
+                />
+                <button
+                  type="button"
+                  onClick={() => raporInputRef.current?.click()}
+                  disabled={isAnalyzingRapor}
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border text-xs font-mono font-bold transition duration-200 cursor-pointer ${
+                    isAnalyzingRapor
+                      ? "bg-zinc-900 border-zinc-800 text-zinc-500 cursor-not-allowed"
+                      : "bg-[#0b0c10] border-zinc-800 text-emerald-400 hover:bg-emerald-400/5 hover:border-emerald-400/30"
+                  }`}
+                >
+                  {isAnalyzingRapor ? (
+                    <>
+                      <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                      Menganalisis Rapor...
+                    </>
+                  ) : (
+                    <>
+                      <UploadCloud className="w-3.5 h-3.5" />
+                      Unggah Rapor Pendidikan
+                    </>
+                  )}
+                </button>
+                {isAnalyzingRapor && (
+                  <span className="text-[10px] font-mono text-zinc-500 animate-pulse">
+                    Membaca dokumen & mengekstraksi metrik capaian...
+                  </span>
+                )}
+              </div>
+
+              {analisisRaporText && (
+                <div className="space-y-1.5 pt-1">
+                  <span className="block text-[10px] font-mono text-zinc-400">Review & Edit Hasil Analisis AI:</span>
+                  <textarea
+                    rows={6}
+                    value={analisisRaporText}
+                    onChange={(e) => setAnalisisRaporText(e.target.value)}
+                    className="w-full bg-[#07070a] border border-zinc-800 focus:border-amber-400 rounded-xl p-3 text-xs font-sans text-zinc-200 outline-none transition leading-relaxed"
+                    placeholder="Hasil analisis rapor pendidikan akan tampil di sini..."
+                  />
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -91,7 +91,35 @@ export const DocumentBank: React.FC = () => {
       loadedDocs = JSON.parse(storedDocs);
       setDocuments(loadedDocs);
     } else {
-      // Seed an initial welcoming item
+      const isAuth = localStorage.getItem("omega_is_activated") === "true";
+      
+      const formatSchoolName = (name: string) => {
+        if (!name) return "";
+        if (name === name.toUpperCase()) {
+          return name
+            .split(" ")
+            .map(word => {
+              const upperWord = word.toUpperCase();
+              if (["SD", "SMP", "SMA", "SMK", "SLB", "MI", "MTS", "MA"].includes(upperWord)) {
+                return upperWord;
+              }
+              return word.charAt(0).toUpperCase() + word.substring(1).toLowerCase();
+            })
+            .join(" ");
+        }
+        return name;
+      };
+
+      const rawSchoolName = (isAuth && localStorage.getItem("omega_school_name")) || localStorage.getItem("kosp_nama_sekolah") || "SD NEGERI FATUBAI";
+      const schoolName = formatSchoolName(rawSchoolName);
+      const principalName = (isAuth && localStorage.getItem("omega_kepala_sekolah")) || localStorage.getItem("kosp_kepala_sekolah") || "Darius Kusi, S.Pd., Gr.";
+      const principalNip = (isAuth && localStorage.getItem("omega_nip_kepala")) || localStorage.getItem("kosp_nip_kepala") || "196709192008011008";
+      const teacherName = (isAuth && localStorage.getItem("omega_nama_guru")) || localStorage.getItem("kosp_nama_guru") || "Roni Hariyanto Bhidju, S.Pd., Gr.";
+      const teacherNip = (isAuth && localStorage.getItem("omega_nip_guru")) || localStorage.getItem("kosp_nip_guru") || "198603012020121005";
+      const faseKelas = (isAuth && localStorage.getItem("omega_fase_kelas")) || localStorage.getItem("kosp_fase_kelas") || "Fase B (Kelas 4)";
+      const tahunPelajaran = localStorage.getItem("kosp_tahun_pelajaran") || "2024/2025";
+
+      // Seed a comprehensive set of premium reference documents
       const seedDoc: BankDocument = {
         id: "doc-welcome",
         name: "Panduan Memulai OMEGA Document Bank",
@@ -101,9 +129,50 @@ export const DocumentBank: React.FC = () => {
         size: 1092,
         createdAt: new Date().toISOString()
       };
-      loadedDocs = [seedDoc];
-      setDocuments([seedDoc]);
-      localStorage.setItem("omega_db_documents", JSON.stringify([seedDoc]));
+
+      const kospDoc: BankDocument = {
+        id: "doc-kosp-ref",
+        name: `Contoh Draf KOSP Merdeka (${schoolName})`,
+        category: "kosp",
+        folderId: "f-kosp",
+        content: `# Draf Kurikulum Operasional Satuan Pendidikan (KOSP) Merdeka\n**${schoolName}**\nTahun Pelajaran: ${tahunPelajaran}\n\n## 1. Visi, Misi, dan Tujuan Sekolah\n- **Visi**: Mewujudkan insan berakhlak mulia, berprestasi unggul di lingkungan ${schoolName}, adaptif terhadap perkembangan IPTEK, dan berwawasan lingkungan berlandaskan Profil Pelajar Pancasila.\n- **Misi**: Menyelenggarakan proses pembelajaran yang aktif, kreatif, dan berbasis penguatan karakter spiritual serta sosial murid.\n\n## 2. Pengorganisasian Pembelajaran\n- **Intrakurikuler**: Menggunakan pendekatan mata pelajaran reguler dengan alokasi waktu JP sesuai keputusan menteri.\n- **Kokurikuler (P5)**: Melaksanakan 2-3 tema proyek per tahun, seperti Gaya Hidup Berkelanjutan dan Kearifan Lokal di ${schoolName}.\n\n## 3. Personil Sekolah\n- **Kepala Sekolah**: ${principalName} (NIP: ${principalNip || "-"})\n- **Guru Kelas**: ${teacherName} (NIP: ${teacherNip || "-"})`,
+        size: 850,
+        createdAt: new Date().toISOString()
+      };
+
+      const atpDoc: BankDocument = {
+        id: "doc-atp-ref",
+        name: `Draf ATP & Rincian TP Matematika (${faseKelas})`,
+        category: "lesson_plan",
+        folderId: "f-lessons",
+        content: `# Rincian Alur Tujuan Pembelajaran (ATP) Matematika\nFase/Kelas: ${faseKelas} | Rujukan Standar: BSKAP 046/2025\nSekolah: ${schoolName}\n\n## A. Capaian Pembelajaran Elemen Bilangan\nPeserta didik dapat membaca, menulis, menentukan nilai tempat, membandingkan, mengurutkan, serta melakukan operasi penjumlahan dan pengurangan bilangan cacah sesuai kapasitas kompetensi ${faseKelas}.\n\n## B. Perumusan Tujuan Pembelajaran (TP)\n- **TP 1**: Membaca dan menuliskan lambang bilangan cacah dasar sesuai lingkup materi ${faseKelas}.\n- **TP 2**: Menentukan nilai tempat secara mandiri dibimbing oleh ${teacherName}.\n- **TP 3**: Melakukan operasi perkalian dan pembagian bilangan cacah dengan menggunakan media konkret.\n\n## C. Alur Tujuan Pembelajaran (Urutan Pembelajaran)\n1. Pengenalan lambang bilangan cacah (TP 1) -> 2. Nilai tempat bilangan cacah (TP 2) -> 3. Operasi aritmatika dasar (TP 3).\n\n## D. Lembar Pengesahan\nMengetahui,\nKepala Sekolah: ${principalName}\nGuru Kelas: ${teacherName}`,
+        size: 1050,
+        createdAt: new Date().toISOString()
+      };
+
+      const protaDoc: BankDocument = {
+        id: "doc-prota-ref",
+        name: `Contoh PROTA & PROMES Pembelajaran (${faseKelas})`,
+        category: "lesson_plan",
+        folderId: "f-prota-promes",
+        content: `# Program Tahunan (PROTA) & Program Semester (PROMES)\nFase/Kelas: ${faseKelas} | Tahun Pelajaran ${tahunPelajaran}\nSatuan Pendidikan: ${schoolName}\n\n## Alokasi Waktu Pembelajaran Mingguan:\n1. **Pendidikan Pancasila**: 4 JP per Minggu (144 JP per Tahun)\n2. **Bahasa Indonesia**: 6 JP per Minggu (216 JP per Tahun)\n3. **Matematika**: 5 JP per Minggu (180 JP per Tahun)\n4. **IPAS**: 5 JP per Minggu (180 JP per Tahun)\n\n## Pembagian Program Semester I (Ganjil):\n- **Minggu 1-4**: Pembelajaran Norma & Pancasila di ${schoolName} (16 JP)\n- **Minggu 5-9**: Bilangan Cacah & Pengukuran Fase (25 JP)\n\nDisusun oleh:\nGuru Kelas: ${teacherName}\nNIP: ${teacherNip || "-"}`,
+        size: 700,
+        createdAt: new Date().toISOString()
+      };
+
+      const cpDoc: BankDocument = {
+        id: "doc-cp-ref",
+        name: "Referensi CP Resmi BSKAP No. 046/2025",
+        category: "extracted",
+        folderId: "f-cp-ref",
+        content: `# Salinan Keputusan Kepala BSKAP Nomor 046/H/KR/2025\n**Tentang Capaian Pembelajaran Kurikulum Merdeka Pendidikan Dasar**\n\n## Rasional Mata Pelajaran Umum (SD/SMP/SMA)\nKurikulum Merdeka mengutamakan kemerdekaan berpikir pendidik dalam mendesain pembelajaran kontekstual yang relevan dengan kearifan lokal satuan pendidikan.\n\n## Pembagian Fase Kompetensi Dasar:\n1. **Fase A**: Kelas I dan Kelas II (Dasar Pengenalan)\n2. **Fase B**: Kelas III dan Kelas IV (Penerapan & Konsep)\n3. **Fase C**: Kelas V dan Kelas VI (Analisis & Evaluasi Mandiri)`,
+        size: 620,
+        createdAt: new Date().toISOString()
+      };
+
+      loadedDocs = [seedDoc, kospDoc, atpDoc, protaDoc, cpDoc];
+      setDocuments(loadedDocs);
+      localStorage.setItem("omega_db_documents", JSON.stringify(loadedDocs));
     }
 
     // Auto-open requested document if selected elsewhere
