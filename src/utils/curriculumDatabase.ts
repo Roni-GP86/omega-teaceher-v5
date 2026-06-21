@@ -941,9 +941,112 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
           }
         ]
       }
-    }
   },
   "Fase B": {
+    "Pendidikan Pancasila": {
+      "Pancasila": {
+        "cp": "Memahami dan menjelaskan makna sila-sila Pancasila serta menceritakan hubungannya dalam kehidupan sehari-hari.",
+        "topik": [
+          {
+            "judul": "Makna Sila Pancasila",
+            "materi": ["Arti Sila Pertama dan Kedua", "Simbol Sila Pancasila", "Hubungan Antar Sila"]
+          }
+        ]
+      },
+      "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945": {
+        "cp": "Mengidentifikasi aturan di keluarga, sekolah, dan lingkungan sekitar serta melaksanakan aturan tersebut.",
+        "topik": [
+          {
+            "judul": "Aturan di Sekitar Kita",
+            "materi": ["Aturan Tertulis dan Tidak Tertulis", "Melaksanakan Aturan Sekolah", "Disiplin di Lingkungan Rumah"]
+          }
+        ]
+      },
+      "Bhinneka Tunggal Ika": {
+        "cp": "Mengidentifikasi keberagaman suku, bangsa, budaya, sosial, dan agama di lingkungan sekitar.",
+        "topik": [
+          {
+            "judul": "Indahnya Keberagaman",
+            "materi": ["Keberagaman Budaya Daerah", "Saling Menghargai Perbedaan", "Agama dan Kepercayaan di Indonesia"]
+          }
+        ]
+      },
+      "Negara Kesatuan Republik Indonesia": {
+        "cp": "Mengenal bentuk kerja sama dalam menjaga persatuan dan kesatuan bangsa di lingkungan sekitar.",
+        "topik": [
+          {
+            "judul": "Kerja Sama NKRI",
+            "materi": ["Gotong Royong di Sekolah", "Menjaga Persatuan", "Sikap Peduli Lingkungan"]
+          }
+        ]
+      }
+    },
+    "Seni Rupa": {
+      "Mengalami": {
+        "cp": "Mengamati dan mengenali berbagai unsur rupa (garis, bentuk, warna, tekstur) dalam lingkungan sekitar.",
+        "topik": [{ "judul": "Unsur Rupa Alam", "materi": ["Garis dan Bidang pada Daun", "Kombinasi Warna Alami"] }]
+      },
+      "Merefleksikan": {
+        "cp": "Mengapresiasi dan menjelaskan proses pembuatan karya seni rupa milik sendiri dan orang lain.",
+        "topik": [{ "judul": "Apresiasi Seni Rupa", "materi": ["Menjelaskan Karya Sendiri", "Memberi Masukan Positif"] }]
+      },
+      "Berpikir dan Bekerja Artistik": {
+        "cp": "Memilih dan menggunakan berbagai alat dan bahan menggambar atau mewarnai secara tepat.",
+        "topik": [{ "judul": "Eksplorasi Media Gambar", "materi": ["Mewarnai dengan Krayon", "Teknik Menempel (Kolase)"] }]
+      },
+      "Menciptakan": {
+        "cp": "Membuat karya seni rupa dua dimensi atau tiga dimensi berdasarkan tema alam atau cerita.",
+        "topik": [{ "judul": "Penciptaan Karya Dua Dimensi", "materi": ["Gambar Pemandangan Alam", "Membuat Kolase Kertas"] }]
+      },
+      "Berdampak": {
+        "cp": "Mengekspresikan emosi diri secara positif melalui karya seni rupa.",
+        "topik": [{ "judul": "Ekspresi Positif", "materi": ["Perasaan Bangga atas Karya"] }]
+      }
+    },
+    "Seni Tari": {
+      "Mengalami": {
+        "cp": "Mengenali gerak tari bertema hewan, tumbuhan, atau alam sekitar.",
+        "topik": [{ "judul": "Eksplorasi Gerak Alam", "materi": ["Menirukan Gerakan Kupu-Kupu", "Menirukan Pohon Tertiup Angin"] }]
+      },
+      "Merefleksikan": {
+        "cp": "Mengamati gerakan tari tradisional daerah setempat dan mendiskusikannya.",
+        "topik": [{ "judul": "Apresiasi Tari Tradisional", "materi": ["Mengenali Kostum Tari Daerah", "Menceritakan Makna Tari"] }]
+      },
+      "Berpikir dan Bekerja Artistik": {
+        "cp": "Menirukan gerak berirama secara percaya diri baik secara mandiri maupun berkelompok.",
+        "topik": [{ "judul": "Kekompakan Gerak", "materi": ["Menari Bersama Teman", "Percaya Diri Tampil"] }]
+      },
+      "Menciptakan": {
+        "cp": "Merangkai gerak tari sederhana menggunakan level, arah hadap, dan ruang gerak secara ekspresif.",
+        "topik": [{ "judul": "Kombinasi Gerak", "materi": ["Mengatur Level Atas dan Bawah", "Menentukan Arah Hadap"] }]
+      },
+      "Berdampak": {
+        "cp": "Menumbuhkan rasa bangga dan antusias terhadap kebudayaan tari tradisional daerah.",
+        "topik": [{ "judul": "Cinta Seni Budaya", "materi": ["Antusiasme Belajar Tari Daerah"] }]
+      }
+    },
+    "Seni Musik": {
+      "Mengalami": {
+        "cp": "Mendengarkan dan mengidentifikasi unsur-unsur musik (melodi, harmoni, tempo) sederhana.",
+        "topik": [{ "judul": "Unsur Nada", "materi": ["Mengenal Nada Tinggi Rendah", "Ketukan Tempo Cepat Lambat"] }]
+      },
+      "Merefleksikan": {
+        "cp": "Mengapresiasi pertunjukan musik sederhana dan memberikan umpan balik menggunakan bahasa sederhana.",
+        "topik": [{ "judul": "Umpan Balik Positif", "materi": ["Apresiasi Lagu Anak", "Pendapat tentang Suara Musik"] }]
+      },
+      "Berpikir dan Bekerja Artistik": {
+        "cp": "Menyanyikan lagu anak-anak dengan intonasi yang tepat dan menirukan pola irama.",
+        "topik": [{ "judul": "Bernyanyi Tepat Nada", "materi": ["Teknik Vokal Sederhana", "Meniru Ketukan Melodi"] }]
+      },
+      "Menciptakan": {
+        "cp": "Menyusun pola irama sederhana menggunakan alat musik perkusi atau barang bekas.",
+        "topik": [{ "judul": "Eksplorasi Ritme", "materi": ["Bermain Musik dengan Botol Bekas", "Membuat Pola Tepuk Tangan"] }]
+      },
+      "Berdampak": {
+        "cp": "Merasakan kegembiraan dan kebersamaan saat bernyanyi atau bermain musik bersama teman.",
+        "topik": [{ "judul": "Ekspresi Gembira", "materi": ["Kerjasama Bernyanyi Kelompok"] }]
+      }
+    },
     "Matematika": {
       "Bilangan": {
         "cp": "Peserta didik menunjukkan pemahaman perkalian dan pembagian bilangan cacah sampai 100 menggunakan benda konkret, gambar, dan simbol matematika. Mereka dapat menyelesaikan masalah sehari-hari secara kritis.",
@@ -1467,6 +1570,110 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
     }
   },
   "Fase C": {
+    "Pendidikan Pancasila": {
+      "Pancasila": {
+        "cp": "Menganalisis perumusan Pancasila dan meneladani karakter para tokoh perumus Pancasila dalam kehidupan sehari-hari.",
+        "topik": [
+          {
+            "judul": "Sejarah Perumusan Pancasila",
+            "materi": ["BPUPKI dan PPKI", "Karakter Tokoh Bangsa", "Nilai Perjuangan Perumus Pancasila"]
+          }
+        ]
+      },
+      "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945": {
+        "cp": "Menganalisis norma, hak, dan kewajiban sebagai anggota keluarga, warga sekolah, dan warga masyarakat.",
+        "topik": [
+          {
+            "judul": "Norma dan Hak Kewajiban",
+            "materi": ["Norma Kesusilaan dan Kesopanan", "Hak Anak di Sekolah dan Rumah", "Kewajiban Sosial Warga Negara"]
+          }
+        ]
+      },
+      "Bhinneka Tunggal Ika": {
+        "cp": "Menganalisis cara menghargai keberagaman budaya, adat istiadat, dan agama dalam bingkai Bhinneka Tunggal Ika.",
+        "topik": [
+          {
+            "judul": "Harmoni Keberagaman",
+            "materi": ["Melestarikan Adat Istiadat", "Toleransi Antar Umat Beragama", "Sikap Inklusif di Sekolah"]
+          }
+        ]
+      },
+      "Negara Kesatuan Republik Indonesia": {
+        "cp": "Menganalisis peran wilayah NKRI dan pentingnya persatuan kesatuan dalam mempertahankan keutuhan wilayah.",
+        "topik": [
+          {
+            "judul": "Keutuhan NKRI",
+            "materi": ["Pentingnya Persatuan Kesatuan", "Peran Wilayah Perbatasan", "Bela Negara dalam Keseharian"]
+          }
+        ]
+      }
+    },
+    "Seni Rupa": {
+      "Mengalami": {
+        "cp": "Menganalisis unsur rupa dan prinsip desain (keseimbangan, proporsi) pada karya seni rupa.",
+        "topik": [{ "judul": "Analisis Prinsip Desain", "materi": ["Proporsi dalam Menggambar Wajah", "Keseimbangan Simetris dan Asimetris"] }]
+      },
+      "Merefleksikan": {
+        "cp": "Merefleksikan makna budaya atau pesan sosial dalam karya seni rupa daerah.",
+        "topik": [{ "judul": "Apresiasi Seni Daerah", "materi": ["Makna Batik Nusantara", "Pesan Sosial Lukisan Tema Gotong Royong"] }]
+      },
+      "Berpikir dan Bekerja Artistik": {
+        "cp": "Membuat desain sketsa dan memadukan teknik menggambar dengan cat atau media campuran secara mandiri.",
+        "topik": [{ "judul": "Teknik Seni Rupa", "materi": ["Menggambar Perspektif", "Membuat Lukisan Cat Air"] }]
+      },
+      "Menciptakan": {
+        "cp": "Membuat karya seni rupa (lukisan, kriya) yang mengekspresikan kepedulian terhadap lingkungan sosial.",
+        "topik": [{ "judul": "Karya Seni Peduli Lingkungan", "materi": ["Kriya dari Plastik Daur Ulang", "Poster Kampanye Lingkungan"] }]
+      },
+      "Berdampak": {
+        "cp": "Menghasilkan karya seni rupa yang memberikan inspirasi positif bagi lingkungan sekolah.",
+        "topik": [{ "judul": "Karya Inspiratif", "materi": ["Pameran Karya Kelas", "Menghias Sudut Kelas"] }]
+      }
+    },
+    "Seni Tari": {
+      "Mengalami": {
+        "cp": "Menganalisis elemen-elemen keindahan gerak tari daerah nusantara beserta propertinya.",
+        "topik": [{ "judul": "Analisis Tari Nusantara", "materi": ["Mengenali Properti Kipas dan Piring", "Harmoni Riasan dan Busana"] }]
+      },
+      "Merefleksikan": {
+        "cp": "Mengapresiasi pertunjukan tari tradisional nusantara dan memahami pesan moral di dalamnya.",
+        "topik": [{ "judul": "Apresiasi Pesan Tari", "materi": ["Pesan Moral Tari Tradisional", "Menulis Resensi Pertunjukan Tari"] }]
+      },
+      "Berpikir dan Bekerja Artistik": {
+        "cp": "Memperagakan gerak tari kreasi baru nusantara dengan kelenturan dan keselarasan tempo musik pengiring.",
+        "topik": [{ "judul": "Praktik Penampilan Tari", "materi": ["Kelenturan Tubuh", "Keselarasan Ketukan Musik"] }]
+      },
+      "Menciptakan": {
+        "cp": "Menyusun koreografi tari kelompok sederhana berdasarkan ragam gerak tari nusantara secara kreatif.",
+        "topik": [{ "judul": "Koreografi Kelompok", "materi": ["Menyusun Pola Lantai Kreatif", "Merangkai Ragam Gerak Nusantara"] }]
+      },
+      "Berdampak": {
+        "cp": "Mencintai dan melestarikan budaya tari tradisional nusantara melalui unjuk kerja penampilan seni.",
+        "topik": [{ "judul": "Melestarikan Seni", "materi": ["Percaya Diri Tampil di Panggung Sekolah"] }]
+      }
+    },
+    "Seni Musik": {
+      "Mengalami": {
+        "cp": "Mengidentifikasi genre musik daerah dan lagu wajib nasional secara kritis.",
+        "topik": [{ "judul": "Apresiasi Genre Musik", "materi": ["Mengenal Musik Keroncong/Gamelan", "Makna Lagu Wajib Nasional"] }]
+      },
+      "Merefleksikan": {
+        "cp": "Mengapresiasi pertunjukan musik dengan menganalisis keselarasan vokal dan instrumen.",
+        "topik": [{ "judul": "Analisis Harmoni", "materi": ["Keseimbangan Suara Paduan Suara", "Kesesuaian Pengiring Musik"] }]
+      },
+      "Berpikir dan Bekerja Artistik": {
+        "cp": "Membaca notasi angka atau notasi balok sederhana dan memainkan instrumen musik pengiring.",
+        "topik": [{ "judul": "Membaca Notasi", "materi": ["Membaca Notasi Angka Sederhana", "Memainkan Rekorder/Pianika"] }]
+      },
+      "Menciptakan": {
+        "cp": "Menciptakan komposisi musik lagu anak-anak dengan lirik bertema persahabatan atau sekolah.",
+        "topik": [{ "judul": "Cipta Lagu Sederhana", "materi": ["Membuat Lirik Persahabatan", "Menyusun Melodi Pengiring"] }]
+      },
+      "Berdampak": {
+        "cp": "Menunjukkan sikap toleransi dan kerja sama dalam ansambel musik kelas.",
+        "topik": [{ "judul": "Toleransi Bermusik", "materi": ["Kekompakan Kelompok Musik Ansambel"] }]
+      }
+    },
     "Matematika": {
       "Bilangan": {
         "cp": "Peserta didik mampu memahami konsep desimal, persen, dan pecahan campuran serta melakukan operasi hitung penjumlahan dan pengurangan pecahan.",
