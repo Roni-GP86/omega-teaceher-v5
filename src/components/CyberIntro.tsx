@@ -36,10 +36,13 @@ export function CyberIntro({ onComplete }: CyberIntroProps) {
       const utterance = new SpeechSynthesisUtterance(greetingText);
       utterance.lang = "id-ID";
       utterance.rate = 0.9;
-      utterance.pitch = 0.95;
 
-      const speakWithVoice = () => {
-        if (spoken) return;
+      const speakWithVoice = (force = false) => {
+        if (spoken && !force) return;
+        
+        // Cancel any queued/blocked speech before playing
+        window.speechSynthesis.cancel();
+        
         const voices = window.speechSynthesis.getVoices();
         const idVoices = voices.filter(v => v.lang.includes("id-ID"));
         const maleVoice = idVoices.find(v => 
@@ -48,11 +51,17 @@ export function CyberIntro({ onComplete }: CyberIntroProps) {
           v.name.toLowerCase().includes("wira") ||
           v.name.toLowerCase().includes("natural")
         );
+        
         if (maleVoice) {
           utterance.voice = maleVoice;
+          utterance.pitch = 0.95; // Male voice is already low
         } else if (idVoices.length > 0) {
           utterance.voice = idVoices[0];
+          utterance.pitch = 0.7; // Lower the pitch of the female voice to emulate a male speaker
+        } else {
+          utterance.pitch = 0.7; // Deep voice fallback
         }
+        
         window.speechSynthesis.speak(utterance);
         spoken = true;
       };
@@ -60,11 +69,11 @@ export function CyberIntro({ onComplete }: CyberIntroProps) {
       if (window.speechSynthesis.getVoices().length > 0) {
         speakWithVoice();
       } else {
-        window.speechSynthesis.onvoiceschanged = speakWithVoice;
+        window.speechSynthesis.onvoiceschanged = () => speakWithVoice();
       }
 
       const handleUserInteraction = () => {
-        speakWithVoice();
+        speakWithVoice(true); // Force speaking on user interaction
         document.removeEventListener('click', handleUserInteraction);
         document.removeEventListener('keydown', handleUserInteraction);
       };
