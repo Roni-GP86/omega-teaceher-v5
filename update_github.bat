@@ -15,7 +15,7 @@ if %errorlevel% neq 0 (
 
 echo.
 echo 2. Membuat catatan pembaruan (Commit)...
-git commit -m "Update: Jawaban otomatis privasi API Key dan kejujuran asisten Omega AI"
+git commit -m "Update: Otomatisasi SupportChat lengkap: Penanganan singkatan menu & eliminasi kata Anda"
 if %errorlevel% neq 0 (
     echo [NOTE] Mungkin tidak ada perubahan baru untuk disimpan atau di-commit.
 )

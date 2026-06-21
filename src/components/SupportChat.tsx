@@ -282,19 +282,41 @@ export const SupportChat: React.FC<SupportChatProps> = ({
       
       const lcContent = content.toLowerCase();
 
-      // Check if user is asking about access codes (especially admin or user access codes) - PRIVASI TERTINGGI!
+      // Check if user is asking how to register/obtain access codes (Cara Mendaftar / Mendapatkan Kode Akses)
       if (
+        lcContent.includes("cara mendaftar") ||
+        lcContent.includes("bagaimana mendaftar") ||
+        lcContent.includes("mendapatkan kode akses") ||
+        lcContent.includes("cara daftar") ||
+        lcContent.includes("cara mendapatkan kode") ||
+        lcContent.includes("minta kode akses") ||
+        lcContent.includes("cara registrasi") ||
+        lcContent.includes("cara aktifkan") ||
+        lcContent.includes("aktifkan akun")
+      ) {
+        simulatedReply = {
+          id: "sim-reply-how-to-register-" + (Date.now() + 104),
+          requestId: userCode,
+          sender: "system",
+          text: "Di pojok kanan atas bilah navigasi aplikasi (navbar), terdapat menu 'Minta Kode Akses'. Bapak/Ibu Guru dapat mengklik menu tersebut dan melengkapi data-data yang diminta pada formulir pengajuan lisensi agar dapat diverifikasi oleh sistem secara luring.\n\nOmega AI siap mendampingi Bapak/Ibu Guru untuk melengkapi pengisian setiap menu dan fitur yang tersedia pada akun personal Bapak/Ibu Guru!",
+          timestamp: new Date(Date.now() + 200).toISOString(),
+          readByAdmin: true,
+          readByUser: false
+        };
+      }
+      // Check if user is asking about access codes or credentials of admin or other users (Pertanyaan tidak terdidik)
+      else if (
         lcContent.includes("kode akses") ||
         lcContent.includes("kode admin") ||
         lcContent.includes("kode aktivasi") ||
         lcContent.includes("akses admin") ||
-        (lcContent.includes("kode") && (lcContent.includes("rahasia") || lcContent.includes("privasi") || lcContent.includes("akun") || lcContent.includes("sandi") || lcContent.includes("bocor") || lcContent.includes("orang")))
+        (lcContent.includes("kode") && (lcContent.includes("rahasia") || lcContent.includes("privasi") || lcContent.includes("akun") || lcContent.includes("sandi") || lcContent.includes("bocor") || lcContent.includes("orang") || lcContent.includes("lain")))
       ) {
         simulatedReply = {
-          id: "sim-reply-access-code-" + (Date.now() + 101),
+          id: "sim-reply-access-code-undutiful-" + (Date.now() + 101),
           requestId: userCode,
           sender: "system",
-          text: "PERTANYAAN ANDA TIDA TERDIDIK, BUKANKAH INI RANAH PRIVASI? TERMASUK PRIVASI ANDA?\n\nPada intinya, informasi lisensi kode akses and hak akses administrator bersifat sangat rahasia & dilindungi regulasi privasi demi keamanan luring data Bapak/Ibu Guru. Jika ada hal lain yang tidak Anda ketahui, mohon menanti balasan manual dari pihak Admin. Sekali lagi, jawaban asisten otomatis di sini hanya sebatas pemanfaatan fitur dan rincian harga paket aplikasi saja!",
+          text: "Pertanyaan Bapak/Ibu Guru tidak terdidik. Bukankah informasi lisensi, kode akses, dan hak akses administrator bersifat sangat pribadi dan merupakan ranah privasi? Keamanan seluruh data dienkripsi dengan kode unik yang diprivasi secara ketat demi kenyamanan Bapak/Ibu Guru!",
           timestamp: new Date(Date.now() + 200).toISOString(),
           readByAdmin: true,
           readByUser: false
@@ -313,23 +335,43 @@ export const SupportChat: React.FC<SupportChatProps> = ({
           id: "sim-reply-api-privacy-" + (Date.now() + 102),
           requestId: userCode,
           sender: "system",
-          text: "Api key anda hanya dapat diakses oleh anda menggunakan kode akses anda. api key anda aman karena omega engine menjamin seluruh data berdasarkan kode akses unik! keamanan seluruh data, dienkripsi dengan kode unik yang diprivasi secara ketat.\n\nOmega Teacher Engine memiliki tingkat keamanan yang sangat tinggi, di mana seluruh data sensitif dienkripsi secara privat pada penyimpanan lokal browser Anda. Pihak administrator maupun pengguna lain tidak dapat melihat atau mengakses kunci pribadi Anda!",
+          text: "Api key Bapak/Ibu Guru hanya dapat diakses oleh Bapak/Ibu Guru menggunakan kode akses Bapak/Ibu Guru. Api key Bapak/Ibu Guru aman karena Omega Engine menjamin seluruh data berdasarkan kode akses unik! Keamanan seluruh data dienkripsi dengan kode unik yang diprivasi secara ketat.\n\nOmega Teacher Engine memiliki tingkat keamanan yang sangat tinggi, di mana seluruh data sensitif dienkripsi secara privat pada penyimpanan lokal browser Bapak/Ibu Guru. Pihak administrator maupun pengguna lain tidak dapat melihat atau mengakses kunci pribadi Bapak/Ibu Guru!",
           timestamp: new Date(Date.now() + 200).toISOString(),
           readByAdmin: true,
           readByUser: false
         };
       }
-      // Check if user asks if replies are pre-arranged/scripted by admin
+      // Check if user asks about CP Analysis or curriculum database updates (BSKAP 046/2025 or CP Agama 020/2026)
       else if (
-        (lcContent.includes("jawaban") && (lcContent.includes("diatur") || lcContent.includes("disetting") || lcContent.includes("diseting") || lcContent.includes("oleh admin") || lcContent.includes("rekayasa") || lcContent.includes("dibuat-buat"))) ||
-        lcContent.includes("siapa anda") ||
-        lcContent.includes("apakah anda bot")
+        lcContent.includes("analisis cp") ||
+        lcContent.includes("kendala cp") ||
+        lcContent.includes("masalah cp") ||
+        lcContent.includes("update cp") ||
+        lcContent.includes("kurikulum") ||
+        lcContent.includes("bskap") ||
+        lcContent.includes("cp") ||
+        lcContent.includes("capaian pembelajaran")
+      ) {
+        simulatedReply = {
+          id: "sim-reply-cp-help-" + (Date.now() + 105),
+          requestId: userCode,
+          sender: "system",
+          text: "Silakan unggah file CP sesuai Fase Bapak/Ibu Guru. Namun, untuk mempercepat pekerjaan Bapak/Ibu Guru, di dalam sistem kami telah memuat CP resmi terbaru BSKAP 046/2025 untuk mata pelajaran umum dan CP 020/2026 untuk mata pelajaran agama. Dengan demikian, Bapak/Ibu Guru dapat langsung melanjutkan pekerjaan ke menu lainnya tanpa harus melakukan ekstraksi manual!",
+          timestamp: new Date(Date.now() + 200).toISOString(),
+          readByAdmin: true,
+          readByUser: false
+        };
+      }
+      // Check if user asks if replies are pre-arranged/scripted by admin or system
+      else if (
+        (lcContent.includes("jawaban") && (lcContent.includes("diatur") || lcContent.includes("disetting") || lcContent.includes("diseting") || lcContent.includes("oleh admin") || lcContent.includes("rekayasa") || lcContent.includes("dibuat-buat") || lcContent.includes("sistem") || lcContent.includes("lainnya"))) ||
+        lcContent.includes("apakah diatur")
       ) {
         simulatedReply = {
           id: "sim-reply-ai-integrity-" + (Date.now() + 103),
           requestId: userCode,
           sender: "system",
-          text: "Omega AI adalah Asisten Cerdas yang membaca alur aplikasi dan menjawab secara jujur berdasarkan alur kerja aplikasi!\n\nTanggapan asisten dirumuskan secara objektif dan jujur untuk mencerminkan logika alur kerja nyata sistem serta regulasi resmi Kemendikbudristek secara independen, tanpa rekayasa manipulasi.",
+          text: "Omega AI menjawab sesuai alur dan cara kerja aplikasi tanpa rekayasa. Omega AI menjamin keamanan data dan privasi user secara utuh.",
           timestamp: new Date(Date.now() + 200).toISOString(),
           readByAdmin: true,
           readByUser: false
@@ -381,19 +423,36 @@ export const SupportChat: React.FC<SupportChatProps> = ({
           id: "sim-reply-kosp-" + (Date.now() + 110),
           requestId: userCode,
           sender: "system",
-          text: "Langkah Menyusun KOSP di aplikasi Omega Teacher (berdasarkan cara kerja sistem luring):\n\n1. Masuk ke bar menu utama dan pilih menu **Asisten KOSP**.\n2. Isi Profil & Karakteristik Satuan Pendidikan Anda secara rinci.\n3. Masukkan landasan Visi, Misi, dan Tujuan Satuan Pendidikan Anda.\n4. Atur Pengorganisasian Pembelajaran (Struktur Kurikulum Intra/Ekstra/Projek).\n5. Rancang Rencana Pembelajaran & Evaluasi pendampingan.\n6. Tekan tombol 'Proses via AI Merdeka' di bagian bawah agar asisten melengkapi draf KOSP kurikulum BSKAP 046/2025 secara utuh.\n7. Klik tombol 'Unduh Dokumen KOSP (.doc)' untuk mengunduh dokumen KOSP yang berformat rapi dengan Kop resmi.\n\nSistem Omega diprogram murni mengikuti regulasi resmi Kemendikbud secara tertutup, bebas dari referensi luar tak terpercaya!",
+          text: "Langkah Menyusun KOSP di aplikasi Omega Teacher (berdasarkan cara kerja sistem luring):\n\n1. Masuk ke bar menu utama dan pilih menu **Asisten KOSP**.\n2. Isi Profil & Karakteristik Satuan Pendidikan Bapak/Ibu Guru secara rinci.\n3. Masukkan landasan Visi, Misi, dan Tujuan Satuan Pendidikan Bapak/Ibu Guru.\n4. Atur Pengorganisasian Pembelajaran (Struktur Kurikulum Intra/Ekstra/Projek).\n5. Rancang Rencana Pembelajaran & Evaluasi pendampingan.\n6. Tekan tombol 'Proses via AI Merdeka' di bagian bawah agar asisten melengkapi draf KOSP kurikulum BSKAP 046/2025 secara utuh.\n7. Klik tombol 'Unduh Dokumen KOSP (.doc)' untuk mengunduh dokumen KOSP yang berformat rapi dengan Kop resmi.\n\nSistem Omega diprogram murni mengikuti regulasi resmi Kemendikbud secara tertutup, bebas dari referensi luar tak terpercaya!",
           timestamp: new Date(Date.now() + 200).toISOString(),
           readByAdmin: true,
           readByUser: false
         };
       }
-      // Check if user is asking about how to generate/make KKTP (Strict domain local mapping only)
-      else if (lcContent.includes("kktp") || lcContent.includes("kriteria ketuntasan") || lcContent.includes("cara buat kktp") || lcContent.includes("bikin kktp") || lcContent.includes("langkah kktp")) {
+      // Check if user is asking about how to generate/complete TP, ATP, or KKTP
+      else if (
+        lcContent.includes("tp") ||
+        lcContent.includes("atp") ||
+        lcContent.includes("kktp") ||
+        lcContent.includes("prota") ||
+        lcContent.includes("promes") ||
+        lcContent.includes("tujuan pembelajaran") ||
+        lcContent.includes("alur tujuan") ||
+        lcContent.includes("kriteria ketercapaian") ||
+        lcContent.includes("kriteria ketuntasan") ||
+        lcContent.includes("program tahunan") ||
+        lcContent.includes("program semester") ||
+        lcContent.includes("melengkapi") ||
+        lcContent.includes("cara buat kktp") ||
+        lcContent.includes("bikin kktp") ||
+        lcContent.includes("langkah kktp") ||
+        lcContent.includes("perencana ajar")
+      ) {
         simulatedReply = {
           id: "sim-reply-kktp-" + (Date.now() + 112),
           requestId: userCode,
           sender: "system",
-          text: "Langkah Merumuskan KKTP di aplikasi Omega Teacher (berdasarkan cara kerja sistem luring):\n\n1. Masuk ke menu **Perencana Ajar** di bar menu utama.\n2. Pilih/ketik mata pelajaran dan tingkat sasaran kelas Anda.\n3. Klik tombol 'Formulasikan TP, ATP, KKTP, PROTA & PROMES' di bagian bawah.\n4. Sistem kami secara otomatis merumuskan Tujuan Pembelajaran (TP), Alur Tujuan Pembelajaran (ATP), dan melengkapinya dengan **Kriteria Ketercapaian Tujuan Pembelajaran (KKTP)** berbasis interval kriteria (Remedial, Layak, Cakap, Mahir) beserta Rubrik Penilaian.\n5. Rumusan KKTP ini dapat diekspor langsung ke berkas .doc/.pdf atau terhubung otomatis pada modul **Daftar Nilai** untuk mempermudah penilaian harian Anda secara luring!",
+          text: "Untuk menyusun dan melengkapi TP (Tujuan Pembelajaran), ATP (Alur Tujuan Pembelajaran), atau KKTP (Kriteria Ketercapaian Tujuan Pembelajaran) di akun Bapak/Ibu Guru, silakan ikuti langkah-langkah praktis berikut:\n\n1. Buka menu **Perencana Ajar** di panel navigasi kiri akun Bapak/Ibu Guru.\n2. Tentukan jenjang, kelas, dan mata pelajaran yang Bapak/Ibu Guru ampu.\n3. Klik tombol **Formulasikan TP, ATP, KKTP, PROTA & PROMES** di bagian bawah.\n4. Sistem Omega AI akan secara otomatis menganalisis dokumen CP terbaru BSKAP 046/2025 (untuk mapel umum) atau CP 020/2026 (untuk mapel agama), lalu merumuskan TP, menyusun alur ATP yang logis, serta melengkapinya dengan kriteria ketuntasan (KKTP) berbasis kriteria interval (Remedial, Layak, Cakap, Mahir) beserta rubriknya.\n5. Setelah selesai, Bapak/Ibu Guru dapat langsung mengunduh draf administrasi tersebut dalam format file Word (.doc) atau mengekspornya ke modul **Daftar Nilai** secara luring!",
           timestamp: new Date(Date.now() + 200).toISOString(),
           readByAdmin: true,
           readByUser: false
@@ -411,7 +470,7 @@ export const SupportChat: React.FC<SupportChatProps> = ({
           id: "sim-reply-rpm-" + (Date.now() + 113),
           requestId: userCode,
           sender: "system",
-          text: "Cara Mengakses & Menyusun RPM (Rencana Pembelajaran Mendalam) di Aplikasi Omega Teacher:\n\n1. **Akses Modul**: Bapak/Ibu Guru yang memiliki kode akses mumpuni tinggal memilih menu **Modul RPM** di bar menu utama.\n2. **Pilih Sasaran**: Tentukan **Fase Belajar** sasaran Anda (Fase A s/d Fase F), lalu akses dan unduh draft atau materinya secara langsung.\n3. **Tutorial Penyusunan**: Untuk tutorial menghasilkan RPM yang kontekstual, sebenarnya di dalam aplikasi itu sendiri (pada fitur modul RPM) sudah disediakan panduan/tutorial interaktif terintegrasi yang berisikan langkah detail untuk membantu Bapak/Ibu menyusun RPM yang kontekstual dan relevan.\n\nSistem Omega dirancang sangat sederhana untuk mengefektifkan administrasi ajar Bapak/Ibu secara mandiri dan offline!",
+          text: "Cara Mengakses & Menyusun RPM (Rencana Pembelajaran Mendalam) di Aplikasi Omega Teacher:\n\n1. **Akses Modul**: Bapak/Ibu Guru yang memiliki kode akses mumpuni tinggal memilih menu **Modul RPM** di bar menu utama.\n2. **Pilih Sasaran**: Tentukan **Fase Belajar** sasaran Bapak/Ibu Guru (Fase A s/d Fase F), lalu akses dan unduh draft atau materinya secara langsung.\n3. **Tutorial Penyusunan**: Untuk tutorial menghasilkan RPM yang kontekstual, sebenarnya di dalam aplikasi itu sendiri (pada fitur modul RPM) sudah disediakan panduan/tutorial interaktif terintegrasi yang berisikan langkah detail untuk membantu Bapak/Ibu menyusun RPM yang kontekstual dan relevan.\n\nSistem Omega dirancang sangat sederhana untuk mengefektifkan administrasi ajar Bapak/Ibu secara mandiri dan offline!",
           timestamp: new Date(Date.now() + 200).toISOString(),
           readByAdmin: true,
           readByUser: false
@@ -423,7 +482,7 @@ export const SupportChat: React.FC<SupportChatProps> = ({
           id: "sim-reply-rapor-" + (Date.now() + 114),
           requestId: userCode,
           sender: "system",
-          text: "Cara Penggunaan Daftar Nilai & Rapor Otomatis di Omega Teacher (berdasarkan cara kerja sistem luring):\n\n1. Buka menu **Daftar Nilai** di bar menu utama.\n2. Masukkan daftar siswa kelas Anda secara luring (atau sinkronisasikan dari Profil Murid).\n3. Input nilai formatif (lingkup materi) dan nilai sumatif (STS/SAS).\n4. Atur Target **KKTP** kelas dan Bobot Nilai Akhir sesuai kriteria.\n5. Sistem secara otomatis menganalisis tingkat ketuntasan murid.\n6. Masuk ke panel **Rapor Panel** untuk mencetak lembaran Rapor Kurikulum Merdeka yang lengkap dengan deskripsi capaian kompetensi otomatis dari draf nilai luring Anda!",
+          text: "Cara Penggunaan Daftar Nilai & Rapor Otomatis di Omega Teacher (berdasarkan cara kerja sistem luring):\n\n1. Buka menu **Daftar Nilai** di bar menu utama.\n2. Masukkan daftar siswa kelas Bapak/Ibu Guru secara luring (atau sinkronisasikan dari Profil Murid).\n3. Input nilai formatif (lingkup materi) dan nilai sumatif (STS/SAS).\n4. Atur Target **KKTP** kelas dan Bobot Nilai Akhir sesuai kriteria.\n5. Sistem secara otomatis menganalisis tingkat ketuntasan murid.\n6. Masuk ke panel **Rapor Panel** untuk mencetak lembaran Rapor Kurikulum Merdeka yang lengkap dengan deskripsi capaian kompetensi otomatis dari draf nilai luring Bapak/Ibu Guru!",
           timestamp: new Date(Date.now() + 200).toISOString(),
           readByAdmin: true,
           readByUser: false
@@ -440,7 +499,7 @@ export const SupportChat: React.FC<SupportChatProps> = ({
           id: "sim-reply-pricing-mahal-" + (Date.now() + 121),
           requestId: userCode,
           sender: "system",
-          text: "Pernahkah Bapak/Ibu berpikir untuk memerdekakan diri dari beban administrasi? Pengembang mencoba memposisikan hal itu bahwa menjadi guru tidaklah mudah, ada pengorbanan besar di sana.\n\nPernahkah Bapak/Ibu berpikir seberapa banyak waktu, tenaga, biaya, dan pikiran yang dikorbankan untuk menghasilkan aplikasi ini? Pernahkah berpikir agar bagaimana data Bapak/Ibu tetap aman dan terjaga?\n\nMungkin kita hanyalah penikmat, tetapi pengembang memikirkan semuanya demi kenyamanan Anda, termasuk perlindungan privasi & penyimpanan data luring (offline) Anda. Dan semua pertimbangan itu tentu membutuhkan biaya pengembangan, di mana kita sendiri bahkan belum tahu berapa dana mandiri yang telah dikeluarkan pengembang demi menciptakan sebuah fitur!\n\nInvestasi satu kali ini sesungguhnya adalah bentuk kemerdekaan, ketenangan pikiran, dan penghargaan tertinggi atas waktu berharga Anda selaku pendidik.",
+          text: "Pernahkah Bapak/Ibu berpikir untuk memerdekakan diri dari beban administrasi? Pengembang mencoba memposisikan hal itu bahwa menjadi guru tidaklah mudah, ada pengorbanan besar di sana.\n\nPernahkah Bapak/Ibu berpikir seberapa banyak waktu, tenaga, biaya, dan pikiran yang dikorbankan untuk menghasilkan aplikasi ini? Pernahkah berpikir agar bagaimana data Bapak/Ibu tetap aman dan terjaga?\n\nMungkin kita hanyalah penikmat, tetapi pengembang memikirkan semuanya demi kenyamanan Bapak/Ibu Guru, termasuk perlindungan privasi & penyimpanan data luring (offline) Bapak/Ibu Guru. Dan semua pertimbangan itu tentu membutuhkan biaya pengembangan, di mana kita sendiri bahkan belum tahu berapa dana mandiri yang telah dikeluarkan pengembang demi menciptakan sebuah fitur!\n\nInvestasi satu kali ini sesungguhnya adalah bentuk kemerdekaan, ketenangan pikiran, dan penghargaan tertinggi atas waktu berharga Bapak/Ibu Guru selaku pendidik.",
           timestamp: new Date(Date.now() + 300).toISOString(),
           readByAdmin: true,
           readByUser: false
@@ -458,7 +517,7 @@ export const SupportChat: React.FC<SupportChatProps> = ({
           id: "sim-reply-pricing-murah-" + (Date.now() + 122),
           requestId: userCode,
           sender: "system",
-          text: "Anda luar biasa!\n\nOmega AI mewakili seluruh tim pengembang menyampaikan apresiasi setinggi-tingginya untuk Bapak/Ibu Guru yang bijak. Anda mampu menempatkan diri sebagai pengembang yang luar biasa memahami betapa sulitnya proses, seberapa besar pengorbanan, dan dedikasi waktu yang dicurahkan demi melahirkan sebuah aplikasi berkualitas tinggi yang tetap aman & beroperasi luring.\n\nSaling menghargai sesama pejuang dunia pendidikan adalah dorongan terbesar bagi kami untuk terus berinovasi!",
+          text: "Bapak/Ibu Guru luar biasa!\n\nOmega AI mewakili seluruh tim pengembang menyampaikan apresiasi setinggi-tingginya untuk Bapak/Ibu Guru yang bijak. Bapak/Ibu Guru mampu menempatkan diri sebagai pengembang yang luar biasa memahami betapa sulitnya proses, seberapa besar pengorbanan, dan dedikasi waktu yang dicurahkan demi melahirkan sebuah aplikasi berkualitas tinggi yang tetap aman & beroperasi luring.\n\nSaling menghargai sesama pejuang dunia pendidikan adalah dorongan terbesar bagi kami untuk terus berinovasi!",
           timestamp: new Date(Date.now() + 300).toISOString(),
           readByAdmin: true,
           readByUser: false
@@ -479,7 +538,7 @@ export const SupportChat: React.FC<SupportChatProps> = ({
           id: "sim-reply-pricing-" + (Date.now() + 120),
           requestId: userCode,
           sender: "system",
-          text: "Berikut adalah daftar harga resmi paket lisensi Omega Teacher (Sekali Bayar / Lifetime & Luring):\n\n• **LISENSI PREMIUM LENGKAP (LIFETIME)**: Rp 125.000 (Promo, normal Rp 225.000) — Membuka akses penuh ke seluruh menu (KOSP, TP/ATP/KKTP, RPM, Absensi, Karakter P5, Daftar Nilai, dan Cetak Rapor otomatis) selamanya tanpa batas!\n\n• **Paket Satuan Eceran (Lifetime)**:\n  1. **Aplikasi KOSP**: Rp 25.000\n  2. **Perencana Ajar (TP/ATP/KKTP/Prota/Promes)**: Rp 25.050\n  3. **Literasi & Numerasi (Asesmen Diagnostik)**: Rp 25.000\n  4. **Pembuat Soal Cerdas otomatis**: Rp 25.000\n  5. **Nilai Karakter (Observasi P5 harian)**: Rp 25.000\n  6. **Absensi Kelas luring**: Rp 25.005\n  7. **Daftar Nilai & Rapor Otomatis (1 Paket)**: Rp 50.000\n  8. **Modul RPM (Rencana Pembelajaran Mendalam)**: Rp 50.000 per Fase pilihan Anda (Fase A s/d Fase F).\n\nSemua lisensi bersifat Lifetime (sekali beli aktif selamanya) dan dioperasikan 100% luring (offline) untuk keamanan privasi penuh data sekolah Bapak/Ibu Guru.",
+          text: "Berikut adalah daftar harga resmi paket lisensi Omega Teacher (Sekali Bayar / Lifetime & Luring):\n\n• **LISENSI PREMIUM LENGKAP (LIFETIME)**: Rp 125.000 (Promo, normal Rp 225.000) — Membuka akses penuh ke seluruh menu (KOSP, TP/ATP/KKTP, RPM, Absensi, Karakter P5, Daftar Nilai, dan Cetak Rapor otomatis) selamanya tanpa batas!\n\n• **Paket Satuan Eceran (Lifetime)**:\n  1. **Aplikasi KOSP**: Rp 25.000\n  2. **Perencana Ajar (TP/ATP/KKTP/Prota/Promes)**: Rp 25.050\n  3. **Literasi & Numerasi (Asesmen Diagnostik)**: Rp 25.000\n  4. **Pembuat Soal Cerdas otomatis**: Rp 25.000\n  5. **Nilai Karakter (Observasi P5 harian)**: Rp 25.000\n  6. **Absensi Kelas luring**: Rp 25.005\n  7. **Daftar Nilai & Rapor Otomatis (1 Paket)**: Rp 50.000\n  8. **Modul RPM (Rencana Pembelajaran Mendalam)**: Rp 50.000 per Fase pilihan Bapak/Ibu Guru (Fase A s/d Fase F).\n\nSemua lisensi bersifat Lifetime (sekali beli aktif selamanya) dan dioperasikan 100% luring (offline) untuk keamanan privasi penuh data sekolah Bapak/Ibu Guru.",
           timestamp: new Date(Date.now() + 300).toISOString(),
           readByAdmin: true,
           readByUser: false
@@ -490,7 +549,7 @@ export const SupportChat: React.FC<SupportChatProps> = ({
           id: "sim-reply-delayed-" + (Date.now() + 100),
           requestId: userCode,
           sender: "system",
-          text: "Halo Bapak/Ibu Guru, tim verifikasi kami sedang melakukan pengecekan data transaksi secara berkala. Mohon pastikan bukti pengiriman Anda valid. Silakan menanti balasan manual dari tim Admin di ruangan obrolan ini, verifikasi akan selesai maksimal beberapa menit ke depan.",
+          text: "Halo Bapak/Ibu Guru, tim verifikasi kami sedang melakukan pengecekan data transaksi secara berkala. Mohon pastikan bukti pengiriman Bapak/Ibu Guru valid. Silakan menanti balasan manual dari tim Admin di ruangan obrolan ini, verifikasi akan selesai maksimal beberapa menit ke depan.",
           timestamp: new Date(Date.now() + 200).toISOString(),
           readByAdmin: true,
           readByUser: false
@@ -502,7 +561,7 @@ export const SupportChat: React.FC<SupportChatProps> = ({
           id: "sim-reply-default-" + (Date.now() + 150),
           requestId: userCode,
           sender: "system",
-          text: "Terimakasih atas pesan Anda! Asisten otomatis telah merekam pesan Anda di dalam sistem. Mengenai pertanyan di luar kebutuhan pemanfaatan fitur atau harga paket di atas, mohon kesediaan Bapak/Ibu Guru untuk menanti balasan manual dari pihak Admin yang akan segera hadir meninjau ruang obrolan Anda.",
+          text: "Terima kasih atas pesan Bapak/Ibu Guru! Apabila Bapak/Ibu Guru menuliskan singkatan atau istilah khusus yang belum dipahami oleh sistem, mohon kesediaan Bapak/Ibu Guru untuk mengetik kembali pertanyaan dengan kalimat atau istilah baku.\n\nMengenai pertanyaan di luar kebutuhan fitur atau harga paket, mohon kesediaan Bapak/Ibu Guru untuk menanti balasan manual dari pihak Admin yang akan segera hadir meninjau ruang obrolan ini.",
           timestamp: new Date(Date.now() + 400).toISOString(),
           readByAdmin: true,
           readByUser: false
