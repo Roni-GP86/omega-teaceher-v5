@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import fs from "fs";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import dotenv from "dotenv";
@@ -462,6 +463,38 @@ async function startServer() {
       hasSystemEnvKey,
       hasAdminKey: !!dynamicServerKey
     });
+  });
+
+  // API Route for diagnostic check of CP Pendidikan Agama PDF
+  app.get("/api/diag-pdf", async (req, res) => {
+    try {
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        res.status(500).json({ error: "GEMINI_API_KEY is not defined in .env" });
+        return;
+      }
+      const ai = new GoogleGenAI({ apiKey });
+      const pdfPath = path.resolve(process.cwd(), "CP PENDIDIKAN AGAMA TERBARU.pdf");
+      console.log(`[Diag PDF] Uploading ${pdfPath} to Gemini...`);
+      const uploadResult = await ai.files.upload({
+        file: pdfPath,
+        mimeType: "application/pdf"
+      });
+      console.log(`[Diag PDF] Uploaded as ${uploadResult.name}. Asking Gemini for page outline...`);
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
+        contents: [
+          uploadResult,
+          "List the table of contents or outline of this document. Tell me which pages correspond to the curriculum (Capaian Pembelajaran) of each religion (Islam, Kristen, Katolik, Hindu, Buddha, Khonghucu) for SD (Sekolah Dasar) / Fase A, B, C."
+        ]
+      });
+      console.log(`[Diag PDF] Deleting temporary file...`);
+      await ai.files.delete({ name: uploadResult.name });
+      res.json({ success: true, outline: response.text });
+    } catch (err: any) {
+      console.error("[Diag PDF] Error:", err);
+      res.status(500).json({ error: err.message || String(err) });
+    }
   });
 
   // API Route to securely set key in memory for all users
@@ -1828,8 +1861,94 @@ RESPON WAJIB BERUPA BLOK JSON DENGAN KEY BERIKUT (Dilarang ada penjelasan teks a
       });
     }
 
+    async function extractReligionCP() {
+      try {
+        const ai = getGenAI();
+        const pdfPath = path.resolve(process.cwd(), "CP PENDIDIKAN AGAMA TERBARU.pdf");
+        if (!fs.existsSync(pdfPath)) {
+          console.log(`[Auto-Extract] PDF file not found at ${pdfPath}`);
+          return;
+        }
+        console.log(`[Auto-Extract] Uploading PDF file to Gemini API...`);
+        const file = await ai.files.upload({
+          file: pdfPath,
+          mimeType: "application/pdf"
+        });
+        console.log(`[Auto-Extract] File uploaded as ${file.name}. Generating CP extraction...`);
+        const prompt = `
+Anda adalah seorang analis kurikulum senior Kemendikbudristek Indonesia.
+Tugas Anda adalah memproses dokumen PDF Pendidikan Agama terbaru yang diunggah dan mengekstrak Capaian Pembelajaran (CP) Kurikulum Merdeka untuk jenjang SD (Sekolah Dasar) untuk 6 Agama:
+1. Pendidikan Agama Islam dan Budi Pekerti (Fase A, B, C)
+2. Pendidikan Agama Kristen dan Budi Pekerti (Fase A, B, C)
+3. Pendidikan Agama Katolik dan Budi Pekerti (Fase A, B, C)
+4. Pendidikan Agama Hindu dan Budi Pekerti (Fase A, B, C)
+5. Pendidikan Agama Buddha dan Budi Pekerti (Fase A, B, C)
+6. Pendidikan Agama Khonghucu dan Budi Pekerti (Fase A, B, C)
+
+Format output wajib berupa JSON objek yang valid dan bersih dengan tipe data Record<string, Record<string, Record<string, ElemenData>>> sesuai interface TypeScript berikut:
+
+interface Topic {
+  judul: string;
+  materi: string[];
+}
+interface ElemenData {
+  cp: string;
+  topik: Topic[];
+}
+
+Contoh Struktur:
+{
+  "Fase A": {
+    "Pendidikan Agama Islam dan Budi Pekerti": {
+      "Al-Qur'an dan Hadis": {
+        "cp": "...",
+        "topik": [
+          { "judul": "...", "materi": ["...", "..."] }
+        ]
+      }
+    }
+  }
+}
+
+Ketentuan Khusus:
+1. Ekstrak seluruh elemen resmi untuk masing-masing agama tersebut di tingkat SD (Fase A, B, C).
+2. Tuliskan teks CP secara utuh tanpa singkatan atau pemotongan.
+3. Buat judul topik dan sub-materi yang relevan dan kontekstual untuk masing-masing elemen dan fase tersebut untuk mempermudah guru.
+4. Kembalikan HANYA JSON objek yang valid dan siap diparse tanpa blok pembuka markdown atau backticks (\`\`\`).
+`;
+        const response = await ai.models.generateContent({
+          model: "gemini-2.5-flash",
+          contents: [
+            file,
+            prompt
+          ],
+          config: {
+            responseMimeType: "application/json"
+          }
+        });
+
+        const jsonText = response.text || "";
+        const outputPath = path.resolve(process.cwd(), "extracted_religion_cp.json");
+        fs.writeFileSync(outputPath, jsonText, "utf-8");
+        console.log(`[Auto-Extract] Successfully extracted and saved to ${outputPath}`);
+
+        console.log(`[Auto-Extract] Deleting temporary PDF from Gemini...`);
+        await ai.files.delete({ name: file.name });
+      } catch (error) {
+        console.error("[Auto-Extract] Error during extraction:", error);
+      }
+    }
+
     app.listen(PORT, "0.0.0.0", () => {
       console.log(`Server running on http://localhost:${PORT}`);
+      
+      const jsonOutputPath = path.resolve(process.cwd(), "extracted_religion_cp.json");
+      if (!fs.existsSync(jsonOutputPath)) {
+        console.log("[Auto-Extract] JSON output file not found. Starting automatic extraction of CP Religion from PDF...");
+        extractReligionCP().catch(err => console.error("[Auto-Extract] Failed:", err));
+      } else {
+        console.log("[Auto-Extract] extracted_religion_cp.json already exists. Skipping extraction.");
+      }
     });
   }
 }
