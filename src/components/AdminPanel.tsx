@@ -33,6 +33,12 @@ export const AdminPanel: React.FC = () => {
   const [viewingReceipt, setViewingReceipt] = useState<string | null>(null);
   const [viewViewingSchool, setViewingSchool] = useState<string>("");
 
+  // Admin and API key management states
+  const [adminCode, setAdminCode] = useState("");
+  const [userApiKeys, setUserApiKeys] = useState<any[]>([]);
+  const [adminTab, setAdminTab] = useState<"requests" | "api_keys">("requests");
+  const [apiKeySearch, setApiKeySearch] = useState("");
+
   // Load support messages
   const loadMessages = () => {
     try {
@@ -63,6 +69,7 @@ export const AdminPanel: React.FC = () => {
     // Check if admin is currently authenticated in session
     const isAuth = sessionStorage.getItem("omega_admin_logged_in") === "true";
     setIsSuperAdmin(isAuth);
+    setAdminCode(sessionStorage.getItem("omega_admin_code") || "");
   }, []);
 
   useEffect(() => {
@@ -109,9 +116,23 @@ export const AdminPanel: React.FC = () => {
       console.warn("Gagal listen bungkusan chat:", err);
     });
 
+    // Attach real-time listener for user API keys if logged in as GP-RHB86
+    let unsubApiKeys = () => {};
+    const storedAdminCode = sessionStorage.getItem("omega_admin_code") || "";
+    if (storedAdminCode === "GP-RHB86") {
+      const qApiKeys = query(collection(db, "user_api_keys"));
+      unsubApiKeys = onSnapshot(qApiKeys, (snapshot) => {
+        const list = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setUserApiKeys(list);
+      }, (err) => {
+        console.error("Gagal listen data api keys:", err);
+      });
+    }
+
     return () => {
       unsubRequests();
       unsubMessages();
+      unsubApiKeys();
     };
   }, [isSuperAdmin]);
 
@@ -142,6 +163,8 @@ export const AdminPanel: React.FC = () => {
     const trimmedInput = adminCodeInput.trim().toUpperCase();
     if (trimmedInput === "OTE-GP017" || trimmedInput === "OTE-GP19S" || trimmedInput === "GP-RHB86") {
       sessionStorage.setItem("omega_admin_logged_in", "true");
+      sessionStorage.setItem("omega_admin_code", trimmedInput);
+      setAdminCode(trimmedInput);
       setIsSuperAdmin(true);
       setErrorMsg(null);
     } else {
@@ -151,7 +174,9 @@ export const AdminPanel: React.FC = () => {
 
   const handleAdminLogout = () => {
     sessionStorage.removeItem("omega_admin_logged_in");
+    sessionStorage.removeItem("omega_admin_code");
     setIsSuperAdmin(false);
+    setAdminCode("");
     setAdminCodeInput("");
   };
 
@@ -272,7 +297,7 @@ export const AdminPanel: React.FC = () => {
           </div>
           <div>
             <h3 className="text-sm font-bold text-white uppercase tracking-wider font-mono">Kode Akses Super Admin</h3>
-            <p className="text-[10px] text-zinc-500 font-mono mt-1">SESSION AUTHENTICATION REQUIRED</p>
+            <p className="text-[10px] text-zinc-550 font-mono mt-1">SESSION AUTHENTICATION REQUIRED</p>
           </div>
           <p className="text-xs text-zinc-400 leading-relaxed font-sans">
             Masukkan Kode Akses Master Administrator untuk membuka Panel Verifikasi Kode Akses Pembelian Server Omega.
@@ -319,7 +344,7 @@ export const AdminPanel: React.FC = () => {
             <ShieldCheck className="w-5 h-5 text-emerald-400" />
             CONSOLE ADMIN KODE AKSES
           </h3>
-          <p className="text-[11px] text-zinc-500 mt-0.5">
+          <p className="text-[11px] text-zinc-550 mt-0.5">
             Kelola dan konfirmasikan dokumen permohonan guru serta aktivasi lisensi sekolah Omega.
           </p>
         </div>
@@ -331,294 +356,432 @@ export const AdminPanel: React.FC = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 gap-4">
-        <h4 className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-2">
-          <Clock className="w-4 h-4 text-amber-400" />
-          Daftar Antrean Permohonan Aktivasi ({requests.length})
-        </h4>
+      {adminCode === "GP-RHB86" && (
+        <div className="flex border-b border-zinc-900 gap-2 mb-2">
+          <button
+            onClick={() => setAdminTab("requests")}
+            className={`py-2.5 px-5 text-xs font-mono font-bold tracking-wider transition-all duration-200 border-t border-x rounded-t-xl cursor-pointer ${
+              adminTab === "requests"
+                ? "bg-[#0c0d12] border-zinc-800 text-amber-400 border-b-2 border-b-[#0c0d12]"
+                : "bg-transparent border-transparent text-zinc-500 hover:text-zinc-300"
+            }`}
+          >
+            Antrean Aktivasi
+          </button>
+          <button
+            onClick={() => setAdminTab("api_keys")}
+            className={`py-2.5 px-5 text-xs font-mono font-bold tracking-wider transition-all duration-200 border-t border-x rounded-t-xl cursor-pointer ${
+              adminTab === "api_keys"
+                ? "bg-[#0c0d12] border-zinc-800 text-amber-400 border-b-2 border-b-[#0c0d12]"
+                : "bg-transparent border-transparent text-zinc-500 hover:text-zinc-300"
+            }`}
+          >
+            Daftar API Key User
+          </button>
+        </div>
+      )}
 
-        {requests.length === 0 ? (
-          <div className="p-8 border border-zinc-900 bg-zinc-950/20 text-center rounded-2xl text-zinc-550 space-y-2">
-            <p className="text-xs">Tidak ada data antrean permohonan kode akses yang masuk.</p>
-            <p className="text-[10px] font-mono uppercase tracking-wider">NO REQUEST RECORDS FOUND</p>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {requests.map((req) => (
-              <div 
-                key={req.id} 
-                className={`p-5 rounded-3xl border transition relative overflow-hidden flex flex-col md:flex-row gap-5 ${
-                  req.status === "ACTIVE" 
-                    ? "bg-emerald-950/5 border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.05)]" 
-                    : "bg-[#0b0c10] border-zinc-905"
-                }`}
-              >
-                
-                {/* Visual Status Indicator Belt */}
-                <div className={`absolute top-0 left-0 w-1.5 h-full ${req.status === "ACTIVE" ? "bg-emerald-500" : "bg-amber-500"}`} />
+      {adminTab === "requests" ? (
+        <div className="grid grid-cols-1 gap-4 animate-fade-in">
+          <h4 className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-2">
+            <Clock className="w-4 h-4 text-amber-400" />
+            Daftar Antrean Permohonan Aktivasi ({requests.length})
+          </h4>
 
-                {/* Form Data Block */}
-                <div className="flex-1 space-y-3 font-sans text-xs">
-                  <div className="flex flex-wrap items-center justify-between gap-3">
-                    <div>
-                      <span className="text-[9px] font-mono text-zinc-550 font-bold tracking-wider uppercase block">REQ CODE:</span>
-                      <strong className="text-white font-mono text-xs tracking-wider">{req.requestCode}</strong>
-                    </div>
-                    <span className={`px-2.5 py-0.5 rounded-full font-mono text-[9px] font-bold ${
-                      req.status === "ACTIVE" 
-                        ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" 
-                        : req.status === "DISABLED"
-                          ? "bg-rose-500/10 text-rose-400 border border-rose-500/20"
-                          : "bg-amber-500/10 text-amber-400 border border-amber-500/20"
-                    }`}>
-                      {req.status === "ACTIVE" 
-                        ? "AKTIF / PREMIUM" 
-                        : req.status === "DISABLED" 
-                          ? "NONAKTIF SEMENTARA" 
-                          : "MENUNGGU TRANSFER"}
-                    </span>
-                  </div>
+          {requests.length === 0 ? (
+            <div className="p-8 border border-zinc-900 bg-zinc-950/20 text-center rounded-2xl text-zinc-550 space-y-2">
+              <p className="text-xs">Tidak ada data antrean permohonan kode akses yang masuk.</p>
+              <p className="text-[10px] font-mono uppercase tracking-wider">NO REQUEST RECORDS FOUND</p>
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {requests.map((req) => (
+                <div 
+                  key={req.id} 
+                  className={`p-5 rounded-3xl border transition relative overflow-hidden flex flex-col md:flex-row gap-5 ${
+                    req.status === "ACTIVE" 
+                      ? "bg-emerald-950/5 border-emerald-500/20 shadow-[0_0_15px_rgba(16,185,129,0.05)]" 
+                      : "bg-[#0b0c10] border-zinc-905"
+                  }`}
+                >
+                  
+                  {/* Visual Status Indicator Belt */}
+                  <div className={`absolute top-0 left-0 w-1.5 h-full ${req.status === "ACTIVE" ? "bg-emerald-500" : "bg-amber-500"}`} />
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-zinc-300">
-                    <div className="space-y-1.5">
-                      <p className="flex items-center gap-1.5">
-                        <School className="w-3.5 h-3.5 text-zinc-500" />
-                        <span>Sekolah: <strong>{req.schoolName}</strong></span>
-                      </p>
-                      <p className="flex items-center gap-1.5">
-                        <User className="w-3.5 h-3.5 text-zinc-500" />
-                        <span>Kepsek: <strong>{req.principalName}</strong> (NIP: {req.principalNip})</span>
-                      </p>
-                      <p className="flex items-center gap-1.5">
-                        <User className="w-3.5 h-3.5 text-zinc-500" />
-                        <span>Guru: <strong>{req.teacherName}</strong> (NIP: {req.teacherNip})</span>
-                      </p>
-                    </div>
-                    <div className="space-y-1.5">
-                      <p>Jabatan: <strong>{req.jabatan}</strong></p>
-                      <p>Fase / Sasaran Kelas: <strong className="text-amber-400">{req.faseKelas}</strong></p>
-                      <p className="flex items-center gap-1.5">
-                        <Phone className="w-3.5 h-3.5 text-green-500" />
-                        <span>WhatsApp WA: <strong className="text-zinc-200">{req.waNumber}</strong></span>
-                      </p>
-                      {req.selectedPackages && req.selectedPackages.length > 0 && (
-                        <p className="text-[10px] text-zinc-400 font-mono mt-1">
-                          Paket: <span className="text-amber-400 font-bold uppercase">{req.selectedPackages.map((p: string) => p.replace(/_/g, ' ')).join(', ')}</span>
-                        </p>
-                      )}
-                      {req.totalAmount !== undefined && (
-                        <p className="text-[10px] text-zinc-400 font-mono mt-0.5">
-                          Total Pembayaran: <span className="text-emerald-400 font-bold">Rp. {req.totalAmount.toLocaleString("id-ID")}</span>
-                        </p>
-                      )}
-                    </div>
-                  </div>
-
-                  {req.status === "ACTIVE" && req.activationCode && (
-                    <div className="mt-3 bg-emerald-950/20 border border-emerald-500/20 p-2.5 rounded-xl flex items-center justify-between text-xs font-mono">
+                  {/* Form Data Block */}
+                  <div className="flex-1 space-y-3 font-sans text-xs">
+                    <div className="flex flex-wrap items-center justify-between gap-3">
                       <div>
-                        <span className="text-[9px] text-emerald-500">DITERBITKAN KODE AKTIF:</span>
-                        <span className="text-emerald-400 font-bold block text-sm tracking-widest uppercase">{req.activationCode}</span>
+                        <span className="text-[9px] font-mono text-zinc-550 font-bold tracking-wider uppercase block">REQ CODE:</span>
+                        <strong className="text-white font-mono text-xs tracking-wider">{req.requestCode}</strong>
                       </div>
-                      <button
-                        onClick={() => copyToClipboard(req.activationCode)}
-                        className="p-1.5 bg-[#0b0c10] border border-emerald-500/30 text-emerald-400 hover:text-white hover:bg-emerald-500 hover:border-transparent transition rounded-lg"
-                        title="Salin Kode Aktif"
-                      >
-                        <Copy className="w-3.5 h-3.5" />
-                      </button>
+                      <span className={`px-2.5 py-0.5 rounded-full font-mono text-[9px] font-bold ${
+                        req.status === "ACTIVE" 
+                          ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" 
+                          : req.status === "DISABLED"
+                            ? "bg-rose-500/10 text-rose-400 border border-rose-500/20"
+                            : "bg-amber-500/10 text-amber-400 border border-amber-500/20"
+                      }`}>
+                        {req.status === "ACTIVE" 
+                          ? "AKTIF / PREMIUM" 
+                          : req.status === "DISABLED" 
+                            ? "NONAKTIF SEMENTARA" 
+                            : "MENUNGGU TRANSFER"}
+                      </span>
                     </div>
-                  )}
-                </div>
 
-                {/* Receipt Image / Simulation & Actions Column */}
-                <div className="w-full md:w-48 shrink-0 flex flex-col justify-between items-stretch gap-3 border-t md:border-t-0 md:border-l border-zinc-900 pt-3 md:pt-0 md:pl-5">
-                  <div className="space-y-2">
-                    <span className="text-[9px] font-mono text-zinc-550 font-bold uppercase block">Lampiran Bukti:</span>
-                    
-                    {req.receiptBase64 ? (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setViewingReceipt(req.receiptBase64);
-                          setViewingSchool(req.schoolName || "Sekolah");
-                        }}
-                        className="relative group overflow-hidden border border-amber-500/30 rounded-xl bg-gradient-to-br from-amber-500/10 to-transparent p-2 h-16 flex items-center justify-center cursor-pointer transition hover:scale-[1.03] active:scale-97 hover:border-amber-400/60 w-full"
-                        title="Klik untuk melihat bukti transfer asli"
-                      >
-                        <ImageIcon className="w-5 h-5 text-amber-500 mr-2 shrink-0 animate-pulse" />
-                        <div className="text-left overflow-hidden">
-                          <span className="text-[9px] text-amber-500 font-mono font-bold block leading-none">BUKTI_TRANSFER.PNG</span>
-                          <span className="text-[9px] text-zinc-400 font-mono font-bold block truncate mt-1 underline decoration-dotted">Klik untuk Lihat &rarr;</span>
-                        </div>
-                      </button>
-                    ) : (
-                      <div className="border border-zinc-900 border-dashed rounded-xl p-2 text-center text-zinc-600 text-[10px] h-16 flex items-center justify-center font-mono w-full">
-                        Belum Diunggah
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-zinc-300">
+                      <div className="space-y-1.5">
+                        <p className="flex items-center gap-1.5">
+                          <School className="w-3.5 h-3.5 text-zinc-500" />
+                          <span>Sekolah: <strong>{req.schoolName}</strong></span>
+                        </p>
+                        <p className="flex items-center gap-1.5">
+                          <User className="w-3.5 h-3.5 text-zinc-500" />
+                          <span>Kepsek: <strong>{req.principalName}</strong> (NIP: {req.principalNip})</span>
+                        </p>
+                        <p className="flex items-center gap-1.5">
+                          <User className="w-3.5 h-3.5 text-zinc-500" />
+                          <span>Guru: <strong>{req.teacherName}</strong> (NIP: {req.teacherNip})</span>
+                        </p>
                       </div>
-                    )}
-                  </div>
+                      <div className="space-y-1.5">
+                        <p>Jabatan: <strong>{req.jabatan}</strong></p>
+                        <p>Fase / Sasaran Kelas: <strong className="text-amber-400">{req.faseKelas}</strong></p>
+                        <p className="flex items-center gap-1.5">
+                          <Phone className="w-3.5 h-3.5 text-green-500" />
+                          <span>WhatsApp WA: <strong className="text-zinc-200">{req.waNumber}</strong></span>
+                        </p>
+                        {req.selectedPackages && req.selectedPackages.length > 0 && (
+                          <p className="text-[10px] text-zinc-400 font-mono mt-1">
+                            Paket: <span className="text-amber-400 font-bold uppercase">{req.selectedPackages.map((p: string) => p.replace(/_/g, ' ')).join(', ')}</span>
+                          </p>
+                        )}
+                        {req.totalAmount !== undefined && (
+                          <p className="text-[10px] text-zinc-400 font-mono mt-0.5">
+                            Total Pembayaran: <span className="text-emerald-400 font-bold">Rp. {req.totalAmount.toLocaleString("id-ID")}</span>
+                          </p>
+                        )}
+                      </div>
+                    </div>
 
-                   <div className="flex gap-2">
-                    {req.status === "PENDING" && (
-                      <button
-                        onClick={() => handleApproveRequest(req.id)}
-                        className="flex-1 py-1 px-2.5 bg-gradient-to-r from-emerald-600 to-emerald-400 hover:from-emerald-500 hover:to-emerald-300 text-[#090a0d] text-[10.5px] font-black uppercase tracking-wider transition rounded-xl shadow-lg cursor-pointer flex items-center justify-center gap-1"
-                      >
-                        <ShieldCheck className="w-3.5 h-3.5" /> Aktifkan
-                      </button>
-                    )}
-                    {req.status === "DISABLED" && (
-                      <button
-                        onClick={() => handleApproveRequest(req.id)}
-                        className="flex-1 py-1 px-2.5 bg-gradient-to-r from-emerald-600 to-emerald-400 hover:from-emerald-500 hover:to-emerald-300 text-[#090a0d] text-[10.5px] font-black uppercase tracking-wider transition rounded-xl shadow-lg cursor-pointer flex items-center justify-center gap-1"
-                      >
-                        <ShieldCheck className="w-3.5 h-3.5" /> Aktifkan
-                      </button>
-                    )}
-                    {req.status === "ACTIVE" && (
-                      <div className="flex-1 flex gap-1">
-                        <div className="flex-1 py-1 px-2 border border-emerald-500/20 text-emerald-400 text-[9px] uppercase font-mono tracking-wider font-bold rounded-xl text-center flex items-center justify-center gap-0.5 bg-emerald-500/5">
-                          <Check className="w-3 h-3" /> Aktif
+                    {req.status === "ACTIVE" && req.activationCode && (
+                      <div className="mt-3 bg-emerald-950/20 border border-emerald-500/20 p-2.5 rounded-xl flex items-center justify-between text-xs font-mono">
+                        <div>
+                          <span className="text-[9px] text-emerald-500">DITERBITKAN KODE AKTIF:</span>
+                          <span className="text-emerald-400 font-bold block text-sm tracking-widest uppercase">{req.activationCode}</span>
                         </div>
                         <button
-                          onClick={() => handleDisableRequest(req.id)}
-                          className="px-2 py-1 bg-rose-950/20 border border-rose-500/30 text-rose-400 hover:bg-rose-500 hover:text-black hover:border-transparent transition rounded-xl text-[9px] font-bold font-mono uppercase"
-                          title="Nonaktifkan Sementara"
+                          onClick={() => copyToClipboard(req.activationCode)}
+                          className="p-1.5 bg-[#0b0c10] border border-emerald-500/30 text-emerald-400 hover:text-white hover:bg-emerald-500 hover:border-transparent transition rounded-lg animate-pulse"
+                          title="Salin Kode Akses"
                         >
-                          Tangguhkan
+                          <Copy className="w-3.5 h-3.5" />
                         </button>
                       </div>
                     )}
-                    
-                    {/* Support Chat toggle button */}
-                    <button
-                      onClick={() => {
-                        const nextCode = activeChatReqCode === req.requestCode ? null : req.requestCode;
-                        setActiveChatReqCode(nextCode);
-                        if (nextCode) {
-                          // Mark messages as read by admin when admin loads the thread
-                          const updated = allMessages.map((m: any) => {
-                            if (m.requestId === req.requestCode && m.sender === "user") {
-                              return { ...m, readByAdmin: true };
-                            }
-                            return m;
-                          });
-                          localStorage.setItem("omega_support_messages", JSON.stringify(updated));
-                          setAllMessages(updated);
-                          window.dispatchEvent(new CustomEvent("omega-support-message-received"));
-                        }
-                      }}
-                      className={`p-2 border rounded-xl flex items-center justify-center gap-1 transition text-xs font-mono font-bold relative cursor-pointer ${
-                        activeChatReqCode === req.requestCode
-                          ? "bg-indigo-600 border-indigo-505 text-white"
-                          : "border-zinc-800 text-indigo-405 hover:text-white hover:bg-zinc-950"
-                      }`}
-                      title="Chat Bantuan"
-                    >
-                      <MessageSquare className="w-3.5 h-3.5" />
-                      {(() => {
-                        const unreadCount = allMessages.filter((m: any) => m.requestId === req.requestCode && m.sender === "user" && !m.readByAdmin).length;
-                        return unreadCount > 0 ? (
-                          <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white animate-pulse">
-                            {unreadCount}
-                          </span>
-                        ) : null;
-                      })()}
-                    </button>
-
-                    <button
-                      onClick={() => handleDeleteRequest(req.id)}
-                      className="p-2 border border-zinc-800 hover:border-red-500/40 text-zinc-500 hover:text-rose-500 hover:bg-rose-500/5 transition rounded-xl cursor-pointer"
-                      title="Hapus"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
                   </div>
-                </div>
 
-                {/* Collapse Expandable Chat Panel */}
-                {activeChatReqCode === req.requestCode && (
-                  <div className="w-full mt-4 p-4 rounded-2xl bg-[#05060b] border border-zinc-850 space-y-3 font-sans md:col-span-2">
-                    <div className="flex items-center justify-between border-b border-zinc-900 pb-2 mb-2">
-                      <span className="text-[10px] font-mono text-indigo-400 tracking-wider flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-ping" />
-                        SALURAN CHAT AKTIF: <strong className="text-zinc-200">{req.requestCode}</strong>
-                      </span>
-                      <button 
-                        onClick={() => setActiveChatReqCode(null)}
-                        className="text-[9.5px] text-zinc-500 hover:text-zinc-350 hover:underline cursor-pointer"
-                      >
-                        Tutup Chat
-                      </button>
-                    </div>
-
-                    {/* Message list container */}
-                    <div className="max-h-[160px] overflow-y-auto space-y-2 pr-1.5 scrollbar-thin">
-                      {allMessages.filter((m: any) => m.requestId === req.requestCode).length === 0 ? (
-                        <p className="text-[10px] text-zinc-650 text-center py-4 font-mono">BELUM ADA DATA PESAN AKTIF</p>
+                  {/* Receipt Image / Simulation & Actions Column */}
+                  <div className="w-full md:w-48 shrink-0 flex flex-col justify-between items-stretch gap-3 border-t md:border-t-0 md:border-l border-zinc-900 pt-3 md:pt-0 md:pl-5">
+                    <div className="space-y-2">
+                      <span className="text-[9px] font-mono text-zinc-550 font-bold uppercase block">Lampiran Bukti:</span>
+                      
+                      {req.receiptBase64 ? (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setViewingReceipt(req.receiptBase64);
+                            setViewingSchool(req.schoolName || "Sekolah");
+                          }}
+                          className="relative group overflow-hidden border border-amber-500/30 rounded-xl bg-gradient-to-br from-amber-500/10 to-transparent p-2 h-16 flex items-center justify-center cursor-pointer transition hover:scale-[1.03] active:scale-97 hover:border-amber-400/60 w-full"
+                          title="Klik untuk melihat bukti transfer asli"
+                        >
+                          <ImageIcon className="w-5 h-5 text-amber-500 mr-2 shrink-0 animate-pulse" />
+                          <div className="text-left overflow-hidden">
+                            <span className="text-[9px] text-amber-500 font-mono font-bold block leading-none">BUKTI_TRANSFER.PNG</span>
+                            <span className="text-[9px] text-zinc-400 font-mono font-bold block truncate mt-1 underline decoration-dotted">Klik untuk Lihat &rarr;</span>
+                          </div>
+                        </button>
                       ) : (
-                        allMessages
-                          .filter((m: any) => m.requestId === req.requestCode)
-                          .map((m: any) => {
-                            const isAdminMsg = m.sender === "admin";
-                            const isSysMsg = m.sender === "system";
-                            return (
-                              <div key={m.id} className={`flex flex-col group ${isAdminMsg ? "items-end" : "items-start"}`}>
-                                <div className={`p-2 rounded-xl text-xs max-w-[85%] leading-normal ${
-                                  isAdminMsg 
-                                    ? "bg-indigo-600 text-indigo-50" 
-                                    : isSysMsg 
-                                      ? "bg-zinc-950 border border-violet-500/15 text-violet-300 text-[10px] font-mono" 
-                                      : "bg-zinc-90 text-zinc-300"
-                                }`}>
-                                  {m.text}
-                                </div>
-                                <span className="text-[8px] font-mono text-zinc-600 mt-0.5 px-1 flex items-center gap-1">
-                                  <span>{isAdminMsg ? "Tim Admin" : isSysMsg ? "Omega AI" : "Guru"} • {m.timestamp ? new Date(m.timestamp).toLocaleTimeString() : ""}</span>
-                                  <button
-                                    onClick={() => handleDeleteAdminMessage(m.id)}
-                                    className="opacity-0 group-hover:opacity-100 transition p-0.5 text-rose-500 hover:text-rose-400 rounded hover:bg-rose-500/10 cursor-pointer"
-                                    title="Hapus pesan"
-                                  >
-                                    <Trash2 className="w-2.5 h-2.5" />
-                                  </button>
-                                </span>
-                              </div>
-                            );
-                          })
+                        <div className="border border-zinc-900 border-dashed rounded-xl p-2 text-center text-zinc-650 text-[10px] h-16 flex items-center justify-center font-mono w-full">
+                          Belum Diunggah
+                        </div>
                       )}
                     </div>
 
-                    {/* Admin typing field */}
-                    <div className="flex gap-2 border-t border-zinc-900 pt-3">
-                      <input
-                        type="text"
-                        value={adminReplyText}
-                        onChange={(e) => setAdminReplyText(e.target.value)}
-                        placeholder="Balas permohonan guru ini resmi..."
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            handleSendAdminReply(req.requestCode);
+                    <div className="flex gap-2">
+                      {req.status === "PENDING" && (
+                        <button
+                          onClick={() => handleApproveRequest(req.id)}
+                          className="flex-1 py-1 px-2.5 bg-gradient-to-r from-emerald-600 to-emerald-400 hover:from-emerald-500 hover:to-emerald-300 text-[#090a0d] text-[10.5px] font-black uppercase tracking-wider transition rounded-xl shadow-lg cursor-pointer flex items-center justify-center gap-1"
+                        >
+                          <ShieldCheck className="w-3.5 h-3.5" /> Aktifkan
+                        </button>
+                      )}
+                      {req.status === "DISABLED" && (
+                        <button
+                          onClick={() => handleApproveRequest(req.id)}
+                          className="flex-1 py-1 px-2.5 bg-gradient-to-r from-emerald-600 to-emerald-400 hover:from-emerald-500 hover:to-emerald-300 text-[#090a0d] text-[10.5px] font-black uppercase tracking-wider transition rounded-xl shadow-lg cursor-pointer flex items-center justify-center gap-1"
+                        >
+                          <ShieldCheck className="w-3.5 h-3.5" /> Aktifkan
+                        </button>
+                      )}
+                      {req.status === "ACTIVE" && (
+                        <div className="flex-1 flex gap-1">
+                          <div className="flex-1 py-1 px-2 border border-emerald-500/20 text-emerald-400 text-[9px] uppercase font-mono tracking-wider font-bold rounded-xl text-center flex items-center justify-center gap-0.5 bg-emerald-500/5">
+                            <Check className="w-3 h-3" /> Aktif
+                          </div>
+                          <button
+                            onClick={() => handleDisableRequest(req.id)}
+                            className="px-2 py-1 bg-rose-950/20 border border-rose-500/30 text-rose-400 hover:bg-rose-500 hover:text-black hover:border-transparent transition rounded-xl text-[9px] font-bold font-mono uppercase"
+                            title="Nonaktifkan Sementara"
+                          >
+                            Tangguhkan
+                          </button>
+                        </div>
+                      )}
+                      
+                      {/* Support Chat toggle button */}
+                      <button
+                        onClick={() => {
+                          const nextCode = activeChatReqCode === req.requestCode ? null : req.requestCode;
+                          setActiveChatReqCode(nextCode);
+                          if (nextCode) {
+                            // Mark messages as read by admin when admin loads the thread
+                            const updated = allMessages.map((m: any) => {
+                              if (m.requestId === req.requestCode && m.sender === "user") {
+                                return { ...m, readByAdmin: true };
+                              }
+                              return m;
+                            });
+                            localStorage.setItem("omega_support_messages", JSON.stringify(updated));
+                            setAllMessages(updated);
+                            window.dispatchEvent(new CustomEvent("omega-support-message-received"));
                           }
                         }}
-                        className="flex-1 bg-[#020204] border border-zinc-850 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-indigo-500 transition-all placeholder-zinc-650"
-                      />
-                      <button
-                        onClick={() => handleSendAdminReply(req.requestCode)}
-                        className="p-2 px-3 bg-gradient-to-r from-amber-500 to-orange-500 text-[#090a0d] hover:from-amber-400 hover:to-orange-405 text-xs font-black rounded-xl transition cursor-pointer flex items-center gap-1"
+                        className={`p-2 border rounded-xl flex items-center justify-center gap-1 transition text-xs font-mono font-bold relative cursor-pointer ${
+                          activeChatReqCode === req.requestCode
+                            ? "bg-indigo-600 border-indigo-505 text-white"
+                            : "border-zinc-800 text-indigo-400 hover:text-white hover:bg-zinc-950"
+                        }`}
+                        title="Chat Bantuan"
                       >
-                        <Send className="w-3.5 h-3.5" /> Kirim
+                        <MessageSquare className="w-3.5 h-3.5" />
+                        {(() => {
+                          const unreadCount = allMessages.filter((m: any) => m.requestId === req.requestCode && m.sender === "user" && !m.readByAdmin).length;
+                          return unreadCount > 0 ? (
+                            <span className="absolute -top-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white animate-pulse">
+                              {unreadCount}
+                            </span>
+                          ) : null;
+                        })()}
+                      </button>
+
+                      <button
+                        onClick={() => handleDeleteRequest(req.id)}
+                        className="p-2 border border-zinc-800 hover:border-red-500/40 text-zinc-550 hover:text-rose-500 hover:bg-rose-500/5 transition rounded-xl cursor-pointer"
+                        title="Hapus"
+                      >
+                        <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
                   </div>
-                )}
 
-              </div>
-            ))}
+                  {/* Collapse Expandable Chat Panel */}
+                  {activeChatReqCode === req.requestCode && (
+                    <div className="w-full mt-4 p-4 rounded-2xl bg-[#05060b] border border-zinc-850 space-y-3 font-sans md:col-span-2">
+                      <div className="flex items-center justify-between border-b border-zinc-900 pb-2 mb-2">
+                        <span className="text-[10px] font-mono text-indigo-400 tracking-wider flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 bg-indigo-500 rounded-full animate-ping" />
+                          SALURAN CHAT AKTIF: <strong className="text-zinc-200">{req.requestCode}</strong>
+                        </span>
+                        <button 
+                          onClick={() => setActiveChatReqCode(null)}
+                          className="text-[9.5px] text-zinc-500 hover:text-zinc-350 hover:underline cursor-pointer"
+                        >
+                          Tutup Chat
+                        </button>
+                      </div>
+
+                      {/* Message list container */}
+                      <div className="max-h-[160px] overflow-y-auto space-y-2 pr-1.5 scrollbar-thin">
+                        {allMessages.filter((m: any) => m.requestId === req.requestCode).length === 0 ? (
+                          <p className="text-[10px] text-zinc-650 text-center py-4 font-mono">BELUM ADA DATA PESAN AKTIF</p>
+                        ) : (
+                          allMessages
+                            .filter((m: any) => m.requestId === req.requestCode)
+                            .map((m: any) => {
+                              const isAdminMsg = m.sender === "admin";
+                              const isSysMsg = m.sender === "system";
+                              return (
+                                <div key={m.id} className={`flex flex-col group ${isAdminMsg ? "items-end" : "items-start"}`}>
+                                  <div className={`p-2 rounded-xl text-xs max-w-[85%] leading-normal ${
+                                    isAdminMsg 
+                                      ? "bg-indigo-600 text-indigo-50" 
+                                      : isSysMsg 
+                                        ? "bg-zinc-950 border border-violet-500/15 text-violet-300 text-[10px] font-mono" 
+                                        : "bg-zinc-90 text-zinc-300"
+                                  }`}>
+                                    {m.text}
+                                  </div>
+                                  <span className="text-[8px] font-mono text-zinc-600 mt-0.5 px-1 flex items-center gap-1">
+                                    <span>{isAdminMsg ? "Tim Admin" : isSysMsg ? "Omega AI" : "Guru"} • {m.timestamp ? new Date(m.timestamp).toLocaleTimeString() : ""}</span>
+                                    <button
+                                      onClick={() => handleDeleteAdminMessage(m.id)}
+                                      className="opacity-0 group-hover:opacity-100 transition p-0.5 text-rose-500 hover:text-rose-400 rounded hover:bg-rose-500/10 cursor-pointer"
+                                      title="Hapus pesan"
+                                    >
+                                      <Trash2 className="w-2.5 h-2.5" />
+                                    </button>
+                                  </span>
+                                </div>
+                              );
+                            })
+                        )}
+                      </div>
+
+                      {/* Admin typing field */}
+                      <div className="flex gap-2 border-t border-zinc-900 pt-3">
+                        <input
+                          type="text"
+                          value={adminReplyText}
+                          onChange={(e) => setAdminReplyText(e.target.value)}
+                          placeholder="Balas permohonan guru ini resmi..."
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              handleSendAdminReply(req.requestCode);
+                            }
+                          }}
+                          className="flex-1 bg-[#020204] border border-zinc-850 rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-indigo-500 transition-all placeholder-zinc-650"
+                        />
+                        <button
+                          onClick={() => handleSendAdminReply(req.requestCode)}
+                          className="p-2 px-3 bg-gradient-to-r from-amber-500 to-orange-500 text-[#090a0d] hover:from-amber-400 hover:to-orange-405 text-xs font-black rounded-xl transition cursor-pointer flex items-center gap-1"
+                        >
+                          <Send className="w-3.5 h-3.5" /> Kirim
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="space-y-4 animate-fade-in">
+          <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4 bg-zinc-950/20 p-4 rounded-2xl border border-zinc-900">
+            <h4 className="text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-400 flex items-center gap-2">
+              <Key className="w-4 h-4 text-amber-400" />
+              Daftar API Key Personal User ({userApiKeys.length})
+            </h4>
+            <input
+              type="text"
+              placeholder="Cari nama guru atau kode akses..."
+              value={apiKeySearch}
+              onChange={(e) => setApiKeySearch(e.target.value)}
+              className="bg-[#030305] border border-zinc-850 focus:border-amber-500 rounded-xl px-3 py-1.5 text-xs outline-none text-zinc-200 placeholder-zinc-700 w-full sm:w-64"
+            />
           </div>
-        )}
-      </div>
+
+          {userApiKeys.length === 0 ? (
+            <div className="p-8 border border-zinc-900 bg-zinc-950/20 text-center rounded-2xl text-zinc-550 space-y-2">
+              <p className="text-xs">Tidak ada data API Key personal yang diunggah oleh user.</p>
+              <p className="text-[10px] font-mono uppercase tracking-wider">NO API KEY RECORDS SYNCED</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {userApiKeys
+                .filter(k => {
+                  const term = apiKeySearch.toLowerCase();
+                  return (k.userName || "").toLowerCase().includes(term) || (k.activationCode || "").toLowerCase().includes(term);
+                })
+                .map((keyItem) => {
+                  const isValidFormat = keyItem.apiKey && (keyItem.apiKey.startsWith("AIzaSy") || keyItem.apiKey.startsWith("AQ."));
+                  return (
+                    <div key={keyItem.id || keyItem.activationCode} className="bg-[#0b0c10] border border-zinc-905 p-5 rounded-3xl relative overflow-hidden flex flex-col justify-between gap-4">
+                      <div className="absolute top-0 left-0 w-1.5 h-full bg-amber-500" />
+                      <div className="space-y-3 font-sans text-xs">
+                        <div className="flex justify-between items-center border-b border-zinc-900 pb-2">
+                          <div>
+                            <span className="text-[9px] font-mono text-zinc-550 font-bold uppercase tracking-wider block">GURU / USER:</span>
+                            <strong className="text-white text-sm">{keyItem.userName || "Guru Tanpa Nama"}</strong>
+                          </div>
+                          <span className={`px-2.5 py-0.5 rounded-full font-mono text-[9px] font-bold ${
+                            isValidFormat 
+                              ? "bg-emerald-500/10 text-emerald-405 border border-emerald-500/20" 
+                              : "bg-rose-500/10 text-rose-405 border border-rose-500/20 animate-pulse"
+                          }`}>
+                            {isValidFormat ? "✓ Format Valid" : "⚠️ Format Salah"}
+                          </span>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-2.5 text-zinc-300">
+                          <p>Kode Akses: <strong className="font-mono text-zinc-100 uppercase tracking-widest">{keyItem.activationCode}</strong></p>
+
+                          <div className="space-y-1">
+                            <span className="text-[9px] font-mono text-zinc-550 font-bold block uppercase">Gemini API Key:</span>
+                            <div className="flex items-center gap-2">
+                              <input
+                                type="text"
+                                readOnly
+                                value={keyItem.apiKey || ""}
+                                className="bg-[#030305] border border-zinc-850 rounded-xl px-3 py-1.5 font-mono text-xs text-amber-300 flex-1 focus:outline-none"
+                              />
+                              <button
+                                onClick={() => {
+                                  navigator.clipboard.writeText(keyItem.apiKey || "");
+                                  alert("API Key berhasil disalin!");
+                                }}
+                                className="p-2 bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white border border-zinc-800 rounded-xl transition cursor-pointer"
+                                title="Salin API Key"
+                              >
+                                <Copy className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                            {!isValidFormat && (
+                              <span className="text-[9.5px] text-rose-400 block font-semibold mt-1">
+                                ⚠️ Salah Jenis: Harus diawali dengan 'AIzaSy' atau 'AQ.'
+                              </span>
+                            )}
+                          </div>
+
+                          {keyItem.updatedAt && (
+                            <p className="text-[10px] text-zinc-500">
+                              Diperbarui: {keyItem.updatedAt.seconds ? new Date(keyItem.updatedAt.seconds * 1000).toLocaleString("id-ID") : "Baru saja"}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="flex justify-end border-t border-zinc-900 pt-3 mt-1">
+                        <button
+                          onClick={async () => {
+                            if (window.confirm(`Hapus data API Key dari ${keyItem.userName || "user ini"} di cloud?`)) {
+                              try {
+                                await deleteDoc(doc(db, "user_api_keys", keyItem.activationCode));
+                                alert("Data API Key berhasil dihapus dari cloud.");
+                              } catch (err) {
+                                console.error(err);
+                                alert("Gagal menghapus.");
+                              }
+                            }
+                          }}
+                          className="px-3 py-1.5 bg-rose-950/20 border border-rose-500/30 hover:bg-rose-505 hover:text-black hover:border-transparent text-rose-400 rounded-xl transition text-[10.5px] font-bold font-mono uppercase flex items-center gap-1 cursor-pointer"
+                          title="Hapus Kunci dari Database"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" /> Hapus Data
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Delete Confirmation Modal */}
       {deleteConfirmId && (

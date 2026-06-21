@@ -15,7 +15,7 @@ if %errorlevel% neq 0 (
 
 echo.
 echo 2. Membuat catatan pembaruan (Commit)...
-git commit -m "Optimasi API Key x-gemini-key pada modul Literasi, Numerasi, dan Karakter"
+git commit -m "Fitur Keamanan: Masking API Key, Tombol Tempel Clipboard, dan Tab Admin API Key User"
 if %errorlevel% neq 0 (
     echo [NOTE] Mungkin tidak ada perubahan baru untuk disimpan atau di-commit.
 )

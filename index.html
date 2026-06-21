@@ -29,8 +29,13 @@
         });
       }
 
-      // Deterrent to prevent Right Click and inspect shortcut keys (Ctrl+U, F12, Ctrl+Shift+I)
-      document.addEventListener('contextmenu', (e) => e.preventDefault());
+      document.addEventListener('contextmenu', (e) => {
+        const tagName = e.target && e.target.tagName ? e.target.tagName.toLowerCase() : '';
+        if (tagName === 'input' || tagName === 'textarea') {
+          return;
+        }
+        e.preventDefault();
+      });
       document.addEventListener('keydown', (e) => {
         if (e.key === 'F12') {
           e.preventDefault();

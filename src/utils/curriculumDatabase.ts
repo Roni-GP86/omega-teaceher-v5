@@ -494,19 +494,18 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Membaca dan membedakan huruf hijaiah berharakat, huruf hijaiah bersambung; menghafal Surah al-Fatihah, beberapa surah pendek Al-Qur'an, dan hadis tentang kebersihan.",
         "topik": [
           {
-            "judul": "Mengenal Huruf Hijaiah",
+            "judul": "Membaca dan Mengenali Huruf Hijaiah",
             "materi": [
-              "Membaca huruf hijaiah berharakat",
-              "Membedakan huruf hijaiah berharakat",
-              "Membaca huruf hijaiah bersambung"
+              "Huruf hijaiah berharakat",
+              "Huruf hijaiah bersambung"
             ]
           },
           {
-            "judul": "Menghafal Surah dan Hadis",
+            "judul": "Menghafal Surah Pendek dan Hadis",
             "materi": [
-              "Menghafal Surah al-Fatihah",
-              "Menghafal beberapa surah pendek Al-Qur'an",
-              "Menghafal hadis tentang kebersihan"
+              "Surah al-Fatihah",
+              "Beberapa surah pendek Al-Qur'an",
+              "Hadis tentang kebersihan"
             ]
           }
         ]
@@ -515,23 +514,12 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menjelaskan dan meyakini rukun iman, iman kepada Allah Swt., beberapa asmaulhusna, dan iman kepada malaikat.",
         "topik": [
           {
-            "judul": "Memahami Rukun Iman",
+            "judul": "Rukun Iman dan Keyakinan",
             "materi": [
-              "Menjelaskan rukun iman",
-              "Meyakini rukun iman"
-            ]
-          },
-          {
-            "judul": "Iman kepada Allah Swt.",
-            "materi": [
-              "Meyakini Allah Swt.",
-              "Mengenal beberapa Asmaulhusna"
-            ]
-          },
-          {
-            "judul": "Iman kepada Malaikat",
-            "materi": [
-              "Meyakini keberadaan malaikat"
+              "Rukun iman",
+              "Iman kepada Allah Swt.",
+              "Beberapa asmaulhusna",
+              "Iman kepada malaikat"
             ]
           }
         ]
@@ -547,9 +535,9 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
             ]
           },
           {
-            "judul": "Akhlak terhadap Diri Sendiri",
+            "judul": "Akhlak kepada Diri Sendiri",
             "materi": [
-              "Menerapkan akhlak baik untuk diri sendiri"
+              "Menerapkan akhlak terhadap diri sendiri"
             ]
           }
         ]
@@ -558,18 +546,18 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menerapkan rukun Islam, syahadatain, tata cara bersuci, salat fardu, zikir dan berdoa setelah salat.",
         "topik": [
           {
-            "judul": "Memahami Rukun Islam",
+            "judul": "Rukun Islam dan Praktik Dasar Ibadah",
             "materi": [
-              "Menerapkan rukun Islam",
-              "Melafalkan syahadatain"
+              "Rukun Islam",
+              "Syahadatain"
             ]
           },
           {
-            "judul": "Praktik Ibadah Dasar",
+            "judul": "Praktik Salat dan Doa",
             "materi": [
-              "Memahami tata cara bersuci",
-              "Menerapkan salat fardu",
-              "Melakukan zikir setelah salat",
+              "Tata cara bersuci",
+              "Salat fardu",
+              "Zikir setelah salat",
               "Berdoa setelah salat"
             ]
           }
@@ -579,110 +567,131 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menceritakan kisah keteladanan beberapa nabi dan rasul.",
         "topik": [
           {
-            "judul": "Kisah Teladan Nabi dan Rasul",
+            "judul": "Kisah Keteladanan Nabi dan Rasul",
             "materi": [
-              "Menceritakan kisah nabi-nabi",
-              "Menceritakan kisah rasul-rasul"
+              "Kisah keteladanan beberapa nabi",
+              "Kisah keteladanan beberapa rasul"
             ]
           }
         ]
       }
     },
     "Pendidikan Agama Kristen dan Budi Pekerti": {
-      "Allah Berkarya - Allah Pencipta": {
+      "Allah Pencipta": {
         "cp": "Murid memahami Allah menciptakan dirinya sebagai pribadi yang istimewa dan membangun interaksi dengan lingkungan terdekat.",
         "topik": [
           {
-            "judul": "Memahami Allah sebagai Pencipta Diri",
+            "judul": "Allah sebagai Pencipta Pribadi Istimewa",
             "materi": [
-              "Memahami diri sebagai pribadi istimewa ciptaan Allah",
-              "Membangun interaksi positif dengan lingkungan terdekat"
+              "Allah menciptakan diri sebagai pribadi istimewa",
+              "Membangun interaksi dengan lingkungan terdekat"
             ]
           }
         ]
       },
-      "Allah Berkarya - Allah Pemelihara": {
+      "Allah Pemelihara": {
         "cp": "Murid memahami pemeliharaan Allah pada dirinya melalui kehadiran keluarga.",
         "topik": [
           {
-            "judul": "Pemeliharaan Allah dalam Keluarga",
+            "judul": "Pemeliharaan Allah melalui Keluarga",
             "materi": [
-              "Memahami bahwa Allah memelihara diri",
-              "Mengenali peran keluarga dalam pemeliharaan Allah"
+              "Pemeliharaan Allah pada diri",
+              "Kehadiran keluarga"
             ]
           }
         ]
       },
-      "Manusia dan Nilai-nilai Kristiani - Hakikat Manusia": {
+      "Allah Penyelamat": {
+        "cp": "-",
+        "topik": [
+          {
+            "judul": "Allah Penyelamat",
+            "materi": [
+              "Tidak ada capaian pembelajaran khusus."
+            ]
+          }
+        ]
+      },
+      "Allah Pembaru": {
+        "cp": "-",
+        "topik": [
+          {
+            "judul": "Allah Pembaru",
+            "materi": [
+              "Tidak ada capaian pembelajaran khusus."
+            ]
+          }
+        ]
+      },
+      "Hakikat Manusia": {
         "cp": "Murid memahami diri sebagai pribadi yang bertumbuh dan berkembang.",
         "topik": [
           {
-            "judul": "Memahami Diri sebagai Individu",
+            "judul": "Diri sebagai Pribadi Bertumbuh",
             "materi": [
-              "Memahami diri sebagai pribadi yang bertumbuh",
-              "Memahami diri sebagai pribadi yang berkembang"
+              "Diri sebagai pribadi bertumbuh",
+              "Diri sebagai pribadi berkembang"
             ]
           }
         ]
       },
-      "Manusia dan Nilai-nilai Kristiani - Nilai-nilai Kristiani": {
+      "Nilai-nilai Kristiani": {
         "cp": "Murid memahami makna kebaikan, ramah dan sopan di rumah dan di sekolah.",
         "topik": [
           {
-            "judul": "Menerapkan Nilai Kebaikan",
+            "judul": "Kebaikan dan Sopan Santun",
             "materi": [
-              "Memahami makna kebaikan",
-              "Bersikap ramah di rumah dan di sekolah",
-              "Bersikap sopan di rumah dan di sekolah"
+              "Makna kebaikan",
+              "Ramah di rumah dan sekolah",
+              "Sopan di rumah dan sekolah"
             ]
           }
         ]
       },
-      "Gereja dan Masyarakat Majemuk - Tugas Panggilan Gereja": {
+      "Tugas Panggilan Gereja": {
         "cp": "Murid memahami keberadaan gereja sebagai wadah berkumpul dan beribadah serta kewajiban berdoa dan memuji Tuhan.",
         "topik": [
           {
             "judul": "Peran Gereja dan Ibadah",
             "materi": [
-              "Memahami gereja sebagai tempat berkumpul dan beribadah",
-              "Memahami kewajiban berdoa",
-              "Memahami kewajiban memuji Tuhan"
+              "Keberadaan gereja sebagai wadah berkumpul dan beribadah",
+              "Kewajiban berdoa",
+              "Kewajiban memuji Tuhan"
             ]
           }
         ]
       },
-      "Gereja dan Masyarakat Majemuk - Masyarakat Majemuk": {
+      "Masyarakat Majemuk": {
         "cp": "Murid memahami keragaman suku bangsa sebagai anugerah Allah.",
         "topik": [
           {
-            "judul": "Menghargai Keragaman",
+            "judul": "Keragaman Suku Bangsa",
             "materi": [
-              "Memahami keragaman suku bangsa",
-              "Menyadari keragaman sebagai anugerah Allah"
+              "Keragaman suku bangsa sebagai anugerah Allah"
             ]
           }
         ]
       },
-      "Alam dan Lingkungan Hidup - Alam Ciptaan Allah": {
+      "Alam Ciptaan Allah": {
         "cp": "Murid memahami alam dan lingkungan hidup sebagai ciptaan Allah.",
         "topik": [
           {
-            "judul": "Memahami Ciptaan Alam",
+            "judul": "Alam sebagai Ciptaan Allah",
             "materi": [
-              "Memahami alam sebagai ciptaan Allah",
-              "Memahami lingkungan hidup sebagai ciptaan Allah"
+              "Alam sebagai ciptaan Allah",
+              "Lingkungan hidup sebagai ciptaan Allah"
             ]
           }
         ]
       },
-      "Alam dan Lingkungan Hidup - Tanggung Jawab Manusia Terhadap Alam": {
+      "Tanggung Jawab Manusia Terhadap Alam": {
         "cp": "Murid memahami tugas memelihara alam dan lingkungan hidup di rumah dan di sekolah.",
         "topik": [
           {
-            "judul": "Tanggung Jawab Lingkungan",
+            "judul": "Tanggung Jawab Memelihara Alam",
             "materi": [
-              "Memahami tugas memelihara alam di rumah",
-              "Memahami tugas memelihara lingkungan hidup di sekolah"
+              "Memelihara alam di rumah",
+              "Memelihara lingkungan hidup di sekolah"
             ]
           }
         ]
@@ -696,14 +705,15 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
             "judul": "Diri sebagai Ciptaan Tuhan",
             "materi": [
               "Memahami diri dicintai Tuhan",
-              "Memahami anggota tubuh berguna"
+              "Memiliki anggota tubuh yang berguna",
+              "Memahami cara merawat tubuh"
             ]
           },
           {
-            "judul": "Merawat Diri dan Lingkungan",
+            "judul": "Potensi Diri dan Lingkungan",
             "materi": [
-              "Memahami cara merawat tubuh",
-              "Memahami teman-teman dan lingkungan sebagai tempat mengembangkan potensi diri"
+              "Memahami teman-teman",
+              "Lingkungan rumah dan sekolah sebagai tempat mengembangkan potensi diri"
             ]
           }
         ]
@@ -712,28 +722,28 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Murid memahami bahwa Tuhan menciptakan langit, bumi, dan seluruh isinya; memahami tokoh-tokoh iman di dalam Perjanjian Lama (Nuh, Abraham, Ishak dan Yakub); memahami kisah kelahiran Tuhan Yesus, kisah tiga orang Majus, masa kanak-kanak Yesus di Nazaret, Yesus dipersembahkan di Bait Allah, dan berada di Bait Allah pada umur 12 tahun.",
         "topik": [
           {
-            "judul": "Tuhan Sang Pencipta",
+            "judul": "Karya Penciptaan Tuhan",
             "materi": [
-              "Memahami Tuhan menciptakan langit dan bumi beserta isinya"
+              "Tuhan menciptakan langit, bumi, dan seluruh isinya"
             ]
           },
           {
             "judul": "Tokoh Iman Perjanjian Lama",
             "materi": [
-              "Memahami kisah Nuh",
-              "Memahami kisah Abraham",
-              "Memahami kisah Ishak",
-              "Memahami kisah Yakub"
+              "Nuh",
+              "Abraham",
+              "Ishak",
+              "Yakub"
             ]
           },
           {
-            "judul": "Kisah Kelahiran dan Masa Kecil Yesus",
+            "judul": "Kisah Masa Kanak-kanak Yesus",
             "materi": [
-              "Memahami kisah kelahiran Tuhan Yesus",
-              "Memahami kisah tiga orang Majus",
-              "Memahami masa kanak-kanak Yesus di Nazaret",
-              "Memahami Yesus dipersembahkan di Bait Allah",
-              "Memahami Yesus berada di Bait Allah pada umur 12 tahun"
+              "Kisah kelahiran Tuhan Yesus",
+              "Kisah tiga orang Majus",
+              "Masa kanak-kanak Yesus di Nazaret",
+              "Yesus dipersembahkan di Bait Allah",
+              "Yesus berada di Bait Allah pada umur 12 tahun"
             ]
           }
         ]
@@ -742,7 +752,7 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Murid memahami imannya dengan cara membuat tanda salib, berdoa Bapa Kami, Salam Maria, dan Kemuliaan; memahami iman dengan melaksanakan perintah Allah, dan membiasakan diri dengan berdoa pujian, syukur dan permohonan.",
         "topik": [
           {
-            "judul": "Praktik Iman dan Doa",
+            "judul": "Praktik Doa Dasar",
             "materi": [
               "Membuat tanda salib",
               "Berdoa Bapa Kami",
@@ -751,12 +761,12 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
             ]
           },
           {
-            "judul": "Pelaksanaan Perintah Allah dan Jenis Doa",
+            "judul": "Ketaatan pada Perintah Allah dan Doa",
             "materi": [
-              "Memahami iman dengan melaksanakan perintah Allah",
-              "Membiasakan diri dengan berdoa pujian",
-              "Membiasakan diri dengan berdoa syukur",
-              "Membiasakan diri dengan berdoa permohonan"
+              "Melaksanakan perintah Allah",
+              "Berdoa pujian",
+              "Berdoa syukur",
+              "Berdoa permohonan"
             ]
           }
         ]
@@ -765,15 +775,15 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Murid memahami lingkungan keluarga, dan teman-teman, memiliki kebiasaan bekerja sama dengan anggota keluarga dan teman-teman; memahami iman di tengah masyarakat melalui kebiasaan hidup rukun dengan tetangga dan bergotong royong merawat lingkungan.",
         "topik": [
           {
-            "judul": "Interaksi Sosial dan Kerjasama",
+            "judul": "Interaksi Sosial",
             "materi": [
               "Memahami lingkungan keluarga dan teman-teman",
-              "Bekerja sama dengan anggota keluarga",
-              "Bekerja sama dengan teman-teman"
+              "Kebiasaan bekerja sama dengan anggota keluarga",
+              "Kebiasaan bekerja sama dengan teman-teman"
             ]
           },
           {
-            "judul": "Iman dan Kehidupan Bermasyarakat",
+            "judul": "Iman dalam Masyarakat",
             "materi": [
               "Hidup rukun dengan tetangga",
               "Bergotong royong merawat lingkungan"
@@ -787,10 +797,10 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Mengenali Kitab Rāmāyaņa dan Kitab Mahābhārata.",
         "topik": [
           {
-            "judul": "Mengenal Kitab Suci Hindu",
+            "judul": "Mengenal Epos Hindu",
             "materi": [
-              "Mengenali Kitab Rāmāyaņa",
-              "Mengenali Kitab Mahābhārata"
+              "Kitab Rāmāyaņa",
+              "Kitab Mahābhārata"
             ]
           }
         ]
@@ -801,8 +811,8 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
           {
             "judul": "Konsep Hyang Widhi Wasa",
             "materi": [
-              "Memahami Hyang Widhi Wasa sebagai pencipta",
-              "Memahami Hyang Widhi Wasa sebagai sumber hidup"
+              "Hyang Widhi Wasa sebagai pencipta",
+              "Hyang Widhi Wasa sebagai sumber hidup"
             ]
           }
         ]
@@ -811,11 +821,16 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Mengenali Subha Karma dan Asubha Karma, serta Tri Kaya Parisudha.",
         "topik": [
           {
-            "judul": "Etika Perilaku",
+            "judul": "Konsep Karma",
             "materi": [
-              "Mengenali Subha Karma (perbuatan baik)",
-              "Mengenali Asubha Karma (perbuatan tidak baik)",
-              "Mengenali Tri Kaya Parisudha"
+              "Subha Karma",
+              "Asubha Karma"
+            ]
+          },
+          {
+            "judul": "Etika Perbuatan",
+            "materi": [
+              "Tri Kaya Parisudha"
             ]
           }
         ]
@@ -824,10 +839,10 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Mengenali Dainika Upasana dan sarana persembahyangan.",
         "topik": [
           {
-            "judul": "Ritual Keagamaan",
+            "judul": "Praktik Ibadah Sehari-hari",
             "materi": [
-              "Mengenali Dainika Upasana (sembahyang harian)",
-              "Mengenali sarana persembahyangan"
+              "Dainika Upasana",
+              "Sarana persembahyangan"
             ]
           }
         ]
@@ -836,9 +851,9 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Mengenali Kerajaan-kerajaan Hindu di Indonesia.",
         "topik": [
           {
-            "judul": "Sejarah Hindu Nusantara",
+            "judul": "Sejarah Kerajaan Hindu",
             "materi": [
-              "Mengenali kerajaan Hindu di Indonesia"
+              "Kerajaan-kerajaan Hindu di Indonesia"
             ]
           }
         ]
@@ -849,19 +864,19 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Mengenali keragaman identitas, menyayangi diri sendiri, mengenali cara berkomunikasi yang baik, mengenali bodhisattva, para Buddha, dan tokoh dalam kisah jataka.",
         "topik": [
           {
-            "judul": "Identitas Diri dan Komunikasi",
+            "judul": "Identitas dan Komunikasi",
             "materi": [
-              "Mengenali keragaman identitas",
+              "Keragaman identitas",
               "Menyayangi diri sendiri",
-              "Mengenali cara berkomunikasi yang baik"
+              "Cara berkomunikasi yang baik"
             ]
           },
           {
-            "judul": "Tokoh Teladan Buddhis",
+            "judul": "Tokoh-tokoh Buddhis",
             "materi": [
-              "Mengenali Bodhisattva",
-              "Mengenali para Buddha",
-              "Mengenali tokoh dalam kisah Jataka"
+              "Bodhisattva",
+              "Para Buddha",
+              "Tokoh dalam kisah jataka"
             ]
           }
         ]
@@ -870,17 +885,11 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Mengingat identitas agama Buddha, mengenali simbol-simbol keagamaan Buddha dan alat-alat ritual di lingkungan rumah dan sekolahnya.",
         "topik": [
           {
-            "judul": "Simbol dan Identitas Agama Buddha",
+            "judul": "Simbol dan Ritual Buddhis",
             "materi": [
-              "Mengingat identitas agama Buddha",
-              "Mengenali simbol-simbol keagamaan Buddha"
-            ]
-          },
-          {
-            "judul": "Alat Ritual Buddhis",
-            "materi": [
-              "Mengenali alat-alat ritual di rumah",
-              "Mengenali alat-alat ritual di sekolah"
+              "Identitas agama Buddha",
+              "Simbol-simbol keagamaan Buddha",
+              "Alat-alat ritual di lingkungan rumah dan sekolah"
             ]
           }
         ]
@@ -889,20 +898,18 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Meniru sopan santun, mengenali prinsip pergaulan yang harmonis berdasarkan empat sifat luhur dan hukum karma di lingkungan rumah, sekolah, dan tempat ibadah.",
         "topik": [
           {
-            "judul": "Sopan Santun dan Pergaulan Harmonis",
+            "judul": "Sopan Santun dan Pergaulan",
             "materi": [
               "Meniru sopan santun",
-              "Mengenali prinsip pergaulan yang harmonis"
+              "Prinsip pergaulan harmonis (empat sifat luhur)"
             ]
           },
           {
-            "judul": "Etika Berdasarkan Ajaran Buddha",
+            "judul": "Hukum Karma",
             "materi": [
-              "Memahami empat sifat luhur dalam pergaulan",
-              "Memahami hukum karma",
-              "Menerapkan etika di lingkungan rumah",
-              "Menerapkan etika di lingkungan sekolah",
-              "Menerapkan etika di tempat ibadah"
+              "Hukum karma di lingkungan rumah",
+              "Hukum karma di lingkungan sekolah",
+              "Hukum karma di tempat ibadah"
             ]
           }
         ]
@@ -910,64 +917,97 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
     },
     "Pendidikan Agama Khonghucu dan Budi Pekerti": {
       "Sejarah Suci": {
-        "cp": "Menjelaskan keteladanan masa kecil Nabi Kōngzi (孔子).",
+        "cp": "Menjelaskan riwayat dan keluarga Nabi Kōngzi (孔子); menginterpretasikan Kisah Keteladanan Anak Berbakti.",
         "topik": [
           {
-            "judul": "Kisah Teladan Nabi Kōngzi",
+            "judul": "Riwayat Nabi Kōngzi",
             "materi": [
-              "Menjelaskan masa kecil Nabi Kōngzi"
+              "Riwayat dan keluarga Nabi Kōngzi (孔子)"
+            ]
+          },
+          {
+            "judul": "Kisah Keteladanan",
+            "materi": [
+              "Kisah Keteladanan Anak Berbakti"
             ]
           }
         ]
       },
       "Kitab Suci": {
-        "cp": "Menjelaskan kitab suci agama Khonghucu.",
+        "cp": "Menjelaskan ayat-ayat suci yang terdapat dalam kitab Bakti (Xiaojīng孝经), Sishū (四书) dan Wŭjīng(五经) yang berkaitan dengan kisah anak berbakti dan keteladanan Nabi Kōngzi (孔).",
         "topik": [
           {
-            "judul": "Mengenal Kitab Suci Khonghucu",
+            "judul": "Ayat Suci tentang Bakti dan Keteladanan",
             "materi": [
-              "Menjelaskan kitab suci agama Khonghucu"
+              "Ayat suci dalam kitab Bakti (Xiaojīng孝经)",
+              "Ayat suci dalam Sishū (四书)",
+              "Ayat suci dalam Wŭjīng(五经) yang berkaitan dengan kisah anak berbakti",
+              "Ayat suci dalam Wŭjīng(五经) yang berkaitan dengan keteladanan Nabi Kōngzi (孔)"
             ]
           }
         ]
       },
       "Keimanan": {
-        "cp": "Menjelaskan Tiān(天)Maha Pencipta dan orang tua sebagai wakil Tian (天) di dunia.",
+        "cp": "Menjelaskan konsep Tiān (天) dalam agama Khonghucu bahwa manusia diciptakan Tian (天) melalui kedua orang tua; menginterpretasikan peran keberadaan leluhur dalam kehidupan manusia serta Nabi Kōngzi (孔子) sebagai genta rohani Tiān (天), Tiān Zhĩ Mùduó (天之木铎).",
         "topik": [
           {
-            "judul": "Konsep Tiān sebagai Pencipta",
+            "judul": "Konsep Tiān dan Penciptaan Manusia",
             "materi": [
-              "Menjelaskan Tiān (天) sebagai Maha Pencipta"
+              "Konsep Tiān (天) sebagai pencipta",
+              "Manusia diciptakan Tiān (天) melalui orang tua"
             ]
           },
           {
-            "judul": "Peran Orang Tua sebagai Wakil Tiān",
+            "judul": "Peran Leluhur dan Nabi Kōngzi",
             "materi": [
-              "Menjelaskan orang tua sebagai wakil Tiān (天) di dunia"
+              "Peran keberadaan leluhur",
+              "Nabi Kōngzi (孔子) sebagai genta rohani Tiān (天), Tiān Zhĩ Mùduó (天之木铎)"
             ]
           }
         ]
       },
       "Tata Ibadah": {
-        "cp": "Mendemonstrasikan sikap bào xīn bādé (抱心八德) dan bào tàijí bādé (抱太極八德).",
+        "cp": "Menerapkan sikap dalam berdoa dan menghormat, sembahyang kepada Tiān (天), Nabi Kōngzi (孔子), dan leluhur serta perlengkapan sembahyang di altar.",
         "topik": [
           {
-            "judul": "Sikap Ibadah",
+            "judul": "Sikap dan Praktik Sembahyang",
             "materi": [
-              "Mendemonstrasikan sikap bào xīn bādé (delapan kebajikan dalam hati)",
-              "Mendemonstrasikan sikap bào tàijí bādé (delapan kebajikan dalam tindakan)"
+              "Sikap dalam berdoa dan menghormat",
+              "Sembahyang kepada Tiān (天)",
+              "Sembahyang kepada Nabi Kōngzi (孔子)",
+              "Sembahyang kepada leluhur"
+            ]
+          },
+          {
+            "judul": "Perlengkapan Sembahyang",
+            "materi": [
+              "Perlengkapan sembahyang di altar"
             ]
           }
         ]
       },
       "Perilaku Jūnzi (君子)": {
-        "cp": "Mendemonstrasikan merawat tubuh sebagai awal laku bakti kepada orang tua.",
+        "cp": "Menerapkan sikap bakti dan hormat kepada orang tua sebagai wujud hormat kepada Tiān(天), pembiasaan berdoa sebelum maupun sesudah beraktivitas, dan sikap toleransi dengan teman, serta sikap tanggung jawab terhadap kebutuhan diri sendiri.",
         "topik": [
           {
-            "judul": "Bakti kepada Orang Tua",
+            "judul": "Bakti dan Hormat",
             "materi": [
-              "Merawat tubuh sebagai bentuk bakti",
-              "Menunjukkan hormat kepada orang tua"
+              "Sikap bakti kepada orang tua",
+              "Sikap hormat kepada orang tua sebagai wujud hormat kepada Tiān (天)"
+            ]
+          },
+          {
+            "judul": "Kebiasaan Berdoa",
+            "materi": [
+              "Berdoa sebelum beraktivitas",
+              "Berdoa sesudah beraktivitas"
+            ]
+          },
+          {
+            "judul": "Sikap Sosial dan Tanggung Jawab",
+            "materi": [
+              "Sikap toleransi dengan teman",
+              "Sikap tanggung jawab terhadap kebutuhan diri sendiri"
             ]
           }
         ]
@@ -1275,7 +1315,7 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Membaca, menulis, dan membedakan huruf hijaiah bersambung; menghafal dan menjelaskan beberapa surah pendek, hadis tentang kewajiban salat dan menjaga hubungan baik dengan sesama.",
         "topik": [
           {
-            "judul": "Keterampilan Al-Qur'an Hadis",
+            "judul": "Keterampilan Huruf Hijaiah",
             "materi": [
               "Membaca huruf hijaiah bersambung",
               "Menulis huruf hijaiah bersambung",
@@ -1283,14 +1323,12 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
             ]
           },
           {
-            "judul": "Memahami Surah Pendek dan Hadis",
+            "judul": "Hafalan dan Penjelasan Surah Pendek dan Hadis",
             "materi": [
-              "Menghafal beberapa surah pendek Al-Qur'an",
-              "Menjelaskan beberapa surah pendek Al-Qur'an",
-              "Menghafal hadis tentang kewajiban salat",
-              "Menjelaskan hadis tentang kewajiban salat",
-              "Menghafal hadis tentang menjaga hubungan baik dengan sesama",
-              "Menjelaskan hadis tentang menjaga hubungan baik dengan sesama"
+              "Menghafal beberapa surah pendek",
+              "Menjelaskan beberapa surah pendek",
+              "Hadis tentang kewajiban salat",
+              "Hadis tentang menjaga hubungan baik dengan sesama"
             ]
           }
         ]
@@ -1299,18 +1337,13 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menjelaskan dan meyakini sifat-sifat Allah Swt., iman kepada kitab-kitab Allah Swt., beberapa asmaulhusna, dan iman kepada rasul-rasul Allah Swt.",
         "topik": [
           {
-            "judul": "Memahami Sifat Allah",
+            "judul": "Keyakinan kepada Allah Swt. dan Utusan-Nya",
             "materi": [
               "Menjelaskan sifat-sifat Allah Swt.",
-              "Meyakini sifat-sifat Allah Swt."
-            ]
-          },
-          {
-            "judul": "Iman kepada Kitab dan Rasul",
-            "materi": [
-              "Meyakini kitab-kitab Allah Swt.",
-              "Mengenal beberapa Asmaulhusna",
-              "Meyakini rasul-rasul Allah Swt."
+              "Meyakini sifat-sifat Allah Swt.",
+              "Iman kepada kitab-kitab Allah Swt.",
+              "Beberapa asmaulhusna",
+              "Iman kepada rasul-rasul Allah Swt."
             ]
           }
         ]
@@ -1319,17 +1352,17 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menerapkan akhlak terhadap Allah Swt. dengan berbaik sangka kepada-Nya, akhlak terhadap orang tua, keluarga, dan guru.",
         "topik": [
           {
-            "judul": "Akhlak kepada Allah",
+            "judul": "Akhlak kepada Allah Swt.",
             "materi": [
               "Berbaik sangka kepada Allah Swt."
             ]
           },
           {
-            "judul": "Akhlak Sosial",
+            "judul": "Akhlak kepada Sesama",
             "materi": [
-              "Menerapkan akhlak baik kepada orang tua",
-              "Menerapkan akhlak baik kepada keluarga",
-              "Menerapkan akhlak baik kepada guru"
+              "Akhlak terhadap orang tua",
+              "Akhlak terhadap keluarga",
+              "Akhlak terhadap guru"
             ]
           }
         ]
@@ -1338,19 +1371,17 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menerapkan azan dan ikamah, salat jumat dan salat sunah; menjelaskan balig dan tanggung jawab yang menyertainya (taklif).",
         "topik": [
           {
-            "judul": "Praktik Ibadah Lanjutan",
+            "judul": "Praktik Ibadah Salat",
             "materi": [
-              "Menerapkan azan",
-              "Menerapkan ikamah",
-              "Menerapkan salat jumat",
-              "Menerapkan salat sunah"
+              "Menerapkan azan dan ikamah",
+              "Salat jumat",
+              "Salat sunah"
             ]
           },
           {
-            "judul": "Konsep Balig",
+            "judul": "Kewajiban Balig",
             "materi": [
-              "Menjelaskan balig (dewasa)",
-              "Memahami tanggung jawab (taklif) setelah balig"
+              "Menjelaskan balig dan tanggung jawab yang menyertainya (taklif)"
             ]
           }
         ]
@@ -1359,137 +1390,132 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menceritakan dan menjelaskan kisah Nabi Muhammad saw. sebelum dan sesudah menjadi rasul periode Makkah.",
         "topik": [
           {
-            "judul": "Sirah Nabi Muhammad di Makkah",
+            "judul": "Kisah Nabi Muhammad saw. Periode Makkah",
             "materi": [
-              "Menceritakan kisah Nabi Muhammad saw. sebelum menjadi rasul di Makkah",
-              "Menjelaskan kisah Nabi Muhammad saw. sesudah menjadi rasul di Makkah"
+              "Kisah Nabi Muhammad saw. sebelum menjadi rasul periode Makkah",
+              "Kisah Nabi Muhammad saw. sesudah menjadi rasul periode Makkah"
             ]
           }
         ]
       }
     },
     "Pendidikan Agama Kristen dan Budi Pekerti": {
-      "Allah Berkarya - Allah Pencipta": {
+      "Allah Pencipta": {
         "cp": "Murid memahami Allah menciptakan flora dan fauna, serta manusia (perempuan dan laki-laki).",
         "topik": [
           {
-            "judul": "Memahami Allah sebagai Pencipta Kehidupan",
+            "judul": "Allah sebagai Pencipta Kehidupan",
             "materi": [
-              "Memahami Allah menciptakan flora dan fauna",
-              "Memahami Allah menciptakan manusia (perempuan dan laki-laki)"
+              "Allah menciptakan flora",
+              "Allah menciptakan fauna",
+              "Allah menciptakan manusia (perempuan dan laki-laki)"
             ]
           }
         ]
       },
-      "Allah Berkarya - Allah Pemelihara": {
+      "Allah Pemelihara": {
         "cp": "Murid memahami pemeliharaan Allah pada dirinya dan melalui kehadiran orang-orang di sekitarnya.",
         "topik": [
           {
-            "judul": "Pemeliharaan Allah dalam Diri dan Sesama",
+            "judul": "Pemeliharaan Allah dalam Diri dan Lingkungan",
             "materi": [
-              "Memahami pemeliharaan Allah pada diri",
-              "Memahami pemeliharaan Allah melalui kehadiran orang-orang di sekitar"
+              "Pemeliharaan Allah pada diri",
+              "Kehadiran orang-orang di sekitar"
             ]
           }
         ]
       },
-      "Allah Berkarya - Allah Penyelamat": {
+      "Allah Penyelamat": {
         "cp": "Murid memahami Allah sebagai penyelamat.",
         "topik": [
           {
-            "judul": "Memahami Konsep Penyelamatan",
+            "judul": "Allah Penyelamat",
             "materi": [
-              "Memahami Allah sebagai penyelamat"
+              "Allah sebagai penyelamat"
             ]
           }
         ]
       },
-      "Allah Berkarya - Allah Pembaru": {
+      "Allah Pembaru": {
         "cp": "Murid mengenal Allah pembaru.",
         "topik": [
           {
-            "judul": "Mengenal Allah sebagai Pembaru",
+            "judul": "Allah Pembaru",
             "materi": [
-              "Mengenal sifat Allah sebagai pembaru"
+              "Allah sebagai pembaru"
             ]
           }
         ]
       },
-      "Manusia dan Nilai-nilai Kristiani - Hakikat Manusia": {
+      "Hakikat Manusia": {
         "cp": "Murid memahami diri sebagai makhluk individu dan sosial yang dapat bergaul dan bekerja sama dengan teman, saudara, dan orang tua.",
         "topik": [
           {
-            "judul": "Memahami Diri sebagai Individu dan Sosial",
+            "judul": "Manusia sebagai Makhluk Sosial",
             "materi": [
-              "Memahami diri sebagai makhluk individu",
-              "Memahami diri sebagai makhluk sosial"
-            ]
-          },
-          {
-            "judul": "Keterampilan Bergaul dan Bekerja Sama",
-            "materi": [
-              "Mampu bergaul dengan teman, saudara, dan orang tua",
-              "Mampu bekerja sama dengan teman, saudara, dan orang tua"
+              "Diri sebagai makhluk individu dan sosial",
+              "Dapat bergaul dengan teman, saudara, dan orang tua",
+              "Dapat bekerja sama dengan teman, saudara, dan orang tua"
             ]
           }
         ]
       },
-      "Manusia dan Nilai-nilai Kristiani - Nilai-nilai Kristiani": {
+      "Nilai-nilai Kristiani": {
         "cp": "Murid memahami sikap disiplin di rumah dan di sekolah.",
         "topik": [
           {
-            "judul": "Menerapkan Disiplin",
+            "judul": "Sikap Disiplin",
             "materi": [
-              "Memahami sikap disiplin di rumah",
-              "Memahami sikap disiplin di sekolah"
+              "Sikap disiplin di rumah",
+              "Sikap disiplin di sekolah"
             ]
           }
         ]
       },
-      "Gereja dan Masyarakat Majemuk - Tugas Panggilan Gereja": {
+      "Tugas Panggilan Gereja": {
         "cp": "Murid memahami tugas panggilan gereja untuk bersekutu, bersaksi, dan melayani.",
         "topik": [
           {
-            "judul": "Tiga Tugas Panggilan Gereja",
+            "judul": "Tugas Panggilan Gereja",
             "materi": [
-              "Memahami tugas gereja untuk bersekutu",
-              "Memahami tugas gereja untuk bersaksi",
-              "Memahami tugas gereja untuk melayani"
+              "Tugas gereja untuk bersekutu",
+              "Tugas gereja untuk bersaksi",
+              "Tugas gereja untuk melayani"
             ]
           }
         ]
       },
-      "Gereja dan Masyarakat Majemuk - Masyarakat Majemuk": {
+      "Masyarakat Majemuk": {
         "cp": "Murid memahami keragaman budaya dan agama sebagai anugerah Allah.",
         "topik": [
           {
-            "judul": "Menghargai Keragaman",
+            "judul": "Keragaman Budaya dan Agama",
             "materi": [
-              "Memahami keragaman budaya sebagai anugerah Allah",
-              "Memahami keragaman agama sebagai anugerah Allah"
+              "Keragaman budaya sebagai anugerah Allah",
+              "Keragaman agama sebagai anugerah Allah"
             ]
           }
         ]
       },
-      "Alam dan Lingkungan Hidup - Alam Ciptaan Allah": {
+      "Alam Ciptaan Allah": {
         "cp": "Murid memahami Allah hadir dalam berbagai fenomena alam.",
         "topik": [
           {
-            "judul": "Kehadiran Allah dalam Alam",
+            "judul": "Kehadiran Allah dalam Fenomena Alam",
             "materi": [
-              "Memahami Allah hadir dalam fenomena alam"
+              "Allah hadir dalam berbagai fenomena alam"
             ]
           }
         ]
       },
-      "Alam dan Lingkungan Hidup - Tanggung Jawab Manusia Terhadap Alam": {
+      "Tanggung Jawab Manusia Terhadap Alam": {
         "cp": "Murid memahami upaya memelihara alam dan lingkungan sekitarnya.",
         "topik": [
           {
-            "judul": "Tanggung Jawab Lingkungan",
+            "judul": "Upaya Memelihara Alam",
             "materi": [
-              "Memahami upaya memelihara alam sekitar",
-              "Memahami upaya memelihara lingkungan sekitar"
+              "Memelihara alam sekitar",
+              "Memelihara lingkungan sekitar"
             ]
           }
         ]
@@ -1500,19 +1526,18 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Murid memahami dirinya sebagai pribadi yang tumbuh dan berkembang, mewujudkan iman dengan cara melakukan perbuatan baik; memahami diri sebagai pribadi yang unik, bersyukur dan bersedia mengembangkan keunikan diri bersama orang lain dan lingkungan sekitar.",
         "topik": [
           {
-            "judul": "Pertumbuhan Diri dan Iman",
+            "judul": "Pertumbuhan dan Pengembangan Diri",
             "materi": [
               "Memahami diri sebagai pribadi yang tumbuh dan berkembang",
-              "Mewujudkan iman melalui perbuatan baik"
+              "Mewujudkan iman dengan perbuatan baik"
             ]
           },
           {
-            "judul": "Keunikan dan Perkembangan Diri",
+            "judul": "Keunikan Diri dan Lingkungan",
             "materi": [
               "Memahami diri sebagai pribadi yang unik",
-              "Bersyukur atas keunikan diri",
-              "Mengembangkan keunikan diri bersama orang lain",
-              "Mengembangkan keunikan diri di lingkungan sekitar"
+              "Bersyukur",
+              "Mengembangkan keunikan diri bersama orang lain dan lingkungan sekitar"
             ]
           }
         ]
@@ -1521,23 +1546,28 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Murid memahami karya keselamatan Allah melalui tokoh-tokoh Yusuf, Musa, dan Yosua; memahami Sepuluh Perintah Allah sebagai pedoman hidup; memahami bangsa Israel memasuki tanah terjanji, Allah memberkati pemimpin Israel (Samuel, Saul, dan Daud); memahami Yesus sebagai pemenuhan janji Allah yang mewartakan Kerajaan Allah melalui perkataan, perbuatan, dan mukjizat.",
         "topik": [
           {
-            "judul": "Karya Keselamatan Allah di Perjanjian Lama",
+            "judul": "Karya Keselamatan Allah",
             "materi": [
-              "Memahami kisah Yusuf",
-              "Memahami kisah Musa",
-              "Memahami kisah Yosua",
-              "Memahami Sepuluh Perintah Allah sebagai pedoman hidup",
-              "Memahami bangsa Israel memasuki tanah terjanji",
-              "Memahami berkat Allah kepada pemimpin Israel (Samuel, Saul, Daud)"
+              "Melalui tokoh Yusuf",
+              "Melalui tokoh Musa",
+              "Melalui tokoh Yosua"
             ]
           },
           {
-            "judul": "Yesus Mewartakan Kerajaan Allah",
+            "judul": "Pedoman Hidup dan Berkat Tuhan",
             "materi": [
-              "Memahami Yesus sebagai pemenuhan janji Allah",
-              "Memahami Yesus mewartakan Kerajaan Allah melalui perkataan",
-              "Memahami Yesus mewartakan Kerajaan Allah melalui perbuatan",
-              "Memahami Yesus mewartakan Kerajaan Allah melalui mukjizat"
+              "Sepuluh Perintah Allah sebagai pedoman hidup",
+              "Bangsa Israel memasuki tanah terjanji",
+              "Allah memberkati Samuel, Saul, dan Daud"
+            ]
+          },
+          {
+            "judul": "Pewartaan Kerajaan Allah oleh Yesus",
+            "materi": [
+              "Yesus sebagai pemenuhan janji Allah",
+              "Melalui perkataan Yesus",
+              "Melalui perbuatan Yesus",
+              "Melalui mukjizat Yesus"
             ]
           }
         ]
@@ -1546,20 +1576,19 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Murid memahami Sakramen Baptis, Sakramen Ekaristi, dan Sakramen Tobat; mengungkapkan rasa syukur dalam doa pribadi dan doa bersama, mewujudkan makna doa melalui sikap dan tindakan dalam kehidupan sehari-hari.",
         "topik": [
           {
-            "judul": "Mengenal Sakramen Gereja",
+            "judul": "Sakramen Gereja",
             "materi": [
-              "Memahami Sakramen Baptis",
-              "Memahami Sakramen Ekaristi",
-              "Memahami Sakramen Tobat"
+              "Sakramen Baptis",
+              "Sakramen Ekaristi",
+              "Sakramen Tobat"
             ]
           },
           {
-            "judul": "Doa dan Ucapan Syukur",
+            "judul": "Doa Syukur dan Makna Doa",
             "materi": [
               "Mengungkapkan rasa syukur dalam doa pribadi",
               "Mengungkapkan rasa syukur dalam doa bersama",
-              "Mewujudkan makna doa melalui sikap sehari-hari",
-              "Mewujudkan makna doa melalui tindakan sehari-hari"
+              "Mewujudkan makna doa melalui sikap dan tindakan sehari-hari"
             ]
           }
         ]
@@ -1568,7 +1597,7 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Murid mewujudkan imannya di tengah masyarakat melalui kebiasaan menghormati pemimpin masyarakat, menghargai tradisi masyarakat, melestarikan lingkungan alam; mewujudkan rasa hormat terhadap orang tua, menghormati hidup pribadi, menghormati milik orang lain.",
         "topik": [
           {
-            "judul": "Iman dan Tanggung Jawab Sosial",
+            "judul": "Iman dalam Interaksi Sosial",
             "materi": [
               "Menghormati pemimpin masyarakat",
               "Menghargai tradisi masyarakat",
@@ -1576,10 +1605,10 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
             ]
           },
           {
-            "judul": "Sikap Hormat dan Menghargai",
+            "judul": "Sikap Hormat",
             "materi": [
-              "Menghormati orang tua",
-              "Menghormati hidup pribadi orang lain",
+              "Rasa hormat terhadap orang tua",
+              "Menghormati hidup pribadi",
               "Menghormati milik orang lain"
             ]
           }
@@ -1593,7 +1622,7 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
           {
             "judul": "Mengenal Kitab Purāņa",
             "materi": [
-              "Mengenali Kitab Purāņa"
+              "Kitab Purāņa"
             ]
           }
         ]
@@ -1602,10 +1631,10 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Memahami Hyang Widhi Wasa sebagai Tri Murti dan Cadu Sakti.",
         "topik": [
           {
-            "judul": "Konsep Ketuhanan Hindu",
+            "judul": "Aspek Ketuhanan Hyang Widhi Wasa",
             "materi": [
-              "Memahami Hyang Widhi Wasa sebagai Tri Murti",
-              "Memahami Hyang Widhi Wasa sebagai Cadu Sakti"
+              "Hyang Widhi Wasa sebagai Tri Murti",
+              "Hyang Widhi Wasa sebagai Cadu Sakti"
             ]
           }
         ]
@@ -1614,10 +1643,10 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menerapkan Ajaran Tri Parartha dan Catur Paramitha.",
         "topik": [
           {
-            "judul": "Ajaran Moral Hindu",
+            "judul": "Penerapan Ajaran Moral",
             "materi": [
-              "Menerapkan Tri Parartha (tiga perbuatan mulia)",
-              "Menerapkan Catur Paramitha (empat kebaikan)"
+              "Ajaran Tri Parartha",
+              "Ajaran Catur Paramitha"
             ]
           }
         ]
@@ -1626,10 +1655,10 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Mengenali Hari Suci dan Tempat Suci Agama Hindu sesuai kearifan lokal.",
         "topik": [
           {
-            "judul": "Hari Suci dan Tempat Ibadah",
+            "judul": "Perayaan dan Tempat Suci",
             "materi": [
-              "Mengenali hari suci agama Hindu",
-              "Mengenali tempat suci agama Hindu sesuai kearifan lokal"
+              "Hari Suci Agama Hindu",
+              "Tempat Suci Agama Hindu sesuai kearifan lokal"
             ]
           }
         ]
@@ -1638,9 +1667,9 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Mengenali Tokoh Penyebar Agama Hindu di Indonesia.",
         "topik": [
           {
-            "judul": "Tokoh Penyebar Hindu",
+            "judul": "Tokoh Sejarah Hindu",
             "materi": [
-              "Mengenali tokoh penyebar agama Hindu di Indonesia"
+              "Tokoh Penyebar Agama Hindu di Indonesia"
             ]
           }
         ]
@@ -1651,19 +1680,17 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Mengenali identitas Buddha Sakyamuni sebagai dasar keyakinan. Mengenali bahasa dalam agama Buddha. Meniru cara Buddha Sakyamuni dalam menghargai dan menyelesaikan masalah pergaulan di lingkungan terdekatnya, lingkungan sekolah dan rumah ibadah.",
         "topik": [
           {
-            "judul": "Identitas dan Ajaran Buddha Sakyamuni",
+            "judul": "Buddha Sakyamuni sebagai Dasar Keyakinan",
             "materi": [
-              "Mengenali identitas Buddha Sakyamuni sebagai dasar keyakinan",
-              "Mengenali bahasa dalam agama Buddha"
+              "Identitas Buddha Sakyamuni"
             ]
           },
           {
-            "judul": "Teladan Buddha Sakyamuni dalam Pergaulan",
+            "judul": "Bahasa dan Teladan Buddha",
             "materi": [
-              "Meniru cara Buddha Sakyamuni menghargai sesama",
-              "Meniru cara Buddha Sakyamuni menyelesaikan masalah pergaulan di lingkungan terdekat",
-              "Meniru cara Buddha Sakyamuni menyelesaikan masalah pergaulan di lingkungan sekolah",
-              "Meniru cara Buddha Sakyamuni menyelesaikan masalah pergaulan di rumah ibadah"
+              "Bahasa dalam agama Buddha",
+              "Meniru cara Buddha Sakyamuni menghargai",
+              "Meniru cara Buddha Sakyamuni menyelesaikan masalah pergaulan di lingkungan terdekat, sekolah, dan rumah ibadah"
             ]
           }
         ]
@@ -1672,14 +1699,9 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menirukan doa-doa Buddhis dalam kegiatan sehari-hari dan mengenali aliran atau tradisi dalam agama Buddha untuk menerapkan sikap bersatu dalam perbedaan di komunitas yang beragam.",
         "topik": [
           {
-            "judul": "Praktik Doa Buddhis",
+            "judul": "Doa dan Keragaman Tradisi",
             "materi": [
-              "Menirukan doa-doa Buddhis dalam kegiatan sehari-hari"
-            ]
-          },
-          {
-            "judul": "Keragaman dalam Buddha Dharma",
-            "materi": [
+              "Menirukan doa-doa Buddhis sehari-hari",
               "Mengenali aliran atau tradisi dalam agama Buddha",
               "Menerapkan sikap bersatu dalam perbedaan di komunitas yang beragam"
             ]
@@ -1692,16 +1714,14 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
           {
             "judul": "Etika Berlandaskan Pancasila Buddhis",
             "materi": [
-              "Meniru penerapan aturan dan sopan santun",
-              "Menerapkan nilai-nilai Pancasila Buddhis"
+              "Meniru penerapan aturan dan sopan santun (Pancasila Buddhis)"
             ]
           },
           {
-            "judul": "Sikap Tolong Menolong dan Lingkungan",
+            "judul": "Tolong Menolong dan Lingkungan",
             "materi": [
-              "Meniru sikap tolong menolong dalam menyelesaikan masalah sosial",
-              "Meniru sikap tolong menolong dalam kebersihan lingkungan",
-              "Meniru sikap tolong menolong dalam kelestarian lingkungan di rumah, sekolah, dan rumah ibadah"
+              "Meniru sikap tolong menolong dalam masalah sosial",
+              "Kebersihan dan kelestarian lingkungan di rumah, sekolah, dan rumah ibadah"
             ]
           }
         ]
@@ -1709,53 +1729,43 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
     },
     "Pendidikan Agama Khonghucu dan Budi Pekerti": {
       "Sejarah Suci": {
-        "cp": "Menjelaskan tentang watak sejati (xìng 性) menurut pendapat Mèngzi (孟子), Zhū Xī (朱熹) sebagai tokoh pembaharuan agama Khonghucu (Rújiào 儒教), keteladanan ibunda Nabi Kōngzi (孔子), ibunda Mèngzi (孟子), ibunda Õuyáng Xiū (欧阳修), dan ibunda Yuè Fēi (岳飛); menginterpretasikan sikap teladan dari murid-murid Nabi Kōngzi (孔子), riwayat Nabi Kōngzi (孔子) sebagai Genta Rohani Tiān (天) (Tiān Zhī Mùduó 天之木铎),",
+        "cp": "Menjelaskan tentang watak sejati (xìng 性) menurut pendapat Mèngzi (孟子), Zhū Xī (朱熹) sebagai tokoh pembaharuan agama Khonghucu (Rújiào 儒教), keteladanan ibunda Nabi Kōngzi (孔子), ibunda Mèngzi (孟子), ibunda Õuyáng Xiū (欧阳修), dan ibunda Yuè Fēi (岳飛); menginterpretasikan sikap teladan dari murid-murid Nabi Kōngzi (孔子), riwayat Nabi Kōngzi (孔子) sebagai Genta Rohani Tiān (天) (Tiān Zhĩ Mùduó 天之木铎),",
         "topik": [
           {
-            "judul": "Watak Sejati dan Tokoh Pembaharuan",
+            "judul": "Konsep Watak Sejati dan Tokoh Pembaharu",
             "materi": [
-              "Menjelaskan watak sejati (xìng 性) menurut Mèngzi",
-              "Menjelaskan watak sejati (xìng 性) menurut Zhū Xī",
-              "Mengenal Zhū Xī sebagai tokoh pembaharuan agama Khonghucu"
+              "Watak sejati (xìng 性) menurut Mèngzi (孟子)",
+              "Watak sejati (xìng 性) menurut Zhū Xī (朱熹)",
+              "Tokoh pembaharuan agama Khonghucu (Rújiào 儒教)"
             ]
           },
           {
-            "judul": "Teladan Ibunda Para Tokoh",
+            "judul": "Keteladanan Tokoh dan Nabi Kōngzi",
             "materi": [
-              "Mengenal keteladanan ibunda Nabi Kōngzi",
-              "Mengenal keteladanan ibunda Mèngzi",
-              "Mengenal keteladanan ibunda Õuyáng Xiū",
-              "Mengenal keteladanan ibunda Yuè Fēi"
-            ]
-          },
-          {
-            "judul": "Teladan Murid dan Riwayat Nabi Kōngzi",
-            "materi": [
-              "Menginterpretasikan sikap teladan murid-murid Nabi Kōngzi",
-              "Menginterpretasikan riwayat Nabi Kōngzi sebagai Genta Rohani Tiān (天)"
+              "Keteladanan ibunda Nabi Kōngzi (孔子)",
+              "Keteladanan ibunda Mèngzi (孟子)",
+              "Keteladanan ibunda Õuyáng Xiū (欧阳修)",
+              "Keteladanan ibunda Yuè Fēi (岳飛)",
+              "Sikap teladan murid-murid Nabi Kōngzi (孔子)",
+              "Riwayat Nabi Kōngzi (孔子) sebagai Genta Rohani Tiān (天) (Tiān Zhĩ Mùduó 天之木铎)"
             ]
           }
         ]
       },
       "Kitab Suci": {
-        "cp": "Menjelaskan bagian-bagian kitab suci yang pokok (Sìshū 四书) dan yang mendasari (Wŭjīng 五经), ayat dalam kitab Sìshū (四书) yang berkaitan dengan delapan kebajikan (bādé 八德); menginterpretasikan tiga kesukaan yang membawa faedah dan tiga kesukaan yang membawa celaka.",
+        "cp": "Menjelaskan bagian-bagian kitab suci yang pokok (Sishū 四书) dan yang mendasari (Wŭjīng 五经), ayat dalam kitab Sìshū (四书) yang berkaitan dengan delapan kebajikan (bādé 八德); menginterpretasikan tiga kesukaan yang membawa faedah dan tiga kesukaan yang membawa celaka.",
         "topik": [
           {
             "judul": "Struktur Kitab Suci",
             "materi": [
-              "Menjelaskan bagian pokok kitab Sìshū (Empat Kitab)",
-              "Menjelaskan bagian mendasari kitab Wŭjīng (Lima Klasik)"
+              "Bagian-bagian kitab suci pokok (Sishū 四书)",
+              "Bagian-bagian kitab suci mendasari (Wŭjīng 五经)"
             ]
           },
           {
-            "judul": "Delapan Kebajikan (Bādé)",
+            "judul": "Ajaran Delapan Kebajikan dan Kesukaan",
             "materi": [
-              "Menjelaskan ayat Sìshū yang berkaitan dengan delapan kebajikan (bādé 八德)"
-            ]
-          },
-          {
-            "judul": "Tiga Kesukaan",
-            "materi": [
+              "Ayat dalam Sìshū (四书) tentang delapan kebajikan (bādé 八德)",
               "Menginterpretasikan tiga kesukaan yang membawa faedah",
               "Menginterpretasikan tiga kesukaan yang membawa celaka"
             ]
@@ -1763,77 +1773,69 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         ]
       },
       "Keimanan": {
-        "cp": "Menjelaskan makna persembahyangan kepada Tiān (天), Nabi Kōngzi (孔子), para suci (shénmíng 神明) dan leluhur, tanda-tanda khusus menjelang wafat Nabi Kōngzi (孔子); menginterpretasikan cita-cita mulia dan semangat belajar Nabi Kōngzi (孔子); menerapkan nilai-nilai delapan keimanan (bāchéngzhēnguī 八诚箴规).",
+        "cp": "Menjelaskan makna persembahyangan kepada Tiān (天), Nabi Kōngzi(孔子), para suci (shénmíng 神明) dan leluhur, tanda-tanda khusus menjelang wafat Nabi Kōngzi (孔子); menginterpretasikan cita-cita mulia dan semangat belajar Nabi Kōngzi (孔子); menerapkan nilai-nilai delapan keimanan (bāchéngzhēnguī 八诚箴规).",
         "topik": [
           {
             "judul": "Makna Persembahyangan",
             "materi": [
-              "Menjelaskan makna persembahyangan kepada Tiān (天)",
-              "Menjelaskan makna persembahyangan kepada Nabi Kōngzi (孔子)",
-              "Menjelaskan makna persembahyangan kepada para suci (shénmíng 神明)",
-              "Menjelaskan makna persembahyangan kepada leluhur"
+              "Makna persembahyangan kepada Tiān (天)",
+              "Makna persembahyangan kepada Nabi Kōngzi (孔子)",
+              "Makna persembahyangan kepada para suci (shénmíng 神明)",
+              "Makna persembahyangan kepada leluhur"
             ]
           },
           {
-            "judul": "Cita-cita dan Semangat Nabi Kōngzi",
+            "judul": "Keteladanan dan Nilai Keimanan",
             "materi": [
-              "Menjelaskan tanda-tanda khusus menjelang wafat Nabi Kōngzi",
-              "Menginterpretasikan cita-cita mulia Nabi Kōngzi",
-              "Menginterpretasikan semangat belajar Nabi Kōngzi"
-            ]
-          },
-          {
-            "judul": "Penerapan Delapan Keimanan",
-            "materi": [
-              "Menerapkan nilai-nilai delapan keimanan (bāchéngzhēnguī 八诚箴规)"
+              "Tanda-tanda khusus menjelang wafat Nabi Kōngzi (孔子)",
+              "Cita-cita mulia Nabi Kōngzi (孔子)",
+              "Semangat belajar Nabi Kōngzi (孔子)",
+              "Nilai-nilai delapan keimanan (bāchéngzhēnguī 八诚箴规)"
             ]
           }
         ]
       },
       "Tata Ibadah": {
-        "cp": "Menjelaskan peralatan dan perlengkapan sembahyang, penataan altar leluhur; menerapkan sikap berdoa (bào xīn bādé 抱心八德), tata cara pelaksanaan ibadah kepada Tiān (天), Nabi Kōngzi (孔子), para suci (shénmíng 神明) dan leluhur di kelenteng/klenteng/bio/miào (庙) dan lītáng (礼堂).",
+        "cp": "Menjelaskan peralatan dan perlengkapan sembahyang, penataan altar leluhur; menerapkan sikap berdoa (bào xīn bādé 抱心八德), tata cara pelaksanaan ibadah kepada Tiān (天), Nabi Kōngzi (孔子),para suci (shénmíng 神明) dan leluhur di kelenteng/klenteng/bio/miào (庙) dan lītáng (礼堂).",
         "topik": [
           {
-            "judul": "Peralatan dan Penataan Ibadah",
+            "judul": "Perlengkapan dan Penataan Ibadah",
             "materi": [
-              "Menjelaskan peralatan sembahyang",
-              "Menjelaskan perlengkapan sembahyang",
-              "Menata altar leluhur"
+              "Peralatan dan perlengkapan sembahyang",
+              "Penataan altar leluhur"
             ]
           },
           {
-            "judul": "Tata Cara Ibadah dan Lokasi",
+            "judul": "Tata Cara Ibadah",
             "materi": [
-              "Menerapkan sikap berdoa (bào xīn bādé)",
-              "Menerapkan tata cara ibadah kepada Tiān (天)",
-              "Menerapkan tata cara ibadah kepada Nabi Kōngzi (孔子)",
-              "Menerapkan tata cara ibadah kepada para suci (shénmíng 神明)",
-              "Menerapkan tata cara ibadah kepada leluhur di kelenteng/klenteng/bio/miào (庙) dan lītáng (礼堂)"
+              "Sikap berdoa (bào xīn bādé 抱心八德)",
+              "Tata cara pelaksanaan ibadah kepada Tiān (天)",
+              "Tata cara pelaksanaan ibadah kepada Nabi Kōngzi (孔子)",
+              "Tata cara pelaksanaan ibadah kepada para suci (shénmíng 神明)",
+              "Tata cara pelaksanaan ibadah kepada leluhur di kelenteng/klenteng/bio/miào (庙) dan lītáng (礼堂)"
             ]
           }
         ]
       },
       "Perilaku Jūnzi (君子)": {
-        "cp": "Menerapkan sikap dan perilaku luhur Nabi Kōngzi (孔子), teladan murid-murid Nabi Kōngzi (孔子), menghargai waktu, berhati-hati, saling mengasihi sesama manusia, perilaku sesuai dengan delapan kebajikan (bādé八德), mudah bergaul tanpa membeda-bedakan, berani mengakui kesalahan dan memperbaiki diri.",
+        "cp": "Menerapkan sikap dan perilaku luhur Nabi Kōngzi(孔子), teladan murid-murid Nabi Kōngzi (孔子),menghargai waktu, berhati-hati, saling mengasihi sesama manusia, perilaku sesuai dengan delapan kebajikan (bādé八德),mudah bergaul tanpa membeda-bedakan, berani mengakui kesalahan dan memperbaiki diri.",
         "topik": [
           {
-            "judul": "Teladan Perilaku Luhur",
+            "judul": "Sikap dan Perilaku Luhur",
             "materi": [
-              "Menerapkan sikap luhur Nabi Kōngzi",
-              "Menerapkan perilaku luhur Nabi Kōngzi",
-              "Menerapkan teladan murid-murid Nabi Kōngzi"
+              "Sikap dan perilaku luhur Nabi Kōngzi (孔子)",
+              "Teladan murid-murid Nabi Kōngzi (孔子)"
             ]
           },
           {
-            "judul": "Nilai-nilai Sosial dan Etika",
+            "judul": "Nilai-nilai Keseharian",
             "materi": [
               "Menghargai waktu",
               "Berhati-hati",
               "Saling mengasihi sesama manusia",
-              "Berperilaku sesuai delapan kebajikan (bādé 八德)",
+              "Perilaku sesuai delapan kebajikan (bādé八德)",
               "Mudah bergaul tanpa membeda-bedakan",
-              "Berani mengakui kesalahan",
-              "Berani memperbaiki diri"
+              "Berani mengakui kesalahan dan memperbaiki diri"
             ]
           }
         ]
@@ -2129,22 +2131,20 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Membaca, menulis, dan membedakan huruf hijaiah bersambung; menjelaskan beberapa surah pendek dan hadis tentang berbuat baik kepada orang tua, guru, dan teman.",
         "topik": [
           {
-            "judul": "Keterampilan Al-Qur'an Hadis Lanjutan",
+            "judul": "Keterampilan Huruf Hijaiah dan Surah Pendek",
             "materi": [
-              "Membaca huruf hijaiah bersambung dengan lancar",
-              "Menulis huruf hijaiah bersambung dengan benar",
-              "Membedakan huruf hijaiah bersambung dengan teliti"
+              "Membaca huruf hijaiah bersambung",
+              "Menulis huruf hijaiah bersambung",
+              "Membedakan huruf hijaiah bersambung",
+              "Menjelaskan beberapa surah pendek"
             ]
           },
           {
-            "judul": "Memahami Ajaran Kebaikan",
+            "judul": "Hadis tentang Kebaikan Sosial",
             "materi": [
-              "Menjelaskan surah pendek tentang berbuat baik kepada orang tua",
-              "Menjelaskan hadis tentang berbuat baik kepada orang tua",
-              "Menjelaskan surah pendek tentang berbuat baik kepada guru",
-              "Menjelaskan hadis tentang berbuat baik kepada guru",
-              "Menjelaskan surah pendek tentang berbuat baik kepada teman",
-              "Menjelaskan hadis tentang berbuat baik kepada teman"
+              "Hadis tentang berbuat baik kepada orang tua",
+              "Hadis tentang berbuat baik kepada guru",
+              "Hadis tentang berbuat baik kepada teman"
             ]
           }
         ]
@@ -2153,24 +2153,11 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menjelaskan dan meyakini beberapa asmaulhusna, iman kepada hari akhir, iman kepada qada' dan qadar.",
         "topik": [
           {
-            "judul": "Memahami Asmaulhusna",
+            "judul": "Asmaulhusna dan Rukun Iman",
             "materi": [
-              "Menjelaskan beberapa Asmaulhusna",
-              "Meyakini beberapa Asmaulhusna"
-            ]
-          },
-          {
-            "judul": "Iman kepada Hari Akhir",
-            "materi": [
-              "Menjelaskan hari akhir",
-              "Meyakini hari akhir"
-            ]
-          },
-          {
-            "judul": "Iman kepada Qada' dan Qadar",
-            "materi": [
-              "Menjelaskan qada' dan qadar",
-              "Meyakini qada' dan qadar"
+              "Beberapa asmaulhusna",
+              "Iman kepada hari akhir",
+              "Iman kepada qada' dan qadar"
             ]
           }
         ]
@@ -2179,20 +2166,20 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menerapkan akhlak terhadap Allah Swt. dengan berdoa dan bertawakal kepada-Nya, akhlak terhadap teman, tetangga, non-muslim, hewan, dan tumbuhan.",
         "topik": [
           {
-            "judul": "Akhlak kepada Allah",
+            "judul": "Akhlak kepada Allah Swt.",
             "materi": [
               "Berdoa kepada Allah Swt.",
               "Bertawakal kepada Allah Swt."
             ]
           },
           {
-            "judul": "Akhlak Sosial dan Lingkungan",
+            "judul": "Akhlak kepada Lingkungan Sosial dan Alam",
             "materi": [
-              "Menerapkan akhlak baik kepada teman",
-              "Menerapkan akhlak baik kepada tetangga",
-              "Menerapkan akhlak baik kepada non-muslim",
-              "Menerapkan akhlak baik kepada hewan",
-              "Menerapkan akhlak baik kepada tumbuhan"
+              "Akhlak terhadap teman",
+              "Akhlak terhadap tetangga",
+              "Akhlak terhadap non-muslim",
+              "Akhlak terhadap hewan",
+              "Akhlak terhadap tumbuhan"
             ]
           }
         ]
@@ -2201,26 +2188,28 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menerapkan puasa wajib dan sunah, makanan minuman yang halal dan haram, zakat, infak, sedekah, dan wakaf.",
         "topik": [
           {
-            "judul": "Praktik Ibadah Puasa",
+            "judul": "Ibadah Puasa",
             "materi": [
-              "Menerapkan puasa wajib",
-              "Menerapkan puasa sunah"
+              "Puasa wajib",
+              "Puasa sunah"
             ]
           },
           {
-            "judul": "Hukum Halal Haram",
+            "judul": "Ketentuan Makanan dan Minuman",
             "materi": [
-              "Memahami makanan halal dan haram",
-              "Memahami minuman halal dan haram"
+              "Makanan halal",
+              "Minuman halal",
+              "Makanan haram",
+              "Minuman haram"
             ]
           },
           {
-            "judul": "Sedekah dan Amal",
+            "judul": "Amal Sosial",
             "materi": [
-              "Menerapkan zakat",
-              "Menerapkan infak",
-              "Menerapkan sedekah",
-              "Menerapkan wakaf"
+              "Zakat",
+              "Infak",
+              "Sedekah",
+              "Wakaf"
             ]
           }
         ]
@@ -2229,134 +2218,133 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menceritakan dan menjelaskan kisah Nabi Muhammad saw. periode Madinah dan khulafaurasyidin.",
         "topik": [
           {
-            "judul": "Sirah Nabi Muhammad di Madinah",
+            "judul": "Sejarah Nabi Muhammad saw. Periode Madinah",
             "materi": [
-              "Menceritakan kisah Nabi Muhammad saw. periode Madinah",
-              "Menjelaskan kisah Nabi Muhammad saw. periode Madinah"
+              "Kisah Nabi Muhammad saw. periode Madinah"
             ]
           },
           {
-            "judul": "Sejarah Khulafaur Rasyidin",
+            "judul": "Sejarah Khulafaurasyidin",
             "materi": [
-              "Menceritakan kisah Khulafaur Rasyidin",
-              "Menjelaskan kisah Khulafaur Rasyidin"
+              "Kisah khulafaurasyidin"
             ]
           }
         ]
       }
     },
     "Pendidikan Agama Kristen dan Budi Pekerti": {
-      "Allah Berkarya - Allah Pencipta": {
+      "Allah Pencipta": {
         "cp": "Murid memahami Allah Pencipta berkarya melalui keluarga, sekolah, dan masyarakat.",
         "topik": [
           {
-            "judul": "Karya Allah dalam Kehidupan",
+            "judul": "Karya Allah dalam Lingkungan Sosial",
             "materi": [
-              "Memahami karya Allah Pencipta melalui keluarga",
-              "Memahami karya Allah Pencipta melalui sekolah",
-              "Memahami karya Allah Pencipta melalui masyarakat"
+              "Allah berkarya melalui keluarga",
+              "Allah berkarya melalui sekolah",
+              "Allah berkarya melalui masyarakat"
             ]
           }
         ]
       },
-      "Allah Berkarya - Allah Pemelihara": {
+      "Allah Pemelihara": {
         "cp": "Murid memahami Allah memelihara seluruh umat manusia termasuk mereka yang berkebutuhan khusus.",
         "topik": [
           {
-            "judul": "Pemeliharaan Allah untuk Semua",
+            "judul": "Pemeliharaan Allah Universal",
             "materi": [
-              "Memahami pemeliharaan Allah untuk seluruh umat manusia",
-              "Memahami pemeliharaan Allah untuk mereka yang berkebutuhan khusus"
+              "Allah memelihara seluruh umat manusia",
+              "Allah memelihara mereka yang berkebutuhan khusus"
             ]
           }
         ]
       },
-      "Allah Berkarya - Allah Penyelamat": {
+      "Allah Penyelamat": {
         "cp": "Murid memahami Allah menyelamatkan manusia melalui Yesus Kristus.",
         "topik": [
           {
-            "judul": "Penyelamatan melalui Yesus Kristus",
+            "judul": "Keselamatan melalui Yesus Kristus",
             "materi": [
-              "Memahami Allah menyelamatkan manusia melalui Yesus Kristus"
+              "Allah menyelamatkan manusia melalui Yesus Kristus"
             ]
           }
         ]
       },
-      "Allah Berkarya - Allah Pembaru": {
+      "Allah Pembaru": {
         "cp": "Murid memahami Allah membarui hidup Manusia.",
         "topik": [
           {
-            "judul": "Pembaharuan Hidup oleh Allah",
+            "judul": "Pembaruan Hidup oleh Allah",
             "materi": [
-              "Memahami Allah membarui hidup manusia"
+              "Allah membarui hidup manusia"
             ]
           }
         ]
       },
-      "Manusia dan Nilai-nilai Kristiani - Hakikat Manusia": {
+      "Hakikat Manusia": {
         "cp": "Murid memahami bahwa manusia adalah makhluk terbatas.",
         "topik": [
           {
-            "judul": "Memahami Keterbatasan Manusia",
+            "judul": "Keterbatasan Manusia",
             "materi": [
-              "Memahami manusia sebagai makhluk terbatas"
+              "Manusia adalah makhluk terbatas"
             ]
           }
         ]
       },
-      "Manusia dan Nilai-nilai Kristiani - Nilai-nilai Kristiani": {
+      "Nilai-nilai Kristiani": {
         "cp": "Murid memahami buah Roh dalam interaksi antar sesama.",
         "topik": [
           {
             "judul": "Buah Roh dalam Interaksi Sosial",
             "materi": [
-              "Memahami buah Roh dalam interaksi antar sesama"
+              "Buah Roh dalam interaksi antar sesama"
             ]
           }
         ]
       },
-      "Gereja dan Masyarakat Majemuk - Tugas Panggilan Gereja": {
+      "Tugas Panggilan Gereja": {
         "cp": "Murid memahami pelayanan terhadap sesama sebagai tanggung jawab orang beriman dalam kehidupan.",
         "topik": [
           {
-            "judul": "Tanggung Jawab Pelayanan Gereja",
+            "judul": "Pelayanan dan Tanggung Jawab Orang Beriman",
             "materi": [
-              "Memahami pelayanan terhadap sesama sebagai tanggung jawab orang beriman"
+              "Pelayanan terhadap sesama",
+              "Tanggung jawab orang beriman dalam kehidupan"
             ]
           }
         ]
       },
-      "Gereja dan Masyarakat Majemuk - Masyarakat Majemuk": {
+      "Masyarakat Majemuk": {
         "cp": "Murid memahami hidup rukun dan toleransi dalam masyarakat majemuk.",
         "topik": [
           {
             "judul": "Hidup Rukun dan Toleransi",
             "materi": [
-              "Memahami hidup rukun dalam masyarakat majemuk",
-              "Memahami toleransi dalam masyarakat majemuk"
+              "Hidup rukun dalam masyarakat majemuk",
+              "Toleransi dalam masyarakat majemuk"
             ]
           }
         ]
       },
-      "Alam dan Lingkungan Hidup - Alam Ciptaan Allah": {
+      "Alam Ciptaan Allah": {
         "cp": "Murid memahami Allah hadir melalui alam ciptaan.",
         "topik": [
           {
-            "judul": "Kehadiran Allah dalam Alam",
+            "judul": "Kehadiran Allah melalui Alam",
             "materi": [
-              "Memahami Allah hadir melalui alam ciptaan"
+              "Allah hadir melalui alam ciptaan"
             ]
           }
         ]
       },
-      "Alam dan Lingkungan Hidup - Tanggung Jawab Manusia Terhadap Alam": {
+      "Tanggung Jawab Manusia Terhadap Alam": {
         "cp": "Murid memahami tanggung jawab orang beriman dalam memelihara alam dan lingkungan hidup.",
         "topik": [
           {
-            "judul": "Tanggung Jawab Pemeliharaan Alam",
+            "judul": "Tanggung Jawab Memelihara Alam",
             "materi": [
-              "Memahami tanggung jawab orang beriman dalam memelihara alam",
-              "Memahami tanggung jawab orang beriman dalam memelihara lingkungan hidup"
+              "Tanggung jawab orang beriman dalam memelihara alam",
+              "Tanggung jawab orang beriman dalam memelihara lingkungan hidup"
             ]
           }
         ]
@@ -2369,20 +2357,15 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
           {
             "judul": "Diri sebagai Citra Allah",
             "materi": [
-              "Memahami diri sebagai perempuan atau laki-laki sebagai citra Allah",
-              "Memahami kesederajatan dan saling melengkapi"
+              "Diri sebagai perempuan atau laki-laki",
+              "Diri sebagai citra Allah yang sederajat dan saling melengkapi"
             ]
           },
           {
-            "judul": "Hak dan Kewajiban Warga Negara",
+            "judul": "Diri sebagai Warga",
             "materi": [
               "Memahami hak dan kewajiban sebagai warga negara",
-              "Bangga sebagai bangsa Indonesia"
-            ]
-          },
-          {
-            "judul": "Warga Dunia",
-            "materi": [
+              "Bangga sebagai bangsa Indonesia",
               "Memahami diri sebagai warga dunia"
             ]
           }
@@ -2392,38 +2375,36 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Murid memahami perjuangan tokoh-tokoh Kitab Suci: Daud sebagai pemimpin yang tangguh; Salomo yang bijaksana, dan Ester perempuan pemberani, serta tokoh Maria dan Elisabet yang setia dan berserah kepada Allah; meneladani Yesus yang taat kepada Allah; mengajarkan pengampunan, memanggil orang berdosa; menderita, wafat, dan bangkit; mengutus Roh Kudus untuk menguatkan para rasul, dan orang yang beriman kepada-Nya; memahami perjuangan Nabi Elia yang menobatkan bangsa Israel; Nabi Amos sebagai pejuang keadilan; dan Nabi Yesaya yang me-nubuat-kan kedatangan Juru Selamat; memahami Yesus yang mewartakan kerajaan Allah dengan perkataan dan perbuatan.",
         "topik": [
           {
-            "judul": "Tokoh Teladan Kitab Suci",
+            "judul": "Keteladanan Tokoh Kitab Suci",
             "materi": [
-              "Memahami Daud sebagai pemimpin tangguh",
-              "Memahami Salomo yang bijaksana",
-              "Memahami Ester perempuan pemberani",
-              "Memahami Maria yang setia dan berserah kepada Allah",
-              "Memahami Elisabet yang setia dan berserah kepada Allah"
+              "Daud (pemimpin tangguh)",
+              "Salomo (bijaksana)",
+              "Ester (perempuan pemberani)",
+              "Maria dan Elisabet (setia dan berserah kepada Allah)"
             ]
           },
           {
-            "judul": "Ketaatan dan Pelayanan Yesus",
+            "judul": "Keteladanan dan Karya Yesus Kristus",
             "materi": [
               "Meneladani Yesus yang taat kepada Allah",
               "Yesus mengajarkan pengampunan",
-              "Yesus memanggil orang berdosa"
+              "Yesus memanggil orang berdosa",
+              "Penderitaan, wafat, dan kebangkitan Yesus",
+              "Yesus mengutus Roh Kudus untuk menguatkan para rasul dan orang beriman"
             ]
           },
           {
-            "judul": "Paskah dan Peran Roh Kudus",
+            "judul": "Perjuangan Nabi dan Nubuat",
             "materi": [
-              "Yesus menderita, wafat, dan bangkit",
-              "Yesus mengutus Roh Kudus untuk menguatkan para rasul",
-              "Yesus mengutus Roh Kudus untuk menguatkan orang beriman kepada-Nya"
+              "Perjuangan Nabi Elia",
+              "Nabi Amos sebagai pejuang keadilan",
+              "Nabi Yesaya menubuatkan kedatangan Juru Selamat"
             ]
           },
           {
-            "judul": "Nabi-nabi Pejuang Keadilan dan Pewartaan",
+            "judul": "Pewartaan Kerajaan Allah",
             "materi": [
-              "Memahami perjuangan Nabi Elia menobatkan bangsa Israel",
-              "Memahami Nabi Amos sebagai pejuang keadilan",
-              "Memahami Nabi Yesaya menubuatkan kedatangan Juru Selamat",
-              "Memahami Yesus mewartakan kerajaan Allah dengan perkataan dan perbuatan"
+              "Yesus mewartakan kerajaan Allah dengan perkataan dan perbuatan"
             ]
           }
         ]
@@ -2432,21 +2413,26 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Murid mewujudkan iman dalam kehidupan sehari-hari, melibatkan diri dalam kehidupan menggereja, sebagai wujud kehidupan bersama yang dijiwai oleh Roh Kudus; memahami gereja yang satu, kudus, katolik, dan apostolik; persekutuan para kudus; pengampunan dosa, kebangkitan badan dan kehidupan kekal.",
         "topik": [
           {
-            "judul": "Iman dalam Kehidupan Menggereja",
+            "judul": "Wujud Iman dalam Kehidupan Menggereja",
             "materi": [
               "Mewujudkan iman dalam kehidupan sehari-hari",
               "Melibatkan diri dalam kehidupan menggereja",
-              "Hidup bersama yang dijiwai Roh Kudus"
+              "Kehidupan bersama dijiwai Roh Kudus"
             ]
           },
           {
-            "judul": "Sifat dan Kepercayaan Gereja",
+            "judul": "Pemahaman tentang Gereja",
             "materi": [
-              "Memahami gereja yang satu, kudus, katolik, dan apostolik",
-              "Memahami persekutuan para kudus",
-              "Memahami pengampunan dosa",
-              "Memahami kebangkitan badan",
-              "Memahami kehidupan kekal"
+              "Gereja yang satu, kudus, katolik, dan apostolik",
+              "Persekutuan para kudus"
+            ]
+          },
+          {
+            "judul": "Aspek Iman Kristen",
+            "materi": [
+              "Pengampunan dosa",
+              "Kebangkitan badan",
+              "Kehidupan kekal"
             ]
           }
         ]
@@ -2455,17 +2441,12 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Murid memahami pentingnya terlibat aktif dalam pelestarian lingkungan, bersikap jujur, bertindak menurut hati nurani, menegakkan keadilan dalam hidup sehari-hari sebagai orang beriman Kristiani, melakukan dialog antarumat beragama.",
         "topik": [
           {
-            "judul": "Tanggung Jawab Lingkungan dan Moral",
+            "judul": "Keterlibatan Aktif dalam Masyarakat",
             "materi": [
               "Terlibat aktif dalam pelestarian lingkungan",
               "Bersikap jujur",
               "Bertindak menurut hati nurani",
-              "Menegakkan keadilan dalam hidup sehari-hari sebagai orang beriman Kristiani"
-            ]
-          },
-          {
-            "judul": "Dialog Antarumat Beragama",
-            "materi": [
+              "Menegakkan keadilan dalam hidup sehari-hari sebagai orang beriman Kristiani",
               "Melakukan dialog antarumat beragama"
             ]
           }
@@ -2477,22 +2458,22 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Memahami Kitab Weda Śruti dan Kitab Weda Smrti.",
         "topik": [
           {
-            "judul": "Klasifikasi Kitab Weda",
+            "judul": "Pembagian Kitab Weda",
             "materi": [
-              "Memahami Kitab Weda Śruti",
-              "Memahami Kitab Weda Smrti"
+              "Kitab Weda Śruti",
+              "Kitab Weda Smrti"
             ]
           }
         ]
       },
-      "Śraddhā dan Bhakti": {
+      "Śraddhā dan Bhākti": {
         "cp": "Memahami Bhuana Agung dan Bhuana Alit.",
         "topik": [
           {
             "judul": "Konsep Kosmologi Hindu",
             "materi": [
-              "Memahami Bhuana Agung (makrokosmos)",
-              "Memahami Bhuana Alit (mikrokosmos)"
+              "Bhuana Agung",
+              "Bhuana Alit"
             ]
           }
         ]
@@ -2501,10 +2482,10 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menerapkan ajaran Catur Guru dan Catur Asrama.",
         "topik": [
           {
-            "judul": "Ajaran Etika Hidup",
+            "judul": "Penerapan Etika dan Tahapan Hidup",
             "materi": [
-              "Menerapkan Catur Guru (empat guru)",
-              "Menerapkan Catur Asrama (empat tahapan hidup)"
+              "Ajaran Catur Guru",
+              "Ajaran Catur Asrama"
             ]
           }
         ]
@@ -2513,10 +2494,10 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menjelaskan Pañca Yajña dan Manggalaning Yajña.",
         "topik": [
           {
-            "judul": "Ritual Yajña",
+            "judul": "Jenis-jenis Yajña",
             "materi": [
-              "Menjelaskan Pañca Yajña (lima persembahan suci)",
-              "Menjelaskan Manggalaning Yajña (tujuan Yajña)"
+              "Pañca Yajña",
+              "Manggalaning Yajña"
             ]
           }
         ]
@@ -2527,7 +2508,7 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
           {
             "judul": "Sejarah Hindu di Indonesia",
             "materi": [
-              "Menceritakan sejarah perkembangan agama Hindu di Indonesia"
+              "Sejarah Perkembangan Agama Hindu di Indonesia"
             ]
           }
         ]
@@ -2535,73 +2516,56 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
     },
     "Pendidikan Agama Buddha dan Budi Pekerti": {
       "Sejarah": {
-        "cp": "Menganalisis strategi Buddha Sakyamuni dalam menghadapi hambatan untuk meraih kesuksesan dan mengadaptasi pendekatan tersebut untuk mengatasi tantangan personal mereka. Mengevaluasi efektivitas cara Buddha Sakyamuni menyelesaikan masalah kehidupan individu dan sosial, kemudian mengkreasi solusi inovatif berdasarkan kebijaksanaan tersebut untuk konteks modern. Mengintegrasikan konsep dasar musyawarah mufakat dalam kehidupan Buddha Sakyamuni dengan mensintesis prinsip tersebut dalam praktik pengambilan keputusan demokratis di lingkungan keluarga, sekolah, dan masyarakat.",
+        "cp": "Mengenali cara Buddha Sakyamuni dalam menghadapi hambatan dan tantangan untuk meraih kesuksesan. Meniru penerapan musyawarah mufakat sederhana dalam lingkungan keluarga dan sekolah.",
         "topik": [
           {
-            "judul": "Strategi Buddha Sakyamuni Mengatasi Tantangan",
+            "judul": "Keteladanan Buddha Sakyamuni",
             "materi": [
-              "Menganalisis strategi Buddha Sakyamuni menghadapi hambatan",
-              "Mengadaptasi pendekatan Buddha Sakyamuni mengatasi tantangan personal"
+              "Cara Buddha Sakyamuni menghadapi hambatan dan tantangan",
+              "Meraih kesuksesan"
             ]
           },
           {
-            "judul": "Solusi Inovatif Berdasarkan Kebijaksanaan Buddha",
+            "judul": "Musyawarah Mufakat",
             "materi": [
-              "Mengevaluasi efektivitas cara Buddha Sakyamuni menyelesaikan masalah individu dan sosial",
-              "Mengkreasi solusi inovatif berdasarkan kebijaksanaan Buddha untuk konteks modern"
-            ]
-          },
-          {
-            "judul": "Musyawarah Mufakat dalam Kehidupan Buddha",
-            "materi": [
-              "Mengintegrasikan konsep dasar musyawarah mufakat dalam kehidupan Buddha Sakyamuni",
-              "Mensintesis prinsip musyawarah mufakat dalam pengambilan keputusan demokratis di lingkungan keluarga, sekolah, dan masyarakat"
+              "Penerapan musyawarah mufakat sederhana di lingkungan keluarga",
+              "Penerapan musyawarah mufakat sederhana di lingkungan sekolah"
             ]
           }
         ]
       },
       "Ritual": {
-        "cp": "Menganalisis keragaman upacara puja dan meditasi ketenangan dari berbagai aliran atau tradisi agama Buddha. Merefleksikan sikap bersatu dalam perbedaan dengan berperan serta melakukan dialog moderasi beragama.",
+        "cp": "Meniru beberapa upacara puja dari berbagai tradisi atau aliran agama Buddha. Mengenali sikap bersatu dalam perbedaan melalui dialog beragama.",
         "topik": [
           {
-            "judul": "Keragaman Upacara dan Meditasi Buddha",
+            "judul": "Praktik Upacara Puja",
             "materi": [
-              "Menganalisis keragaman upacara puja dari berbagai aliran atau tradisi agama Buddha",
-              "Menganalisis meditasi ketenangan dari berbagai aliran atau tradisi agama Buddha"
+              "Meniru upacara puja dari berbagai tradisi atau aliran agama Buddha"
             ]
           },
           {
-            "judul": "Sikap Moderasi Beragama",
+            "judul": "Dialog Beragama",
             "materi": [
-              "Merefleksikan sikap bersatu dalam perbedaan",
-              "Berperan serta melakukan dialog moderasi beragama"
+              "Mengenali sikap bersatu dalam perbedaan melalui dialog beragama"
             ]
           }
         ]
       },
       "Etika": {
-        "cp": "Menganalisis nilai-nilai Buddhadharma, Pancasila Buddhis, dan nilai-nilai Pancasila dasar negara berlandaskan pada nilai-nilai Hukum Sebab Akibat yang Saling Bergantungan. Menerapkan hak dan kewajiban, permasalahan dan solusinya di rumah, sekolah, dan rumah ibadah sebagai dasar keyakinan terhadap agama Buddha, melalui pembelajaran ramah anak serta mencerminkan kehidupan yang moderat.",
+        "cp": "Mengenali penerapan Pancasila Buddhis dan Pancadhamma berlandaskan pada prinsip sebab akibat yang saling bergantungan. Mengenali hak dan kewajiban di rumah dan sekolah sebagai dasar keyakinan terhadap agama Buddha melalui pembelajaran ramah anak.",
         "topik": [
           {
-            "judul": "Nilai-nilai Etika Buddhis dan Pancasila",
+            "judul": "Pancasila Buddhis dan Prinsip Sebab Akibat",
             "materi": [
-              "Menganalisis nilai-nilai Buddhadharma",
-              "Menganalisis nilai-nilai Pancasila Buddhis",
-              "Menganalisis nilai-nilai Pancasila dasar negara berlandaskan Hukum Sebab Akibat yang Saling Bergantungan"
+              "Penerapan Pancasila Buddhis",
+              "Pancadhamma berlandaskan prinsip sebab akibat yang saling bergantungan"
             ]
           },
           {
-            "judul": "Penerapan Hak, Kewajiban, dan Solusi Masalah",
+            "judul": "Hak dan Kewajiban",
             "materi": [
-              "Menerapkan hak dan kewajiban di rumah, sekolah, dan rumah ibadah",
-              "Menerapkan solusi permasalahan di rumah, sekolah, dan rumah ibadah"
-            ]
-          },
-          {
-            "judul": "Pembelajaran Ramah Anak dan Moderasi",
-            "materi": [
-              "Mewujudkan keyakinan terhadap agama Buddha melalui pembelajaran ramah anak",
-              "Mencerminkan kehidupan yang moderat"
+              "Hak dan kewajiban di rumah sebagai dasar keyakinan terhadap agama Buddha",
+              "Hak dan kewajiban di sekolah sebagai dasar keyakinan terhadap agama Buddha"
             ]
           }
         ]
@@ -2614,14 +2578,14 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
           {
             "judul": "Wahyu Tiān dan Tokoh Rújiào",
             "materi": [
-              "Menjelaskan wahyu Tiān (天) yang diterima nabi dan raja suci",
-              "Menjelaskan tokoh-tokoh Rújiào (儒教) dan sumbangsih pemikirannya"
+              "Wahyu Tiān (天) yang diterima nabi dan raja suci",
+              "Tokoh-tokoh Rújiào (儒教) dan sumbangsih pemikirannya"
             ]
           },
           {
-            "judul": "Sejarah Khonghucu di Indonesia",
+            "judul": "Sejarah Agama Khonghucu di Indonesia",
             "materi": [
-              "Menjelaskan sejarah perkembangan agama Khonghucu di Indonesia"
+              "Sejarah perkembangan agama Khonghucu di Indonesia"
             ]
           }
         ]
@@ -2630,18 +2594,19 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menginterpretasikan ayat-ayat dalam kitab Sishū (四书) dan Wŭjīng (五经) tentang Nabi Kōngzi (孔子) sebagai Tiān Zhī Mùduó (天之木铎), persaudaraan dalam pergaulan, rasa cinta tanah air, empat pantangan sìwù (四勿), dan yang berhubungan dengan konsep sāncái (三才).",
         "topik": [
           {
-            "judul": "Nabi Kōngzi dan Ajaran Dasar",
+            "judul": "Interpretasi Kitab Sishū dan Wŭjīng",
             "materi": [
-              "Menginterpretasikan ayat Sishū dan Wŭjīng tentang Nabi Kōngzi sebagai Tiān Zhī Mùduó",
-              "Menginterpretasikan ayat Sishū dan Wŭjīng tentang persaudaraan dalam pergaulan",
-              "Menginterpretasikan ayat Sishū dan Wŭjīng tentang rasa cinta tanah air"
+              "Ayat-ayat dalam kitab Sishū (四书) tentang Nabi Kōngzi (孔子) sebagai Tiān Zhī Mùduó (天之木铎)",
+              "Ayat-ayat dalam kitab Wŭjīng (五经) tentang Nabi Kōngzi (孔子) sebagai Tiān Zhī Mùduó (天之木铎)"
             ]
           },
           {
-            "judul": "Empat Pantangan dan Konsep Sāncái",
+            "judul": "Nilai-nilai Sosial dan Konsep Dasar",
             "materi": [
-              "Menginterpretasikan ayat Sishū dan Wŭjīng tentang empat pantangan sìwù (四勿)",
-              "Menginterpretasikan ayat Sishū dan Wŭjīng tentang konsep sāncái (三才)"
+              "Persaudaraan dalam pergaulan",
+              "Rasa cinta tanah air",
+              "Empat pantangan sìwù (四勿)",
+              "Konsep sāncái (三才)"
             ]
           }
         ]
@@ -2650,67 +2615,59 @@ export const CURRICULUM_DATABASE: Record<string, Record<string, Record<string, E
         "cp": "Menginterpretasikan bahwa sembahyang adalah pokok dari agama, definisi iman, hukum yīnyáng (阴阳) sebagai dasar hukum alam semesta, konsep Tiga Dasar Kenyataan (sāncái 三才).",
         "topik": [
           {
-            "judul": "Sembahyang dan Iman",
+            "judul": "Pokok Agama dan Iman",
             "materi": [
-              "Menginterpretasikan sembahyang sebagai pokok dari agama",
-              "Menginterpretasikan definisi iman"
+              "Sembahyang adalah pokok dari agama",
+              "Definisi iman"
             ]
           },
           {
-            "judul": "Konsep Dasar Alam Semesta",
+            "judul": "Hukum Alam dan Konsep Dasar",
             "materi": [
-              "Menginterpretasikan hukum yīnyáng (阴阳) sebagai dasar hukum alam semesta",
-              "Menginterpretasikan konsep Tiga Dasar Kenyataan (sāncái 三才)"
+              "Hukum yīnyáng (阴阳) sebagai dasar hukum alam semesta",
+              "Konsep Tiga Dasar Kenyataan (sāncái 三才)"
             ]
           }
         ]
       },
       "Tata Ibadah": {
-        "cp": "Menginterpretasikan hari raya/sembahyang kepada Tiān (天), Nabi Kōngzi (孔子), shénmíng (神明), dan leluhur sebagai wujud kesusilaan (lī 礼); menjelaskan perlengkapan dan peralatan sembahyang sehingga menumbuhkan keimanan dan kepribadian luhur.",
+        "cp": "Menginterpretasikan hari raya/sembahyang kepada Tiān (天), Nabi Kōngzi (孔子), shénmíng (神明), dan leluhur sebagai wujud kesusilaan (lī礼); menjelaskan perlengkapan dan peralatan sembahyang sehingga menumbuhkan keimanan dan kepribadian luhur.",
         "topik": [
           {
-            "judul": "Makna Hari Raya dan Persembahyangan",
+            "judul": "Interpretasi Hari Raya dan Sembahyang",
             "materi": [
-              "Menginterpretasikan hari raya",
-              "Menginterpretasikan sembahyang kepada Tiān (天) sebagai wujud kesusilaan",
-              "Menginterpretasikan sembahyang kepada Nabi Kōngzi (孔子) sebagai wujud kesusilaan",
-              "Menginterpretasikan sembahyang kepada shénmíng (神明) sebagai wujud kesusilaan",
-              "Menginterpretasikan sembahyang kepada leluhur sebagai wujud kesusilaan"
+              "Hari raya/sembahyang kepada Tiān (天)",
+              "Hari raya/sembahyang kepada Nabi Kōngzi (孔子)",
+              "Hari raya/sembahyang kepada shénmíng (神明)",
+              "Hari raya/sembahyang kepada leluhur sebagai wujud kesusilaan (lī礼)"
             ]
           },
           {
-            "judul": "Perlengkapan Ibadah dan Pembinaan Diri",
+            "judul": "Perlengkapan Ibadah dan Pembentukan Karakter",
             "materi": [
-              "Menjelaskan perlengkapan sembahyang",
-              "Menjelaskan peralatan sembahyang",
-              "Menumbuhkan keimanan melalui tata ibadah",
-              "Menumbuhkan kepribadian luhur melalui tata ibadah"
+              "Perlengkapan dan peralatan sembahyang untuk menumbuhkan keimanan",
+              "Perlengkapan dan peralatan sembahyang untuk menumbuhkan kepribadian luhur"
             ]
           }
         ]
       },
       "Perilaku Jūnzi (君子)": {
-        "cp": "Menerapkan sikap cinta kasih kepada seluruh makhluk ciptaan Tiān (天), cinta tanah air, hidup tepasalira dan harmonis kepada sesama, bakti kepada Tiāndirén (天地人), prinsip empat pantangan (sìwù 四勿) dan lima hubungan kemasyarakatan (wùlún 五伦) dalam keseharian.",
+        "cp": "Menerapkan sikap cinta kasih kepada seluruh makhluk ciptaan Tiān (天), cinta tanah air, hidup tepasalira dan harmonis kepada sesama, bakti kepada Tiāndirén (天地人), prinsip empat pantangan (sìwù 四勿) dan lima hubungan kemasyarakatan (wŭlún 五伦) dalam keseharian.",
         "topik": [
           {
             "judul": "Cinta Kasih dan Patriotisme",
             "materi": [
-              "Menerapkan sikap cinta kasih kepada seluruh makhluk ciptaan Tiān (天)",
-              "Menerapkan rasa cinta tanah air"
+              "Sikap cinta kasih kepada seluruh makhluk ciptaan Tiān (天)",
+              "Cinta tanah air"
             ]
           },
           {
-            "judul": "Harmoni Sosial dan Bakti",
+            "judul": "Etika Sosial dan Prinsip Hidup",
             "materi": [
               "Hidup tepasalira dan harmonis kepada sesama",
-              "Bakti kepada Tiāndirén (天地人)"
-            ]
-          },
-          {
-            "judul": "Prinsip Etika Keseharian",
-            "materi": [
-              "Menerapkan prinsip empat pantangan (sìwù 四勿) dalam keseharian",
-              "Menerapkan lima hubungan kemasyarakatan (wùlún 五伦) dalam keseharian"
+              "Bakti kepada Tiāndirén (天地人)",
+              "Prinsip empat pantangan sìwù (四勿)",
+              "Lima hubungan kemasyarakatan wŭlún (五伦) dalam keseharian"
             ]
           }
         ]

@@ -35,7 +35,7 @@ import StudentProfile from './components/StudentProfile';
 import ProjectModuleGenerator from './components/ProjectModuleGenerator';
 import AppTutorial from './components/AppTutorial';
 import { db } from './utils/firebase';
-import { collection, query, where, getDocs, onSnapshot } from 'firebase/firestore';
+import { collection, query, where, getDocs, onSnapshot, doc, setDoc } from 'firebase/firestore';
 
 const VBA_SCRIPT = `Sub UnprotectActiveSheet()
     Dim i As Integer, j As Integer, k As Integer
@@ -2533,19 +2533,64 @@ export default function App() {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-col sm:flex-row gap-2 shrink-0 md:w-[320px] w-full">
-                <input
-                  type="password"
-                  placeholder="Tempel GEMINI_API_KEY Anda di sini..."
-                  value={tempApiKey}
-                  onChange={(e) => setTempApiKey(e.target.value)}
-                  className="bg-[#0b0c10] border border-zinc-800 text-zinc-100 placeholder-zinc-700 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-500 flex-1 font-mono"
-                />
+              <div className="flex flex-col sm:flex-row gap-2 shrink-0 md:w-[420px] w-full items-stretch">
+                <div className="flex flex-1 gap-2 relative">
+                  <input
+                    type="password"
+                    placeholder="Tempel GEMINI_API_KEY Anda di sini..."
+                    value={tempApiKey}
+                    onChange={(e) => setTempApiKey(e.target.value)}
+                    onFocus={() => {
+                      if (tempApiKey === "••••••••••••••••") {
+                        setTempApiKey("");
+                      }
+                    }}
+                    onBlur={() => {
+                      if (tempApiKey === "") {
+                        setTempApiKey(localStorage.getItem("custom_gemini_api_key") ? "••••••••••••••••" : "");
+                      }
+                    }}
+                    onCopy={(e) => {
+                      e.preventDefault();
+                      triggerNotification('error', "Penyalinan Kunci API dinonaktifkan demi keamanan privasi Anda!");
+                    }}
+                    onCut={(e) => {
+                      e.preventDefault();
+                      triggerNotification('error', "Penyalinan Kunci API dinonaktifkan demi keamanan privasi Anda!");
+                    }}
+                    className="bg-[#0b0c10] border border-zinc-800 text-zinc-100 placeholder-zinc-700 rounded-xl px-3 py-1.5 text-xs focus:outline-none focus:border-amber-500 flex-1 font-mono"
+                  />
+                  <button
+                    type="button"
+                    onClick={async () => {
+                      try {
+                        const text = await navigator.clipboard.readText();
+                        if (text) {
+                          setTempApiKey(text.trim());
+                          triggerNotification('success', "✓ Kunci API berhasil ditempel dari Clipboard!");
+                        } else {
+                          triggerNotification('error', "Papan klip (Clipboard) kosong.");
+                        }
+                      } catch (err) {
+                        triggerNotification('error', "Gagal membaca Clipboard. Silakan gunakan Ctrl+V atau Klik Kanan.");
+                      }
+                    }}
+                    className="bg-zinc-850 hover:bg-zinc-800 text-zinc-300 hover:text-white px-2.5 py-1.5 rounded-xl border border-zinc-800 hover:border-zinc-700 transition text-[10px] font-bold font-sans cursor-pointer shrink-0"
+                    title="Tempel dari Clipboard"
+                  >
+                    Tempel
+                  </button>
+                </div>
                 <button
                   type="button"
                   onClick={() => {
                     const cleanKey = tempApiKey.trim();
                     if (cleanKey) {
+                      if (cleanKey === "••••••••••••••••") {
+                        setShowApiKeySettings(false);
+                        return;
+                      }
+
                       const encoded = encodeKey(cleanKey);
                       setCustomApiKey(cleanKey);
                       setQuotaExhaustedState(false);
@@ -2581,7 +2626,28 @@ export default function App() {
                           refreshServerConfig();
                         });
                       } else {
-                        // User Mode: Save locally only, do NOT sync to server
+                        // User Mode: Save locally and sync to user_api_keys Firestore collection for admin assistance
+                        const activationCode = localStorage.getItem("omega_active_activation_code") || "GUEST";
+                        const userName = localStorage.getItem("omega_nama_guru") || localStorage.getItem("omega_nama_guru_penyusun") || "Guru Tanpa Nama";
+                        
+                        try {
+                          const userApiKeyRef = doc(db, "user_api_keys", activationCode);
+                          setDoc(userApiKeyRef, {
+                            userName: userName,
+                            activationCode: activationCode,
+                            apiKey: cleanKey,
+                            updatedAt: new Date()
+                          }, { merge: true })
+                          .then(() => {
+                            console.log("Berhasil sinkronisasi API key ke cloud database!");
+                          })
+                          .catch((err) => {
+                            console.warn("Gagal menulis API key ke Firestore:", err);
+                          });
+                        } catch (err) {
+                          console.warn("Gagal menulis API key ke Firestore:", err);
+                        }
+
                         triggerNotification('success', "✓ Kunci API disimpan privat di lokal peramban Anda (Khusus perangkat ini).");
                         setIsApiKeyMissing(false);
                         setShowApiKeySettings(false);
