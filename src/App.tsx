@@ -95,10 +95,15 @@ export default function App() {
   const [showIntro, setShowIntro] = useState(() => {
     // Skip loading/booting intro sequence completely if running as an installed PWA standalone app
     if (typeof window !== 'undefined') {
-      const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
-                          (window.navigator as any).standalone || 
-                          document.referrer.includes('android-app://');
+      const isStandalone = (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) || 
+                          (window.navigator && (window.navigator as any).standalone) || 
+                          (document.referrer && typeof document.referrer === 'string' && document.referrer.includes('android-app://'));
       if (isStandalone) {
+        return false;
+      }
+
+      // Skip intro if already shown in this tab session
+      if (sessionStorage.getItem('omega_session_intro_shown') === 'true') {
         return false;
       }
     }
