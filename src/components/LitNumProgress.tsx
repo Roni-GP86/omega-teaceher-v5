@@ -663,9 +663,13 @@ export const LitNumProgress: React.FC = () => {
         setLoadingStatus("Merumuskan strategi intervensi berbasis 3 Pilar Deep Learning...");
       }, 4500);
 
+      const localKey = (localStorage.getItem("custom_gemini_api_key") || "").trim();
       const response = await fetch("/api/generate-litnum-analysis", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          ...(localKey ? { "x-gemini-key": localKey } : {})
+        },
         body: JSON.stringify({
           namaSekolah,
           kelas,
@@ -684,7 +688,14 @@ export const LitNumProgress: React.FC = () => {
 
       const resData = await response.json();
       if (!response.ok) {
-        throw new Error(resData.error || "Gagal menghasilkan analisa dari asisten AI.");
+        const errMsg = resData.error || "Gagal menghasilkan analisa dari asisten AI.";
+        const errMsgLower = errMsg.toLowerCase();
+        if (response.status === 429 || errMsgLower.includes("quota") || errMsgLower.includes("exhausted") || errMsgLower.includes("rate limit") || errMsgLower.includes("limit") || errMsgLower.includes("429")) {
+          window.dispatchEvent(new CustomEvent("gemini-quota-exhausted"));
+        } else if (response.status === 403 || response.status === 400 || errMsg.includes("403") || errMsg.includes("400") || errMsg.includes("permission_denied") || errMsg.includes("terbatas") || errMsg.includes("ditolak") || errMsg.includes("kunci api") || errMsg.includes("api_key_invalid") || errMsg.includes("api key not valid")) {
+          window.dispatchEvent(new CustomEvent("gemini-api-error-403"));
+        }
+        throw new Error(errMsg);
       }
 
       setAiReport(resData.text);
