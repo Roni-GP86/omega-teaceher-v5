@@ -101,11 +101,6 @@ export default function App() {
       if (isStandalone) {
         return false;
       }
-
-      // Skip intro if already shown in this tab session
-      if (sessionStorage.getItem('omega_session_intro_shown') === 'true') {
-        return false;
-      }
     }
     return true;
   });
