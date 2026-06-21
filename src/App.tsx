@@ -1126,10 +1126,6 @@ export default function App() {
     if (!showIntro) {
       const playWelcomeSpeech = () => {
         if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-          if (sessionStorage.getItem('omega_welcome_spoken') === 'true') {
-            return;
-          }
-          
           window.speechSynthesis.cancel();
           const greetingText = "Selamat datang bapak dan ibu guru hebat di Omega Teacher Engine.";
           const utterance = new SpeechSynthesisUtterance(greetingText);
@@ -1165,7 +1161,6 @@ export default function App() {
           }
           
           window.speechSynthesis.speak(utterance);
-          sessionStorage.setItem('omega_welcome_spoken', 'true');
         }
       };
 
